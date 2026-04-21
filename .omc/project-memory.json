@@ -1,0 +1,170 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1776744437105,
+  "projectRoot": "/home/zhaodi-chen/project/claude_design_demo/water-reminder",
+  "techStack": {
+    "languages": [
+      {
+        "name": "JavaScript/TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "package.json"
+        ]
+      },
+      {
+        "name": "TypeScript",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "tsconfig.json"
+        ]
+      }
+    ],
+    "frameworks": [
+      {
+        "name": "react",
+        "version": "19.2.5",
+        "category": "frontend"
+      },
+      {
+        "name": "react-dom",
+        "version": "19.2.5",
+        "category": "frontend"
+      },
+      {
+        "name": "vite",
+        "version": "8.0.9",
+        "category": "build"
+      }
+    ],
+    "packageManager": "pnpm",
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": "pnpm build",
+    "testCommand": null,
+    "lintCommand": "pnpm lint",
+    "devCommand": "pnpm dev",
+    "scripts": {
+      "dev": "vite",
+      "build": "tsc -b && vite build",
+      "lint": "eslint .",
+      "preview": "vite preview"
+    }
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "public",
+      "src"
+    ],
+    "gitBranches": null
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "public": {
+      "path": "public",
+      "purpose": "Public files",
+      "fileCount": 2,
+      "lastAccessed": 1776744437094,
+      "keyFiles": [
+        "favicon.svg",
+        "icons.svg"
+      ]
+    },
+    "src": {
+      "path": "src",
+      "purpose": "Source code",
+      "fileCount": 4,
+      "lastAccessed": 1776744437094,
+      "keyFiles": [
+        "App.css",
+        "App.tsx",
+        "index.css",
+        "main.tsx"
+      ]
+    },
+    "src/assets": {
+      "path": "src/assets",
+      "purpose": "Static assets",
+      "fileCount": 3,
+      "lastAccessed": 1776744437101,
+      "keyFiles": [
+        "hero.png",
+        "react.svg",
+        "vite.svg"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "src/App.tsx",
+      "accessCount": 40,
+      "lastAccessed": 1776760238063,
+      "type": "file"
+    },
+    {
+      "path": "src/index.css",
+      "accessCount": 9,
+      "lastAccessed": 1776752226336,
+      "type": "file"
+    },
+    {
+      "path": "postcss.config.js",
+      "accessCount": 3,
+      "lastAccessed": 1776750166022,
+      "type": "file"
+    },
+    {
+      "path": "src/i18n.ts",
+      "accessCount": 3,
+      "lastAccessed": 1776752199261,
+      "type": "file"
+    },
+    {
+      "path": "package.json",
+      "accessCount": 2,
+      "lastAccessed": 1776744772966,
+      "type": "file"
+    },
+    {
+      "path": "tailwind.config.js",
+      "accessCount": 2,
+      "lastAccessed": 1776744965850,
+      "type": "file"
+    },
+    {
+      "path": "src/main.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1776750594535,
+      "type": "file"
+    },
+    {
+      "path": "initial.png",
+      "accessCount": 1,
+      "lastAccessed": 1776744617765,
+      "type": "file"
+    },
+    {
+      "path": "index.html",
+      "accessCount": 1,
+      "lastAccessed": 1776745264558,
+      "type": "file"
+    },
+    {
+      "path": "vite.config.ts",
+      "accessCount": 1,
+      "lastAccessed": 1776745285863,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}

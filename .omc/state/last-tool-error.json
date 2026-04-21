@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"sed -i '507s\\\\.map(/507s/g' src/App.tsx\",\"description\":\"Fix groupedHistory typo\"}",
+  "error": "Exit code 1\nsed: -e expression #1, char 17: unterminated `s' command",
+  "timestamp": "2026-04-21T08:09:08.332Z",
+  "retry_count": 1
+}
