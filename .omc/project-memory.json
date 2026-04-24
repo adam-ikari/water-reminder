@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1776744437105,
-  "projectRoot": "/home/zhaodi-chen/project/claude_design_demo/water-reminder",
+  "lastScanned": 1777019402483,
+  "projectRoot": "/home/gem/water-reminder",
   "techStack": {
     "languages": [
       {
@@ -42,7 +42,7 @@
     "runtime": null
   },
   "build": {
-    "buildCommand": "pnpm build",
+    "buildCommand": "pnpm build 2>&1 | tail -5",
     "testCommand": null,
     "lintCommand": "pnpm lint",
     "devCommand": "pnpm dev",
@@ -55,9 +55,9 @@
   },
   "conventions": {
     "namingStyle": null,
-    "importStyle": null,
+    "importStyle": "ES modules",
     "testPattern": null,
-    "fileOrganization": null
+    "fileOrganization": "type-based"
   },
   "structure": {
     "isMonorepo": false,
@@ -66,15 +66,29 @@
       "public",
       "src"
     ],
-    "gitBranches": null
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
   },
   "customNotes": [],
   "directoryMap": {
+    "dist": {
+      "path": "dist",
+      "purpose": "Distribution/build output",
+      "fileCount": 3,
+      "lastAccessed": 1777019402469,
+      "keyFiles": [
+        "favicon.svg",
+        "icons.svg",
+        "index.html"
+      ]
+    },
     "public": {
       "path": "public",
       "purpose": "Public files",
       "fileCount": 2,
-      "lastAccessed": 1776744437094,
+      "lastAccessed": 1777019402470,
       "keyFiles": [
         "favicon.svg",
         "icons.svg"
@@ -83,38 +97,57 @@
     "src": {
       "path": "src",
       "purpose": "Source code",
-      "fileCount": 4,
-      "lastAccessed": 1776744437094,
+      "fileCount": 5,
+      "lastAccessed": 1777019402475,
       "keyFiles": [
         "App.css",
         "App.tsx",
+        "i18n.ts",
         "index.css",
         "main.tsx"
+      ]
+    },
+    "dist/assets": {
+      "path": "dist/assets",
+      "purpose": "Static assets",
+      "fileCount": 5,
+      "lastAccessed": 1777019402480,
+      "keyFiles": [
+        "geist-cyrillic-wght-normal-CHSlOQsW.woff2",
+        "geist-latin-ext-wght-normal-DMtmJ5ZE.woff2",
+        "geist-latin-wght-normal-Dm3htQBi.woff2"
       ]
     },
     "src/assets": {
       "path": "src/assets",
       "purpose": "Static assets",
       "fileCount": 3,
-      "lastAccessed": 1776744437101,
+      "lastAccessed": 1777019402481,
       "keyFiles": [
         "hero.png",
         "react.svg",
         "vite.svg"
       ]
+    },
+    "src/components": {
+      "path": "src/components",
+      "purpose": "UI components",
+      "fileCount": 0,
+      "lastAccessed": 1777019402481,
+      "keyFiles": []
     }
   },
   "hotPaths": [
     {
       "path": "src/App.tsx",
-      "accessCount": 40,
-      "lastAccessed": 1776760238063,
+      "accessCount": 41,
+      "lastAccessed": 1777019736953,
       "type": "file"
     },
     {
       "path": "src/index.css",
-      "accessCount": 9,
-      "lastAccessed": 1776752226336,
+      "accessCount": 10,
+      "lastAccessed": 1777019691072,
       "type": "file"
     },
     {

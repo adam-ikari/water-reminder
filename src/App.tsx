@@ -88,29 +88,29 @@ export default function App() {
         className="absolute inset-0 water-container"
         initial={{ y: '100%' }}
         animate={{ y: `${100 - progress}%` }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
+        transition={{ duration: 1, ease: 'easeOut' }}
       >
-        {/* Caustics - light scattering effect */}
+        {/* Caustics - underwater light */}
         <div className="absolute inset-0 caustics" />
 
-        {/* Back wave - water outline */}
-        <div className="absolute top-0 inset-x-0 h-20 -translate-y-1/2 wave-back">
+        {/* Back wave - deep water outline */}
+        <div className="absolute top-0 inset-x-0 h-24 -translate-y-1/2 wave-back">
+          <svg viewBox="0 0 1200 200" preserveAspectRatio="none" className="w-full h-full">
+            <path d="M0,100 Q150,70 300,100 T600,95 T900,105 T1200,100 L1200,200 L0,200 Z" fill="rgba(3,105,161,0.85)" />
+          </svg>
+        </div>
+
+        {/* Middle wave - surface */}
+        <div className="absolute top-0 inset-x-0 h-20 -translate-y-1/2 wave-middle">
           <svg viewBox="0 0 1200 160" preserveAspectRatio="none" className="w-full h-full">
-            <path d="M0,80 Q100,40 200,80 T400,80 T600,80 T800,80 T1000,80 T1200,80 L1200,160 L0,160 Z" fill="rgba(8,145,178,0.9)" />
+            <path d="M0,80 Q100,60 200,80 T400,78 T600,82 T800,79 T1000,81 T1200,80 L1200,160 L0,160 Z" fill="rgba(56,189,248,0.5)" />
           </svg>
         </div>
 
-        {/* Middle wave - water surface (lighter) */}
-        <div className="absolute top-0 inset-x-0 h-16 -translate-y-1/2 wave-middle">
+        {/* Front wave - highlight */}
+        <div className="absolute top-0 inset-x-0 h-16 -translate-y-1/2 wave-front">
           <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-full">
-            <path d="M0,60 Q80,35 160,60 T320,58 T480,62 T640,60 T800,58 T960,62 T1120,60 T1200,60 L1200,120 L0,120 Z" fill="rgba(34,211,238,0.7)" />
-          </svg>
-        </div>
-
-        {/* Front wave - water outline */}
-        <div className="absolute top-0 inset-x-0 h-14 -translate-y-1/2 wave-front">
-          <svg viewBox="0 0 1200 100" preserveAspectRatio="none" className="w-full h-full">
-            <path d="M0,50 Q60,30 120,50 T240,48 T360,52 T480,50 T600,48 T720,52 T840,50 T960,48 T1080,52 T1200,50 L1200,100 L0,100 Z" fill="rgba(103,232,249,0.5)" />
+            <path d="M0,60 Q80,50 160,60 T320,59 T480,61 T640,60 T800,59 T960,61 T1200,60 L1200,120 L0,120 Z" fill="rgba(186,230,253,0.4)" />
           </svg>
         </div>
 
@@ -125,16 +125,15 @@ export default function App() {
               height: bubble.size,
             }}
             initial={{ y: 0, opacity: 0 }}
-            animate={{ y: -300, opacity: [0, 0.8, 0.6, 0] }}
+            animate={{ y: -400, opacity: [0, 0.7, 0.5, 0] }}
             transition={{ duration: bubble.duration, delay: bubble.delay, ease: 'easeOut' }}
           />
         ))}
 
-        {/* Light rays */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-1/4 w-1 h-full bg-gradient-to-b from-white/20 to-transparent transform -skew-x-12" />
-          <div className="absolute top-0 left-1/2 w-2 h-full bg-gradient-to-b from-white/15 to-transparent transform skew-x-6" />
-          <div className="absolute top-0 left-3/4 w-1 h-full bg-gradient-to-b from-white/10 to-transparent transform -skew-x-3" />
+        {/* Subtle light rays */}
+        <div className="absolute inset-0 pointer-events-none opacity-30">
+          <div className="absolute top-0 left-1/3 w-px h-full bg-gradient-to-b from-white/40 via-white/20 to-transparent" />
+          <div className="absolute top-0 right-1/3 w-px h-full bg-gradient-to-b from-white/30 via-white/15 to-transparent" />
         </div>
       </motion.div>
 
