@@ -42,7 +42,7 @@
     "runtime": null
   },
   "build": {
-    "buildCommand": "npm run build 2>&1 | tail -5",
+    "buildCommand": "npm run build 2>&1 | tail -3",
     "testCommand": null,
     "lintCommand": "pnpm lint",
     "devCommand": "pnpm dev",
@@ -140,14 +140,14 @@
   "hotPaths": [
     {
       "path": "src/App.tsx",
-      "accessCount": 44,
-      "lastAccessed": 1777021134423,
+      "accessCount": 45,
+      "lastAccessed": 1777021712576,
       "type": "file"
     },
     {
       "path": "src/index.css",
-      "accessCount": 14,
-      "lastAccessed": 1777021100065,
+      "accessCount": 16,
+      "lastAccessed": 1777021760466,
       "type": "file"
     },
     {

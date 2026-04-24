@@ -38,7 +38,7 @@ body {
   overflow: visible;
 }
 
-/* Wave mesh - smooth continuous waves */
+/* Wave mesh - foreground dark, middle light, background dark */
 .wave-mesh {
   position: absolute;
   inset: 0;
@@ -52,21 +52,21 @@ body {
   top: 0;
 }
 
-/* Smooth sine wave - primary */
-.wave-1 {
-  fill: rgba(56, 189, 248, 0.7);
+/* Back wave - medium tone (water depth) */
+.wave-back {
+  fill: rgba(56, 189, 248, 0.6);
   animation: wave-seamless-1 6s linear infinite;
 }
 
-/* Secondary wave - different frequency */
-.wave-2 {
-  fill: rgba(14, 165, 233, 0.5);
+/* Middle wave - light (sunlit surface) */
+.wave-middle {
+  fill: rgba(224, 242, 254, 0.75);
   animation: wave-seamless-2 8s linear infinite;
 }
 
-/* Tertiary wave - highlight */
-.wave-3 {
-  fill: rgba(186, 230, 253, 0.4);
+/* Front wave - medium tone (water outline) */
+.wave-front {
+  fill: rgba(125, 211, 252, 0.55);
   animation: wave-seamless-3 4s linear infinite;
 }
 
