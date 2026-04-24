@@ -12,6 +12,7 @@ i18n.use(initReactI18next).init({
         settings: 'Settings',
         save: 'Save',
         noRecords: 'No records',
+        reminder: 'Reminder',
       },
     },
     zh: {
@@ -23,6 +24,7 @@ i18n.use(initReactI18next).init({
         settings: '设置',
         save: '保存',
         noRecords: '暂无记录',
+        reminder: '提醒',
       },
     },
   },
