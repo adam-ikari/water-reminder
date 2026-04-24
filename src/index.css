@@ -19,27 +19,26 @@ body {
   position: absolute;
   inset: 0;
   transform-style: preserve-3d;
-  perspective: 800px;
+  perspective: 1000px;
 }
 
-/* Water surface - continuous wave top */
+/* Water surface - 3D perspective */
 .water-surface {
   position: absolute;
   top: 0;
-  left: -50%;
-  right: -50%;
-  height: 80px;
-  transform: translateY(-40px) rotateX(45deg);
+  left: -100%;
+  right: -100%;
+  height: 100px;
+  transform: translateY(-50px) rotateX(50deg);
   transform-origin: center center;
   background: linear-gradient(180deg,
-    rgba(186, 230, 253, 0.95) 0%,
-    rgba(125, 211, 252, 0.9) 50%,
-    rgba(56, 189, 248, 0.85) 100%
+    rgba(186, 230, 253, 0.9) 0%,
+    rgba(125, 211, 252, 0.85) 100%
   );
   overflow: visible;
 }
 
-/* Wave mesh */
+/* Wave mesh - seamless loops */
 .wave-mesh {
   position: absolute;
   inset: 0;
@@ -47,39 +46,43 @@ body {
 
 .wave-svg {
   position: absolute;
-  width: 200%;
+  width: 300%;
   height: 100%;
   left: 0;
+  top: 0;
 }
 
+/* Primary wave - smooth sine curve */
 .wave-1 {
-  fill: rgba(56, 189, 248, 0.8);
-  animation: wave-move-1 7s linear infinite;
+  fill: rgba(56, 189, 248, 0.75);
+  animation: wave-flow-1 4s linear infinite;
 }
 
+/* Secondary wave - offset phase */
 .wave-2 {
-  fill: rgba(14, 165, 233, 0.6);
-  animation: wave-move-2 9s linear infinite;
+  fill: rgba(14, 165, 233, 0.55);
+  animation: wave-flow-2 5s linear infinite;
 }
 
+/* Tertiary wave - fastest */
 .wave-3 {
-  fill: rgba(186, 230, 253, 0.5);
-  animation: wave-move-3 5s linear infinite;
+  fill: rgba(186, 230, 253, 0.45);
+  animation: wave-flow-3 3s linear infinite;
 }
 
-@keyframes wave-move-1 {
+@keyframes wave-flow-1 {
   0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+
+@keyframes wave-flow-2 {
+  0% { transform: translateX(-16.666%); }
   100% { transform: translateX(-50%); }
 }
 
-@keyframes wave-move-2 {
-  0% { transform: translateX(-25%); }
-  100% { transform: translateX(-75%); }
-}
-
-@keyframes wave-move-3 {
-  0% { transform: translateX(-10%); }
-  100% { transform: translateX(-60%); }
+@keyframes wave-flow-3 {
+  0% { transform: translateX(-8.333%); }
+  100% { transform: translateX(-41.666%); }
 }
 
 /* Caustics */
@@ -104,7 +107,7 @@ body {
   background: linear-gradient(180deg, rgba(255,255,255,0.5) 0%, transparent 60%);
 }
 
-/* Water body - seamless with surface */
+/* Water body */
 .water-body {
   position: absolute;
   top: 0;
