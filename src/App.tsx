@@ -10,6 +10,14 @@ interface DrinkRecord {
   amount: number
 }
 
+interface Bubble {
+  id: number
+  x: number
+  size: number
+  duration: number
+  delay: number
+}
+
 export default function App() {
   const { t, i18n } = useTranslation()
   const [today, setToday] = useState(0)
@@ -19,6 +27,24 @@ export default function App() {
   const [reminderEnabled, setReminderEnabled] = useState(false)
   const [showSettings, setShowSettings] = useState(false)
   const [showHistory, setShowHistory] = useState(false)
+  const [bubbles, setBubbles] = useState<Bubble[]>([])
+
+  // Generate random bubbles
+  useEffect(() => {
+    const generateBubble = () => {
+      const bubble: Bubble = {
+        id: Date.now() + Math.random(),
+        x: 10 + Math.random() * 80,
+        size: 4 + Math.random() * 8,
+        duration: 3 + Math.random() * 4,
+        delay: Math.random() * 2,
+      }
+      setBubbles(prev => [...prev.slice(-15), bubble])
+    }
+
+    const interval = setInterval(generateBubble, 800)
+    return () => clearInterval(interval)
+  }, [])
 
   useEffect(() => {
     const saved = localStorage.getItem('water')
@@ -59,28 +85,57 @@ export default function App() {
     <div className="min-h-screen relative overflow-hidden">
       {/* Fullscreen water */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-t from-cyan-600 via-cyan-500/90 to-cyan-400/70"
+        className="absolute inset-0 water-container"
         initial={{ y: '100%' }}
         animate={{ y: `${100 - progress}%` }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
-        {/* Multiple wave layers */}
-        <div className="absolute top-0 inset-x-0 h-12 -translate-y-1/2">
-          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-full animate-wave opacity-60">
-            <path d="M0,40 C100,80 200,20 300,50 C400,80 500,30 600,60 C700,90 800,40 900,70 C1000,100 1100,50 1200,60 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.5)" />
+        {/* Caustics - light scattering effect */}
+        <div className="absolute inset-0 caustics" />
+
+        {/* Back wave - water outline */}
+        <div className="absolute top-0 inset-x-0 h-20 -translate-y-1/2 wave-back">
+          <svg viewBox="0 0 1200 160" preserveAspectRatio="none" className="w-full h-full">
+            <path d="M0,80 Q100,40 200,80 T400,80 T600,80 T800,80 T1000,80 T1200,80 L1200,160 L0,160 Z" fill="rgba(8,145,178,0.9)" />
           </svg>
         </div>
-        <div className="absolute top-1 inset-x-0 h-10 -translate-y-1/2">
-          <svg viewBox="0 0 1200 100" preserveAspectRatio="none" className="w-full h-full animate-wave-slow opacity-40">
-            <path d="M0,50 C150,90 250,20 400,55 C550,85 650,30 800,65 C950,95 1050,40 1200,50 L1200,100 L0,100 Z" fill="rgba(255,255,255,0.4)" />
+
+        {/* Middle wave - water surface (lighter) */}
+        <div className="absolute top-0 inset-x-0 h-16 -translate-y-1/2 wave-middle">
+          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-full">
+            <path d="M0,60 Q80,35 160,60 T320,58 T480,62 T640,60 T800,58 T960,62 T1120,60 T1200,60 L1200,120 L0,120 Z" fill="rgba(34,211,238,0.7)" />
           </svg>
         </div>
-        <div className="absolute top-2 inset-x-0 h-8 -translate-y-1/2">
-          <svg viewBox="0 0 1200 80" preserveAspectRatio="none" className="w-full h-full animate-wave opacity-30">
-            <path d="M0,30 C200,70 300,10 500,40 C700,70 800,20 1000,50 C1100,70 1150,40 1200,45 L1200,80 L0,80 Z" fill="rgba(255,255,255,0.3)" />
+
+        {/* Front wave - water outline */}
+        <div className="absolute top-0 inset-x-0 h-14 -translate-y-1/2 wave-front">
+          <svg viewBox="0 0 1200 100" preserveAspectRatio="none" className="w-full h-full">
+            <path d="M0,50 Q60,30 120,50 T240,48 T360,52 T480,50 T600,48 T720,52 T840,50 T960,48 T1080,52 T1200,50 L1200,100 L0,100 Z" fill="rgba(103,232,249,0.5)" />
           </svg>
         </div>
-        <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-white/5 pointer-events-none" />
+
+        {/* Bubbles */}
+        {bubbles.map(bubble => (
+          <motion.div
+            key={bubble.id}
+            className="absolute rounded-full bubble"
+            style={{
+              left: `${bubble.x}%`,
+              width: bubble.size,
+              height: bubble.size,
+            }}
+            initial={{ y: 0, opacity: 0 }}
+            animate={{ y: -300, opacity: [0, 0.8, 0.6, 0] }}
+            transition={{ duration: bubble.duration, delay: bubble.delay, ease: 'easeOut' }}
+          />
+        ))}
+
+        {/* Light rays */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-1/4 w-1 h-full bg-gradient-to-b from-white/20 to-transparent transform -skew-x-12" />
+          <div className="absolute top-0 left-1/2 w-2 h-full bg-gradient-to-b from-white/15 to-transparent transform skew-x-6" />
+          <div className="absolute top-0 left-3/4 w-1 h-full bg-gradient-to-b from-white/10 to-transparent transform -skew-x-3" />
+        </div>
       </motion.div>
 
       {/* Content */}
@@ -112,14 +167,12 @@ export default function App() {
             </motion.button>
 
             {/* Bottom actions */}
-            <div className="fixed bottom-8 flex gap-4">
-              <button onClick={() => setShowHistory(true)} className="liquid-button p-3">
-                <History className="w-5 h-5 text-cyan-700" />
-              </button>
-              <button onClick={() => setShowSettings(true)} className="liquid-button p-3">
-                <Settings className="w-5 h-5 text-cyan-700" />
-              </button>
-            </div>
+            <button onClick={() => setShowHistory(true)} className="fixed bottom-8 left-8 text-white/70">
+              <History className="w-6 h-6" />
+            </button>
+            <button onClick={() => setShowSettings(true)} className="fixed bottom-8 right-8 text-white/70">
+              <Settings className="w-6 h-6" />
+            </button>
           </motion.div>
         ) : (
           /* History view */
