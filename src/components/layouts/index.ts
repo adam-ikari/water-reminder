@@ -1,6 +1,0 @@
-export { WatchLayout } from './WatchLayout'
-export { MobileLayout } from './MobileLayout'
-export { FoldableLayout } from './FoldableLayout'
-export { TabletLayout } from './TabletLayout'
-export { DesktopLayout } from './DesktopLayout'
-export type { DrinkRecord, WaterStats, ViewType } from './types'

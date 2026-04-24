@@ -1,303 +1,137 @@
 import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Globe, Bell, Calendar } from 'lucide-react'
+import { Plus, Settings, Bell, BellOff, X, Clock } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import './i18n'
-import { useDeviceType } from './hooks/useDeviceType'
-import {
-  WatchLayout,
-  MobileLayout,
-  FoldableLayout,
-  TabletLayout,
-  DesktopLayout,
-  type DrinkRecord,
-  type ViewType,
-} from './components/layouts'
 
-interface WaterStats {
-  today: number
-  goal: number
-  history: DrinkRecord[]
-  streak: number
+interface DrinkRecord {
+  id: string
+  timestamp: Date
+  amount: number
 }
 
 export default function App() {
   const { t, i18n } = useTranslation()
-  const deviceInfo = useDeviceType()
-
-  const [stats, setStats] = useState<WaterStats>({
-    today: 0,
-    goal: 8,
-    history: [],
-    streak: 0,
-  })
-  const [currentView, setCurrentView] = useState<ViewType>('home')
+  const [today, setToday] = useState(0)
+  const [goal] = useState(8)
+  const [history, setHistory] = useState<DrinkRecord[]>([])
   const [isAnimating, setIsAnimating] = useState(false)
   const [reminderEnabled, setReminderEnabled] = useState(false)
-  const [reminderInterval, setReminderInterval] = useState(30)
-  const [isSettingsOpen, setIsSettingsOpen] = useState(false)
-  const [newGoal, setNewGoal] = useState(8)
+  const [showSettings, setShowSettings] = useState(false)
 
-  // Load data from localStorage
   useEffect(() => {
-    const saved = localStorage.getItem('waterReminder')
+    const saved = localStorage.getItem('water')
     if (saved) {
       const data = JSON.parse(saved)
-      data.history = data.history.map((r: DrinkRecord) => ({
-        ...r,
-        timestamp: new Date(r.timestamp),
-      }))
-      setStats(data)
-      setNewGoal(data.goal)
+      setToday(data.today ?? 0)
+      setHistory(data.history?.map((r: DrinkRecord) => ({ ...r, timestamp: new Date(r.timestamp) })) ?? [])
     }
   }, [])
 
-  // Save data to localStorage
   useEffect(() => {
-    localStorage.setItem('waterReminder', JSON.stringify(stats))
-  }, [stats])
-
-  // Reset today count on new day
-  useEffect(() => {
-    const today = new Date().toDateString()
-    const lastRecord = stats.history[stats.history.length - 1]
-    if (lastRecord && new Date(lastRecord.timestamp).toDateString() !== today) {
-      setStats(prev => ({ ...prev, today: 0 }))
-    }
-  }, [stats.history])
-
-  // Notification reminder
-  useEffect(() => {
-    if (!reminderEnabled) return
-    const interval = setInterval(() => {
-      if (Notification.permission === 'granted') {
-        new Notification(t('notificationTitle'), {
-          body: t('notificationBody', { today: stats.today, goal: stats.goal }),
-        })
-      }
-    }, reminderInterval * 60 * 1000)
-    return () => clearInterval(interval)
-  }, [reminderEnabled, reminderInterval, stats.today, stats.goal, t])
+    localStorage.setItem('water', JSON.stringify({ today, goal, history }))
+  }, [today, goal, history])
 
   const addDrink = useCallback(() => {
     setIsAnimating(true)
-    setTimeout(() => setIsAnimating(false), 600)
-    const newRecord: DrinkRecord = {
-      id: Date.now().toString(),
-      timestamp: new Date(),
-      amount: 1,
-    }
-    setStats(prev => ({
-      ...prev,
-      today: prev.today + 1,
-      history: [...prev.history, newRecord],
-    }))
-    if ('vibrate' in navigator) {
-      navigator.vibrate(50)
-    }
+    setTimeout(() => setIsAnimating(false), 500)
+    setToday(p => p + 1)
+    setHistory(p => [...p, { id: Date.now().toString(), timestamp: new Date(), amount: 1 }])
   }, [])
 
   const removeDrink = useCallback((id: string) => {
-    setStats(prev => ({
-      ...prev,
-      today: Math.max(0, prev.today - 1),
-      history: prev.history.filter(r => r.id !== id),
-    }))
+    setToday(p => Math.max(0, p - 1))
+    setHistory(p => p.filter(r => r.id !== id))
   }, [])
 
-  const saveSettings = () => {
-    setStats(prev => ({ ...prev, goal: newGoal }))
-    setIsSettingsOpen(false)
-  }
-
-  const resetToday = () => {
-    const today = new Date().toDateString()
-    setStats(prev => ({
-      ...prev,
-      today: 0,
-      history: prev.history.filter(r => new Date(r.timestamp).toDateString() !== today),
-    }))
-  }
-
-  const requestNotificationPermission = () => {
-    if ('Notification' in window && Notification.permission === 'default') {
-      Notification.requestPermission()
-    }
-  }
-
-  const toggleReminder = () => {
-    if (!reminderEnabled) {
-      requestNotificationPermission()
-    }
-    setReminderEnabled(!reminderEnabled)
-  }
-
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng)
-    localStorage.setItem('language', lng)
-  }
-
-  const progress = Math.min((stats.today / stats.goal) * 100, 100)
-
-  // Common props for all layouts
-  const layoutProps = {
-    today: stats.today,
-    goal: stats.goal,
-    progress,
-    history: stats.history,
-    streak: stats.streak,
-    isAnimating,
-    reminderEnabled,
-    reminderInterval,
-    currentView,
-    onAddDrink: addDrink,
-    onRemoveDrink: removeDrink,
-    onToggleReminder: toggleReminder,
-    onViewChange: setCurrentView,
-    onOpenSettings: () => setIsSettingsOpen(true),
-    language: i18n.language,
-  }
-
-  // Settings dialog
-  const SettingsDialog = () => (
-    <AnimatePresence>
-      {isSettingsOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/30 flex items-center justify-center p-4 z-50"
-          onClick={() => setIsSettingsOpen(false)}
-        >
-          <motion.div
-            initial={{ scale: 0.95, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.95, opacity: 0 }}
-            className="glass-card max-w-md w-full p-6"
-            onClick={e => e.stopPropagation()}
-          >
-            <div className="flex items-center gap-2 mb-6">
-              <Calendar className="w-5 h-5 text-gray-600 dark:text-gray-300" />
-              <span className="text-lg font-semibold text-gray-800 dark:text-white">{t('settings')}</span>
-            </div>
-
-            <div className="space-y-6">
-              {/* Daily goal */}
-              <div>
-                <label className="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-2">
-                  {t('dailyGoal')}
-                </label>
-                <input
-                  type="number"
-                  value={newGoal}
-                  onChange={(e) => setNewGoal(Number(e.target.value))}
-                  className="w-full px-4 py-3 glass-input text-gray-800 dark:text-white"
-                  min="1"
-                  max="20"
-                />
-              </div>
-
-              {/* Reminders */}
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <Bell className="w-4 h-4 text-gray-600 dark:text-gray-400" />
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{t('reminders')}</span>
-                  </div>
-                  <button
-                    onClick={toggleReminder}
-                    className={`w-12 h-6 rounded-full transition-colors ${reminderEnabled ? 'bg-cyan-500' : 'bg-gray-300 dark:bg-gray-600'}`}
-                  >
-                    <div className={`w-5 h-5 bg-white rounded-full transition-transform mt-0.5 ${reminderEnabled ? 'translate-x-6' : 'translate-x-0.5'}`} />
-                  </button>
-                </div>
-
-                {reminderEnabled && (
-                  <div className="pl-6">
-                    <label className="text-xs text-gray-600 dark:text-gray-400 block mb-2">
-                      {t('interval', { minutes: reminderInterval })}
-                    </label>
-                    <input
-                      type="range"
-                      value={reminderInterval}
-                      onChange={(e) => setReminderInterval(Number(e.target.value))}
-                      min={15}
-                      max={120}
-                      step={15}
-                      className="w-full accent-cyan-500"
-                    />
-                  </div>
-                )}
-              </div>
-
-              {/* Language */}
-              <div>
-                <label className="text-sm font-medium text-gray-700 dark:text-gray-300 block mb-2">
-                  {t('language')}
-                </label>
-                <div className="flex items-center gap-2">
-                  <Globe className="w-5 h-5 text-gray-600 dark:text-gray-400" />
-                  <select
-                    value={i18n.language}
-                    onChange={(e) => changeLanguage(e.target.value)}
-                    className="flex-1 px-4 py-3 glass-input text-gray-800 dark:text-white"
-                  >
-                    <option value="zh">中文</option>
-                    <option value="en">English</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-6 space-y-3">
-              <button
-                onClick={resetToday}
-                className="w-full px-4 py-3 rounded-xl border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
-              >
-                {t('resetToday')}
-              </button>
-              <div className="flex gap-3">
-                <button
-                  onClick={() => setIsSettingsOpen(false)}
-                  className="flex-1 px-4 py-3 glass-button text-gray-700 dark:text-gray-300"
-                >
-                  {t('cancel')}
-                </button>
-                <button
-                  onClick={saveSettings}
-                  className="flex-1 px-4 py-3 glass-primary text-white"
-                >
-                  {t('save')}
-                </button>
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  )
-
-  // Render appropriate layout based on device type
-  const renderLayout = () => {
-    switch (deviceInfo.type) {
-      case 'watch':
-        return <WatchLayout {...layoutProps} />
-      case 'mobile':
-        return <MobileLayout {...layoutProps} />
-      case 'foldable':
-        return <FoldableLayout {...layoutProps} isLandscape={deviceInfo.isLandscape} />
-      case 'tablet':
-        return <TabletLayout {...layoutProps} />
-      case 'desktop':
-      default:
-        return <DesktopLayout {...layoutProps} />
-    }
-  }
+  const progress = Math.min((today / goal) * 100, 100)
+  const todayRecords = history.filter(r => new Date(r.timestamp).toDateString() === new Date().toDateString()).reverse()
 
   return (
-    <>
-      {renderLayout()}
-      <SettingsDialog />
-    </>
+    <div className="min-h-screen flex flex-col items-center justify-center p-6">
+      {/* Water container */}
+      <motion.div
+        initial={{ scale: 0.95, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        className="relative w-72 h-72 glass overflow-hidden"
+      >
+        {/* Water */}
+        <motion.div
+          className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-cyan-500 to-cyan-300"
+          initial={{ height: 0 }}
+          animate={{ height: `${progress}%` }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="absolute top-0 inset-x-0 h-2">
+            <svg viewBox="0 0 100 10" className="w-full h-full animate-wave">
+              <path d="M0,5 Q25,10 50,5 T100,5 V10 H0 Z" fill="rgba(255,255,255,0.3)" />
+            </svg>
+          </div>
+        </motion.div>
+
+        {/* Content */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <motion.span key={today} initial={{ scale: 1.2 }} animate={{ scale: 1 }} className="text-5xl font-bold">
+            {today}
+          </motion.span>
+          <span className="text-gray-500 mt-1">/ {goal} {t('glasses')}</span>
+          <span className="text-cyan-600 text-sm mt-2">{progress.toFixed(0)}%</span>
+        </div>
+      </motion.div>
+
+      {/* Add button */}
+      <motion.button
+        whileTap={{ scale: 0.95 }}
+        onClick={addDrink}
+        className="mt-8 w-16 h-16 glass-primary flex items-center justify-center"
+      >
+        <AnimatePresence>{isAnimating && <motion.div className="absolute inset-0 rounded-full bg-cyan-400/30" initial={{ scale: 1 }} animate={{ scale: 2, opacity: 0 }} />}</AnimatePresence>
+        <Plus className="w-7 h-7 text-white" />
+      </motion.button>
+
+      {/* Today's records */}
+      {todayRecords.length > 0 && (
+        <div className="mt-6 w-full max-w-xs">
+          <div className="flex items-center gap-2 text-gray-500 text-sm mb-2">
+            <Clock className="w-4 h-4" />
+            {t('todayDrinks')}
+          </div>
+          <div className="glass p-3 space-y-1 max-h-32 overflow-y-auto">
+            {todayRecords.slice(0, 5).map(r => (
+              <div key={r.id} className="flex items-center justify-between text-sm">
+                <span className="text-gray-600">{r.timestamp.toLocaleTimeString(i18n.language === 'zh' ? 'zh-CN' : 'en-US', { hour: '2-digit', minute: '2-digit' })}</span>
+                <button onClick={() => removeDrink(r.id)} className="text-red-400"><X className="w-4 h-4" /></button>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Bottom actions */}
+      <div className="fixed bottom-6 flex gap-4">
+        <button onClick={() => setReminderEnabled(!reminderEnabled)} className="glass-button p-3">
+          {reminderEnabled ? <Bell className="w-5 h-5 text-cyan-600" /> : <BellOff className="w-5 h-5 text-gray-400" />}
+        </button>
+        <button onClick={() => setShowSettings(true)} className="glass-button p-3">
+          <Settings className="w-5 h-5 text-gray-600" />
+        </button>
+      </div>
+
+      {/* Settings */}
+      <AnimatePresence>
+        {showSettings && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 bg-black/30 flex items-center justify-center p-4" onClick={() => setShowSettings(false)}>
+            <motion.div initial={{ scale: 0.95 }} animate={{ scale: 1 }} className="glass p-6 w-full max-w-xs" onClick={e => e.stopPropagation()}>
+              <h2 className="font-semibold mb-4">{t('settings')}</h2>
+              <select value={i18n.language} onChange={e => i18n.changeLanguage(e.target.value)} className="w-full p-2 glass-input">
+                <option value="zh">中文</option>
+                <option value="en">English</option>
+              </select>
+              <button onClick={() => setShowSettings(false)} className="w-full mt-4 p-2 glass-button">{t('save')}</button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   )
 }

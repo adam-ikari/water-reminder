@@ -1,112 +1,69 @@
 @import "tailwindcss";
-@import "tw-animate-css";
 @import "@fontsource-variable/geist";
-@import "./styles/glass.css";
 
 @theme {
-  --font-sans: 'Geist Variable', 'Nunito', system-ui, -apple-system, sans-serif;
-
-  --color-background: oklch(0.98 0 0);
-  --color-foreground: oklch(0.15 0 0);
-  --color-card: oklch(0.98 0 0);
-  --color-card-foreground: oklch(0.15 0 0);
-  --color-primary: oklch(0.55 0.15 195);
-  --color-primary-foreground: oklch(0.98 0 0);
-  --color-secondary: oklch(0.95 0 0);
-  --color-secondary-foreground: oklch(0.15 0 0);
-  --color-muted: oklch(0.95 0 0);
-  --color-muted-foreground: oklch(0.5 0 0);
-  --color-accent: oklch(0.95 0 0);
-  --color-accent-foreground: oklch(0.15 0 0);
-  --color-destructive: oklch(0.6 0.2 25);
-  --color-border: oklch(0.9 0 0);
-  --color-input: oklch(0.9 0 0);
-  --color-ring: oklch(0.55 0.15 195);
-
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-
-  --color-water-50: oklch(0.95 0.05 195);
-  --color-water-100: oklch(0.9 0.08 195);
-  --color-water-200: oklch(0.85 0.12 195);
-  --color-water-300: oklch(0.75 0.15 195);
-  --color-water-400: oklch(0.65 0.15 195);
-  --color-water-500: oklch(0.55 0.15 195);
-  --color-water-600: oklch(0.5 0.15 195);
-  --color-water-700: oklch(0.45 0.15 195);
-  --color-water-800: oklch(0.4 0.12 195);
-  --color-water-900: oklch(0.35 0.1 195);
-}
-
-:root {
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --font-sans: 'Geist Variable', system-ui, sans-serif;
 }
 
 body {
-  background: linear-gradient(to bottom right, #f0f9ff, #e0f2fe, #ecfeff);
-  min-height: 100vh;
+  background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
   min-height: 100dvh;
-  background-attachment: fixed;
 }
 
 @media (prefers-color-scheme: dark) {
-  body {
-    background: linear-gradient(to bottom right, #0f172a, #0c4a6e, #020617);
-  }
+  body { background: linear-gradient(135deg, #0f172a, #1e3a5f); }
 }
 
-@variant dark (&:where(.dark, .dark *));
+/* Glass */
+.glass {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 24px;
+}
 
-/* Safe area insets for mobile */
+@media (prefers-color-scheme: dark) {
+  .glass { background: rgba(30,41,59,0.7); border-color: rgba(71,85,105,0.2); }
+}
+
+.glass-button {
+  background: rgba(255,255,255,0.5);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .glass-button { background: rgba(51,65,85,0.5); border-color: rgba(71,85,105,0.2); }
+}
+
+.glass-primary {
+  background: linear-gradient(135deg, #06b6d4, #0284c7);
+  border-radius: 9999px;
+  box-shadow: 0 4px 20px rgba(6,182,212,0.3);
+}
+
+.glass-input {
+  background: rgba(255,255,255,0.5);
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .glass-input { background: rgba(51,65,85,0.5); border-color: rgba(71,85,105,0.2); }
+}
+
+/* Wave animation */
+@keyframes wave {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-10%); }
+}
+
+.animate-wave { animation: wave 2s ease-in-out infinite; }
+
+/* Safe area */
 @supports (padding: max(0px)) {
-  body {
-    padding-left: env(safe-area-inset-left);
-    padding-right: env(safe-area-inset-right);
-    padding-top: env(safe-area-inset-top);
-    padding-bottom: env(safe-area-inset-bottom);
-  }
+  body { padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); }
 }
 
-/* Prevent zoom on iOS */
-input, select, textarea, button {
-  font-size: 16px;
-}
-
-/* Touch feedback */
-@media (hover: none) and (pointer: coarse) {
-  button, a {
-    -webkit-tap-highlight-color: transparent;
-  }
-}
-
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(0, 188, 212, 0.3);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 188, 212, 0.5);
-}
-
-@media (prefers-color-scheme: dark) {
-  ::-webkit-scrollbar-thumb {
-    background: rgba(34, 211, 238, 0.3);
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgba(34, 211, 238, 0.5);
-  }
-}
+input, button { font-size: 16px; }
