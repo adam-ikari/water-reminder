@@ -42,7 +42,7 @@
     "runtime": null
   },
   "build": {
-    "buildCommand": "pnpm build 2>&1 | tail -5",
+    "buildCommand": "which pnpm || echo \"pnpm not in PATH\"; ls -la /usr/local/bin/pnpm 2>/dev/null || ls -la ~/.local/share/pnpm/pnpm 2>/dev/null || echo \"checking npm\"; npm run build 2>&1 | tail -5",
     "testCommand": null,
     "lintCommand": "pnpm lint",
     "devCommand": "pnpm dev",
@@ -140,14 +140,14 @@
   "hotPaths": [
     {
       "path": "src/App.tsx",
-      "accessCount": 41,
-      "lastAccessed": 1777019736953,
+      "accessCount": 42,
+      "lastAccessed": 1777020068874,
       "type": "file"
     },
     {
       "path": "src/index.css",
-      "accessCount": 10,
-      "lastAccessed": 1777019691072,
+      "accessCount": 12,
+      "lastAccessed": 1777020167319,
       "type": "file"
     },
     {
