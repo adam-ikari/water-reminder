@@ -90,7 +90,6 @@ export default function App() {
                   {today}
                 </motion.span>
                 <span className="text-gray-500 mt-1">/ {goal} {t('glasses')}</span>
-                <span className="text-cyan-600 text-sm mt-2">{progress.toFixed(0)}%</span>
               </div>
             </motion.div>
 
