@@ -96,16 +96,16 @@ export default function App() {
         >
           {/* Water surface with 3D transform */}
           <div className="water-surface">
-            {/* Animated wave mesh - seamless loops */}
+            {/* Animated wave mesh - smooth continuous sine waves */}
             <div className="wave-mesh">
-              <svg viewBox="0 0 300 30" preserveAspectRatio="none" className="wave-svg wave-1">
-                <path d="M0,15 Q15,8 30,15 T60,15 T90,15 T120,15 T150,15 T180,15 T210,15 T240,15 T270,15 T300,15 L300,30 L0,30 Z" />
+              <svg viewBox="0 0 400 30" preserveAspectRatio="none" className="wave-svg wave-1">
+                <path d="M0,15 C25,8 50,15 75,22 C100,15 125,8 150,15 C175,22 200,15 225,8 C250,15 275,22 300,15 C325,8 350,15 375,22 C400,15 400,30 L0,30 Z" />
               </svg>
-              <svg viewBox="0 0 300 30" preserveAspectRatio="none" className="wave-svg wave-2">
-                <path d="M0,15 Q20,22 40,15 T80,15 T120,15 T160,15 T200,15 T240,15 T280,15 T300,15 L300,30 L0,30 Z" />
+              <svg viewBox="0 0 400 30" preserveAspectRatio="none" className="wave-svg wave-2">
+                <path d="M0,15 C33,22 66,15 100,8 C133,15 166,22 200,15 C233,8 266,15 300,22 C333,15 366,8 400,15 L400,30 L0,30 Z" />
               </svg>
-              <svg viewBox="0 0 300 30" preserveAspectRatio="none" className="wave-svg wave-3">
-                <path d="M0,15 Q10,10 20,15 T40,15 T60,15 T80,15 T100,15 T120,15 T140,15 T160,15 T180,15 T200,15 T220,15 T240,15 T260,15 T280,15 T300,15 L300,30 L0,30 Z" />
+              <svg viewBox="0 0 400 30" preserveAspectRatio="none" className="wave-svg wave-3">
+                <path d="M0,15 C17,10 33,15 50,20 C67,15 83,10 100,15 C117,20 133,15 150,10 C167,15 183,20 200,15 C217,10 233,15 250,20 C267,15 283,10 300,15 C317,20 333,15 350,10 C367,15 383,20 400,15 L400,30 L0,30 Z" />
               </svg>
             </div>
 

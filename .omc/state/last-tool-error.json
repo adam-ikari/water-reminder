@@ -1,7 +1,0 @@
-{
-  "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"claude mcp add --transport http browser-use http://ddns.xess.online:15080/mcp\",\"description\":\"Add browser-use MCP server\"}",
-  "error": "Exit code 1\nMCP server browser-use already exists in local config",
-  "timestamp": "2026-04-24T08:34:13.093Z",
-  "retry_count": 1
-}
