@@ -91,17 +91,19 @@ export default function App() {
                 </motion.span>
                 <span className="text-gray-500 mt-1">/ {goal} {t('glasses')}</span>
               </div>
-            </motion.div>
 
-            {/* Add button */}
-            <motion.button
-              whileTap={{ scale: 0.95 }}
-              onClick={addDrink}
-              className="mt-8 w-16 h-16 glass-primary flex items-center justify-center"
-            >
-              <AnimatePresence>{isAnimating && <motion.div className="absolute inset-0 rounded-full bg-cyan-400/30" initial={{ scale: 1 }} animate={{ scale: 2, opacity: 0 }} />}</AnimatePresence>
-              <Plus className="w-7 h-7 text-white" />
-            </motion.button>
+              {/* Add button - floats on water */}
+              <motion.button
+                whileTap={{ scale: 0.9 }}
+                onClick={addDrink}
+                className="absolute left-1/2 -translate-x-1/2 w-14 h-14 glass-primary flex items-center justify-center"
+                animate={{ bottom: `${Math.max(progress, 10)}%` }}
+                transition={{ duration: 0.6 }}
+              >
+                <AnimatePresence>{isAnimating && <motion.div className="absolute inset-0 rounded-full bg-cyan-400/30" initial={{ scale: 1 }} animate={{ scale: 2, opacity: 0 }} />}</AnimatePresence>
+                <Plus className="w-6 h-6 text-white" />
+              </motion.button>
+            </motion.div>
 
             {/* Bottom actions */}
             <div className="fixed bottom-6 flex gap-4">
