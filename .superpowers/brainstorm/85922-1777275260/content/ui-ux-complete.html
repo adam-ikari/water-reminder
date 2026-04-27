@@ -1,0 +1,609 @@
+<h2>全端 UI + UX 设计稿</h2>
+<p class="subtitle">真实设备尺寸 · 动态计算标注 · 梦源黑体</p>
+
+<div class="section" style="margin-bottom: 24px; padding: 16px; background: #fff3cd; border-radius: 12px; border: 1px solid #ffc107;">
+  <h4 style="margin-bottom: 8px; color: #856404;">📐 动态计算规则</h4>
+  <div style="font-size: 11px; color: #856404; line-height: 1.8;">
+    <div><strong>水位高度:</strong> (当前杯数 / 目标杯数) × 容器高度</div>
+    <div><strong>Tab栏宽度:</strong> min(屏幕宽度 × 0.4, 160px)</div>
+    <div><strong>按钮间距:</strong> 屏幕宽度 × 0.05</div>
+    <div><strong>字体缩放:</strong> 基准尺寸 × (屏幕宽度 / 393)</div>
+    <div><strong>字体:</strong> 梦源黑体 (Dream Source Han Sans)</div>
+  </div>
+</div>
+
+<div class="section">
+  <h3>⌚ 手表 UI (Apple Watch: 368×448px)</h3>
+  <div style="background: #fafafa; border-radius: 16px; padding: 20px; border: 1px solid #e0e0e0;">
+    <div style="display: flex; justify-content: center; gap: 32px; margin-bottom: 16px;">
+      <!-- 圆形手表 -->
+      <div style="text-align: center;">
+        <p style="font-size: 11px; color: #999; margin-bottom: 8px;">圆形屏幕 (184×184px 显示区)</p>
+        <div style="width: 92px; height: 92px; border-radius: 50%; background: #fafafa; border: 1px solid #e0e0e0; position: relative; overflow: hidden;">
+          <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 62.5%; background: linear-gradient(180deg, rgba(77, 166, 255, 0.5) 0%, rgba(0, 102, 204, 0.6) 50%, rgba(0, 61, 122, 0.7) 100%); border-radius: 0 0 50% 50%;">
+            <svg viewBox="0 0 200 20" style="position: absolute; top: -4px; left: 0; width: 100%; height: 8px;"><path d="M0,10 Q25,0 50,10 T100,10 T150,10 T200,10 L200,20 L0,20 Z" fill="rgba(77, 166, 255, 0.5)"/></svg>
+          </div>
+          <div style="position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <div style="display: flex; align-items: baseline; gap: 1px;">
+              <span style="font-size: 14px; font-weight: 200; color: #1a1a1a;">5</span>
+              <span style="font-size: 5px; color: #999;">/8</span>
+            </div>
+            <div style="margin-top: 4px; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%); border: 1px solid rgba(255,255,255,0.5); box-shadow: 0 0 6px rgba(0,102,255,0.4);">
+              <span style="color: #0066ff; font-size: 9px; font-weight: 300;">+</span>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 8px; font-size: 9px; color: #666; text-align: left; padding: 6px; background: #f5f5f5; border-radius: 6px;">
+          <div>数字: 28px</div>
+          <div>添加按钮: 36px直径</div>
+        </div>
+      </div>
+      <!-- 方形手表 -->
+      <div style="text-align: center;">
+        <p style="font-size: 11px; color: #999; margin-bottom: 8px;">方形屏幕 (184×224px)</p>
+        <div style="width: 92px; height: 112px; border-radius: 12px; background: #fafafa; border: 1px solid #e0e0e0; position: relative; overflow: hidden;">
+          <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 62.5%; background: linear-gradient(180deg, rgba(77, 166, 255, 0.5) 0%, rgba(0, 102, 204, 0.6) 50%, rgba(0, 61, 122, 0.7) 100%); border-radius: 0 0 12px 12px;">
+            <svg viewBox="0 0 200 20" style="position: absolute; top: -4px; left: 0; width: 100%; height: 8px;"><path d="M0,10 Q25,0 50,10 T100,10 T150,10 T200,10 L200,20 L0,20 Z" fill="rgba(77, 166, 255, 0.5)"/></svg>
+          </div>
+          <div style="position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <div style="display: flex; align-items: baseline; gap: 1px;">
+              <span style="font-size: 12px; font-weight: 200; color: #1a1a1a;">5</span>
+              <span style="font-size: 5px; color: #999;">/8</span>
+            </div>
+            <div style="margin-top: 4px; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%); border: 1px solid rgba(255,255,255,0.5); box-shadow: 0 0 5px rgba(0,102,255,0.4);">
+              <span style="color: #0066ff; font-size: 8px; font-weight: 300;">+</span>
+            </div>
+          </div>
+          <!-- 菜单按钮 -->
+          <div style="position: absolute; top: 4px; right: 4px; display: flex; gap: 1px;">
+            <div style="width: 2px; height: 2px; border-radius: 50%; background: #999;"></div>
+            <div style="width: 2px; height: 2px; border-radius: 50%; background: #999;"></div>
+            <div style="width: 2px; height: 2px; border-radius: 50%; background: #999;"></div>
+          </div>
+        </div>
+        <div style="margin-top: 8px; font-size: 9px; color: #666; text-align: left; padding: 6px; background: #f5f5f5; border-radius: 6px;">
+          <div>数字: 24px</div>
+          <div>添加按钮: 32px直径</div>
+          <div>菜单: 右上角</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top: 24px;">
+  <h3>📱 移动端竖屏 UI (iPhone 14 Pro: 393×852px)</h3>
+  <div style="background: #fafafa; border-radius: 16px; padding: 20px; border: 1px solid #e0e0e0;">
+    <div style="display: flex; justify-content: center; gap: 24px; margin-bottom: 20px; flex-wrap: wrap;">
+
+      <!-- 主页面 -->
+      <div style="text-align: center;">
+        <p style="font-size: 12px; color: #999; margin-bottom: 8px;">主页</p>
+        <div style="width: 196px; height: 426px; border-radius: 20px; background: #fafafa; border: 1px solid #e0e0e0; position: relative; overflow: hidden;">
+          <!-- 水位 (动态: 5/8 × 高度) -->
+          <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 62.5%; background: linear-gradient(180deg, rgba(77, 166, 255, 0.5) 0%, rgba(0, 102, 204, 0.6) 50%, rgba(0, 61, 122, 0.7) 100%); border-radius: 0 0 20px 20px;">
+            <svg viewBox="0 0 200 20" style="position: absolute; top: -5px; left: 0; width: 100%; height: 10px;"><path d="M0,10 Q25,0 50,10 T100,10 T150,10 T200,10 L200,20 L0,20 Z" fill="rgba(77, 166, 255, 0.5)"/></svg>
+          </div>
+          <!-- 内容 - 垂直居中 -->
+          <div style="position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <div style="display: flex; align-items: baseline; justify-content: center; gap: 3px;">
+              <span style="font-size: 32px; font-weight: 200; color: #1a1a1a;">5</span>
+              <span style="font-size: 10px; color: #999;">/8杯</span>
+            </div>
+            <div style="margin-top: 20px;">
+              <div style="width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%); border: 1px solid rgba(255,255,255,0.5); box-shadow: 0 0 12px rgba(0,102,255,0.5);">
+                <span style="color: #0066ff; font-size: 16px; font-weight: 300;">+</span>
+              </div>
+            </div>
+          </div>
+          <!-- 底部导航 -->
+          <div style="position: absolute; bottom: 12px; left: 0; right: 0; display: flex; justify-content: center;">
+            <div style="display: flex; gap: 4px; padding: 4px 9px; border-radius: 12px; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); backdrop-filter: blur(10px); border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+              <span style="font-size: 7px; color: #0066ff; padding: 4px 8px; border-radius: 8px; background: rgba(0,102,255,0.15);">主页</span>
+              <span style="font-size: 7px; color: #666; padding: 4px 8px;">历史</span>
+            </div>
+            <div style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 1px 8px rgba(0,0,0,0.08);">
+              <div style="display: flex; flex-direction: column; gap: 2px;">
+                <div style="width: 2px; height: 2px; border-radius: 50%; background: #666;"></div>
+                <div style="width: 2px; height: 2px; border-radius: 50%; background: #666;"></div>
+                <div style="width: 2px; height: 2px; border-radius: 50%; background: #666;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 8px; font-size: 9px; color: #666; text-align: left; padding: 6px; background: #f5f5f5; border-radius: 6px; line-height: 1.6;">
+          <div>屏幕: 393×852px</div>
+          <div>数字: 64px / 20px</div>
+          <div>添加按钮: 64px直径</div>
+          <div>Tab栏: 120×40px 居中</div>
+          <div>菜单按钮: 44px直径 右侧</div>
+        </div>
+      </div>
+
+      <!-- 历史页面 -->
+      <div style="text-align: center;">
+        <p style="font-size: 12px; color: #999; margin-bottom: 8px;">历史-日视图</p>
+        <div style="width: 196px; height: 426px; border-radius: 20px; background: #fafafa; border: 1px solid #e0e0e0; position: relative;">
+          <div style="padding: 10px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <div style="width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%); border: 1px solid rgba(0,0,0,0.06);">
+                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+              </div>
+              <span style="font-size: 8px; color: #1a1a1a; font-weight: 500;">4月17日</span>
+              <div style="width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%); border: 1px solid rgba(0,0,0,0.06);">
+                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+              </div>
+            </div>
+            <div style="font-size: 7px; color: #666; line-height: 2.4;">
+              <div style="display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #f0f0f0;"><span>09:30</span><span>+1杯</span></div>
+              <div style="display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #f0f0f0;"><span>11:45</span><span>+1杯</span></div>
+              <div style="display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #f0f0f0;"><span>14:20</span><span>+1杯</span></div>
+              <div style="display: flex; justify-content: space-between; padding: 4px 0;"><span>16:05</span><span>+1杯</span></div>
+            </div>
+          </div>
+          <!-- 底部导航 -->
+          <div style="position: absolute; bottom: 12px; left: 0; right: 0; display: flex; justify-content: center;">
+            <div style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 1px 8px rgba(0,0,0,0.08);">
+              <span style="font-size: 7px; color: #0066ff;">日</span>
+            </div>
+            <div style="display: flex; gap: 4px; padding: 4px 9px; border-radius: 12px; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); backdrop-filter: blur(10px); border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+              <span style="font-size: 7px; color: #666; padding: 4px 8px;">主页</span>
+              <span style="font-size: 7px; color: #0066ff; padding: 4px 8px; border-radius: 8px; background: rgba(0,102,255,0.15);">历史</span>
+            </div>
+            <div style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 1px 8px rgba(0,0,0,0.08);">
+              <div style="display: flex; flex-direction: column; gap: 2px;">
+                <div style="width: 2px; height: 2px; border-radius: 50%; background: #666;"></div>
+                <div style="width: 2px; height: 2px; border-radius: 50%; background: #666;"></div>
+                <div style="width: 2px; height: 2px; border-radius: 50%; background: #666;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 8px; font-size: 9px; color: #666; text-align: left; padding: 6px; background: #f5f5f5; border-radius: 6px; line-height: 1.6;">
+          <div>日期导航: 32px高</div>
+          <div>箭头按钮: 32px直径</div>
+          <div>视图按钮: 44px直径 左侧</div>
+          <div>Tab栏: 120×40px 居中</div>
+        </div>
+      </div>
+
+      <!-- 视图切换菜单 -->
+      <div style="text-align: center;">
+        <p style="font-size: 12px; color: #999; margin-bottom: 8px;">视图切换菜单</p>
+        <div style="width: 196px; height: 426px; border-radius: 20px; background: #fafafa; border: 1px solid #e0e0e0; position: relative;">
+          <div style="padding: 10px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <div style="width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%); border: 1px solid rgba(0,0,0,0.06);">
+                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+              </div>
+              <span style="font-size: 8px; color: #1a1a1a; font-weight: 500;">4月17日</span>
+              <div style="width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%); border: 1px solid rgba(0,0,0,0.06);">
+                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+              </div>
+            </div>
+            <div style="font-size: 7px; color: #666; line-height: 2.4;">
+              <div style="display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #f0f0f0;"><span>09:30</span><span>+1杯</span></div>
+              <div style="display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #f0f0f0;"><span>11:45</span><span>+1杯</span></div>
+              <div style="display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #f0f0f0;"><span>14:20</span><span>+1杯</span></div>
+              <div style="display: flex; justify-content: space-between; padding: 4px 0;"><span>16:05</span><span>+1杯</span></div>
+            </div>
+          </div>
+          <!-- 视图切换弹出菜单 -->
+          <div style="position: absolute; bottom: 56px; left: 12px; padding: 6px; border-radius: 10px; background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%); backdrop-filter: blur(20px); border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 8px 24px rgba(0,0,0,0.15);">
+            <div style="font-size: 7px; color: #0066ff; padding: 5px 10px; border-radius: 6px; background: rgba(0,102,255,0.15);">日视图</div>
+            <div style="font-size: 7px; color: #666; padding: 5px 10px; margin-top: 2px;">周视图</div>
+            <div style="font-size: 7px; color: #666; padding: 5px 10px; margin-top: 2px;">月视图</div>
+          </div>
+          <!-- 底部导航 -->
+          <div style="position: absolute; bottom: 12px; left: 0; right: 0; display: flex; justify-content: center;">
+            <div style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 1px 8px rgba(0,0,0,0.08);">
+              <span style="font-size: 7px; color: #0066ff;">日</span>
+            </div>
+            <div style="display: flex; gap: 4px; padding: 4px 9px; border-radius: 12px; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); backdrop-filter: blur(10px); border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+              <span style="font-size: 7px; color: #666; padding: 4px 8px;">主页</span>
+              <span style="font-size: 7px; color: #0066ff; padding: 4px 8px; border-radius: 8px; background: rgba(0,102,255,0.15);">历史</span>
+            </div>
+            <div style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 1px 8px rgba(0,0,0,0.08);">
+              <div style="display: flex; flex-direction: column; gap: 2px;">
+                <div style="width: 2px; height: 2px; border-radius: 50%; background: #666;"></div>
+                <div style="width: 2px; height: 2px; border-radius: 50%; background: #666;"></div>
+                <div style="width: 2px; height: 2px; border-radius: 50%; background: #666;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 8px; font-size: 9px; color: #666; text-align: left; padding: 6px; background: #f5f5f5; border-radius: 6px; line-height: 1.6;">
+          <div>弹出菜单: 100×120px</div>
+          <div>菜单项: 40px高</div>
+          <div>圆角: 12px</div>
+        </div>
+      </div>
+
+      <!-- 设置菜单 -->
+      <div style="text-align: center;">
+        <p style="font-size: 12px; color: #999; margin-bottom: 8px;">设置菜单</p>
+        <div style="width: 196px; height: 426px; border-radius: 20px; background: #fafafa; border: 1px solid #e0e0e0; position: relative;">
+          <div style="padding: 10px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <div style="width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%); border: 1px solid rgba(0,0,0,0.06);">
+                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+              </div>
+              <span style="font-size: 8px; color: #1a1a1a; font-weight: 500;">4月17日</span>
+              <div style="width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%); border: 1px solid rgba(0,0,0,0.06);">
+                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+              </div>
+            </div>
+            <div style="font-size: 7px; color: #666; line-height: 2.4;">
+              <div style="display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #f0f0f0;"><span>09:30</span><span>+1杯</span></div>
+              <div style="display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #f0f0f0;"><span>11:45</span><span>+1杯</span></div>
+              <div style="display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #f0f0f0;"><span>14:20</span><span>+1杯</span></div>
+              <div style="display: flex; justify-content: space-between; padding: 4px 0;"><span>16:05</span><span>+1杯</span></div>
+            </div>
+          </div>
+          <!-- 设置菜单弹出 -->
+          <div style="position: absolute; bottom: 56px; right: 10px; padding: 6px; border-radius: 10px; background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%); backdrop-filter: blur(20px); border: 1px solid rgba(0,0,0,0.08); box-shadow: 0 8px 24px rgba(0,0,0,0.15);">
+            <div style="font-size: 7px; color: #666; padding: 5px 10px;">设置</div>
+            <div style="font-size: 7px; color: #666; padding: 5px 10px; margin-top: 2px;">关于</div>
+          </div>
+          <!-- 底部导航 -->
+          <div style="position: absolute; bottom: 12px; left: 0; right: 0; display: flex; justify-content: center;">
+            <div style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 1px 8px rgba(0,0,0,0.08);">
+              <span style="font-size: 7px; color: #0066ff;">日</span>
+            </div>
+            <div style="display: flex; gap: 4px; padding: 4px 9px; border-radius: 12px; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); backdrop-filter: blur(10px); border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+              <span style="font-size: 7px; color: #666; padding: 4px 8px;">主页</span>
+              <span style="font-size: 7px; color: #0066ff; padding: 4px 8px; border-radius: 8px; background: rgba(0,102,255,0.15);">历史</span>
+            </div>
+            <div style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 1px 8px rgba(0,0,0,0.08);">
+              <div style="display: flex; flex-direction: column; gap: 2px;">
+                <div style="width: 2px; height: 2px; border-radius: 50%; background: #666;"></div>
+                <div style="width: 2px; height: 2px; border-radius: 50%; background: #666;"></div>
+                <div style="width: 2px; height: 2px; border-radius: 50%; background: #666;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 8px; font-size: 9px; color: #666; text-align: left; padding: 6px; background: #f5f5f5; border-radius: 6px; line-height: 1.6;">
+          <div>菜单: 右对齐</div>
+          <div>菜单项: 40px高</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top: 24px;">
+  <h3>📱 移动端横屏 UI (iPhone 14 Pro Max: 932×430px)</h3>
+  <div style="background: #fafafa; border-radius: 16px; padding: 20px; border: 1px solid #e0e0e0;">
+    <div style="display: flex; justify-content: center; gap: 16px; margin-bottom: 16px; flex-wrap: wrap;">
+
+      <!-- 横屏主页面 -->
+      <div style="text-align: center;">
+        <p style="font-size: 12px; color: #999; margin-bottom: 8px;">主页面 (932×430px)</p>
+        <div style="display: flex; gap: 8px; width: 466px; height: 215px; border-radius: 16px; background: #fafafa; border: 1px solid #e0e0e0; padding: 8px;">
+          <!-- 左侧主卡片 -->
+          <div style="flex: 1; background: #fff; border-radius: 12px; position: relative; overflow: hidden; border: 1px solid #e0e0e0;">
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 62.5%; background: linear-gradient(180deg, rgba(77, 166, 255, 0.5) 0%, rgba(0, 102, 204, 0.6) 50%, rgba(0, 61, 122, 0.7) 100%); border-radius: 0 0 12px 12px;">
+              <svg viewBox="0 0 200 20" style="position: absolute; top: -5px; left: 0; width: 100%; height: 10px;"><path d="M0,10 Q25,0 50,10 T100,10 T150,10 T200,10 L200,20 L0,20 Z" fill="rgba(77, 166, 255, 0.5)"/></svg>
+            </div>
+            <div style="position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+              <div style="display: flex; align-items: baseline; gap: 3px;">
+                <span style="font-size: 24px; font-weight: 200; color: #1a1a1a;">5</span>
+                <span style="font-size: 8px; color: #999;">/8杯</span>
+              </div>
+              <div style="margin-top: 12px; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%); border: 1px solid rgba(255,255,255,0.5); box-shadow: 0 0 8px rgba(0,102,255,0.5);">
+                <span style="color: #0066ff; font-size: 12px; font-weight: 300;">+</span>
+              </div>
+            </div>
+          </div>
+          <!-- 右侧历史面板 -->
+          <div style="flex: 1; background: #fff; border-radius: 12px; padding: 8px; position: relative; border: 1px solid #e0e0e0;">
+            <div style="font-size: 7px; color: #999; margin-bottom: 6px; font-weight: 500;">今日记录</div>
+            <div style="font-size: 6px; color: #666; line-height: 2.2;">
+              <div style="display: flex; justify-content: space-between; padding: 2px 0; border-bottom: 1px solid #f0f0f0;"><span>09:30</span><span>+1杯</span></div>
+              <div style="display: flex; justify-content: space-between; padding: 2px 0; border-bottom: 1px solid #f0f0f0;"><span>11:45</span><span>+1杯</span></div>
+              <div style="display: flex; justify-content: space-between; padding: 2px 0; border-bottom: 1px solid #f0f0f0;"><span>14:20</span><span>+1杯</span></div>
+              <div style="display: flex; justify-content: space-between; padding: 2px 0;"><span>16:05</span><span>+1杯</span></div>
+            </div>
+            <!-- Tab栏 -->
+            <div style="position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); display: flex; gap: 3px; padding: 3px 8px; border-radius: 10px; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); backdrop-filter: blur(10px); border: 1px solid rgba(0,0,0,0.06);">
+              <span style="font-size: 6px; color: #666; padding: 3px 6px;">主页</span>
+              <span style="font-size: 6px; color: #0066ff; padding: 3px 6px; border-radius: 6px; background: rgba(0,102,255,0.15);">历史</span>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 8px; font-size: 9px; color: #666; text-align: left; padding: 6px; background: #f5f5f5; border-radius: 6px; line-height: 1.6;">
+          <div>屏幕: 932×430px</div>
+          <div>布局: 左右各50%</div>
+          <div>左侧: 主卡片 (水位+添加)</div>
+          <div>右侧: 历史面板 + Tab栏</div>
+          <div>安全区: 左右47px, 底部34px</div>
+        </div>
+      </div>
+
+      <!-- 横屏设置页面 -->
+      <div style="text-align: center;">
+        <p style="font-size: 12px; color: #999; margin-bottom: 8px;">设置页面</p>
+        <div style="display: flex; gap: 8px; width: 466px; height: 215px; border-radius: 16px; background: #fafafa; border: 1px solid #e0e0e0; padding: 8px;">
+          <!-- 左侧主卡片 (保持可见) -->
+          <div style="flex: 1; background: #fff; border-radius: 12px; position: relative; overflow: hidden; border: 1px solid #e0e0e0; opacity: 0.7;">
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 62.5%; background: linear-gradient(180deg, rgba(77, 166, 255, 0.5) 0%, rgba(0, 102, 204, 0.6) 50%, rgba(0, 61, 122, 0.7) 100%); border-radius: 0 0 12px 12px;">
+              <svg viewBox="0 0 200 20" style="position: absolute; top: -5px; left: 0; width: 100%; height: 10px;"><path d="M0,10 Q25,0 50,10 T100,10 T150,10 T200,10 L200,20 L0,20 Z" fill="rgba(77, 166, 255, 0.5)"/></svg>
+            </div>
+            <div style="position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+              <div style="display: flex; align-items: baseline; gap: 3px;">
+                <span style="font-size: 24px; font-weight: 200; color: #1a1a1a;">5</span>
+                <span style="font-size: 8px; color: #999;">/8杯</span>
+              </div>
+            </div>
+          </div>
+          <!-- 右侧设置面板 -->
+          <div style="flex: 1; background: #fff; border-radius: 12px; padding: 10px; position: relative; border: 1px solid #e0e0e0;">
+            <div style="font-size: 9px; color: #1a1a1a; font-weight: 500; margin-bottom: 8px;">设置</div>
+            <div style="font-size: 7px; color: #666; line-height: 2.4;">
+              <div style="display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #f0f0f0;"><span>深色模式</span><span style="color: #0066ff;">开启</span></div>
+              <div style="display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #f0f0f0;"><span>语言</span><span>中文</span></div>
+              <div style="display: flex; justify-content: space-between; padding: 4px 0;"><span>每日目标</span><span>8 杯</span></div>
+            </div>
+            <!-- 返回按钮 -->
+            <div style="position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 0 12px rgba(0,102,255,0.4);">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0066ff" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 8px; font-size: 9px; color: #666; text-align: left; padding: 6px; background: #f5f5f5; border-radius: 6px; line-height: 1.6;">
+          <div>左侧主卡片: 半透明保持可见</div>
+          <div>右侧: 设置面板</div>
+          <div>返回按钮: 替代Tab栏</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top: 24px;">
+  <h3>📱 折叠屏/平板 UI (iPad Mini: 744×1133px)</h3>
+  <div style="background: #fafafa; border-radius: 16px; padding: 20px; border: 1px solid #e0e0e0;">
+    <div style="display: flex; justify-content: center; gap: 16px; margin-bottom: 16px; flex-wrap: wrap;">
+
+      <!-- 平板主页面 -->
+      <div style="text-align: center;">
+        <p style="font-size: 12px; color: #999; margin-bottom: 8px;">主页面 (744×1133px)</p>
+        <div style="display: flex; gap: 8px; width: 372px; height: 566px; border-radius: 16px; background: #fafafa; border: 1px solid #e0e0e0; padding: 12px;">
+          <!-- 左侧主卡片 -->
+          <div style="flex: 1; background: #fff; border-radius: 16px; position: relative; overflow: hidden; border: 1px solid #e0e0e0;">
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 62.5%; background: linear-gradient(180deg, rgba(77, 166, 255, 0.5) 0%, rgba(0, 102, 204, 0.6) 50%, rgba(0, 61, 122, 0.7) 100%); border-radius: 0 0 16px 16px;">
+              <svg viewBox="0 0 200 20" style="position: absolute; top: -8px; left: 0; width: 100%; height: 16px;"><path d="M0,10 Q25,0 50,10 T100,10 T150,10 T200,10 L200,20 L0,20 Z" fill="rgba(77, 166, 255, 0.5)"/></svg>
+            </div>
+            <div style="position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+              <div style="display: flex; align-items: baseline; gap: 4px;">
+                <span style="font-size: 48px; font-weight: 200; color: #1a1a1a;">5</span>
+                <span style="font-size: 14px; color: #999;">/8杯</span>
+              </div>
+              <div style="margin-top: 24px;">
+                <div style="width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%); border: 1px solid rgba(255,255,255,0.5); box-shadow: 0 0 16px rgba(0,102,255,0.5);">
+                  <span style="color: #0066ff; font-size: 24px; font-weight: 300;">+</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 右侧功能面板 -->
+          <div style="flex: 1; background: #fff; border-radius: 16px; padding: 12px; position: relative; border: 1px solid #e0e0e0;">
+            <div style="font-size: 9px; color: #999; margin-bottom: 8px; font-weight: 500;">今日记录</div>
+            <div style="font-size: 8px; color: #666; line-height: 2.4;">
+              <div style="display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #f0f0f0;"><span>09:30</span><span>+1杯</span></div>
+              <div style="display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #f0f0f0;"><span>11:45</span><span>+1杯</span></div>
+              <div style="display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #f0f0f0;"><span>14:20</span><span>+1杯</span></div>
+              <div style="display: flex; justify-content: space-between; padding: 4px 0;"><span>16:05</span><span>+1杯</span></div>
+            </div>
+            <!-- Tab栏 -->
+            <div style="position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 4px; padding: 4px 10px; border-radius: 14px; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); backdrop-filter: blur(10px); border: 1px solid rgba(0,0,0,0.06);">
+              <span style="font-size: 8px; color: #666; padding: 4px 10px;">主页</span>
+              <span style="font-size: 8px; color: #0066ff; padding: 4px 10px; border-radius: 8px; background: rgba(0,102,255,0.15);">历史</span>
+              <span style="font-size: 8px; color: #666; padding: 4px 10px;">统计</span>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 8px; font-size: 9px; color: #666; text-align: left; padding: 6px; background: #f5f5f5; border-radius: 6px; line-height: 1.6;">
+          <div>屏幕: 744×1133px</div>
+          <div>布局: 左右各50%</div>
+          <div>Tab栏: 3个选项 (主页/历史/统计)</div>
+          <div>安全区: 左右24px, 顶部20px, 底部20px</div>
+        </div>
+      </div>
+
+      <!-- 平板统计页面 -->
+      <div style="text-align: center;">
+        <p style="font-size: 12px; color: #999; margin-bottom: 8px;">统计页面</p>
+        <div style="display: flex; gap: 8px; width: 372px; height: 566px; border-radius: 16px; background: #fafafa; border: 1px solid #e0e0e0; padding: 12px;">
+          <!-- 左侧主卡片 (保持可见) -->
+          <div style="flex: 1; background: #fff; border-radius: 16px; position: relative; overflow: hidden; border: 1px solid #e0e0e0; opacity: 0.7;">
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 62.5%; background: linear-gradient(180deg, rgba(77, 166, 255, 0.5) 0%, rgba(0, 102, 204, 0.6) 50%, rgba(0, 61, 122, 0.7) 100%); border-radius: 0 0 16px 16px;">
+              <svg viewBox="0 0 200 20" style="position: absolute; top: -8px; left: 0; width: 100%; height: 16px;"><path d="M0,10 Q25,0 50,10 T100,10 T150,10 T200,10 L200,20 L0,20 Z" fill="rgba(77, 166, 255, 0.5)"/></svg>
+            </div>
+            <div style="position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+              <div style="display: flex; align-items: baseline; gap: 4px;">
+                <span style="font-size: 48px; font-weight: 200; color: #1a1a1a;">5</span>
+                <span style="font-size: 14px; color: #999;">/8杯</span>
+              </div>
+            </div>
+          </div>
+          <!-- 右侧统计面板 -->
+          <div style="flex: 1; background: #fff; border-radius: 16px; padding: 12px; position: relative; border: 1px solid #e0e0e0;">
+            <div style="font-size: 9px; color: #1a1a1a; font-weight: 500; margin-bottom: 8px;">本周统计</div>
+            <!-- 简化图表 -->
+            <div style="display: flex; align-items: flex-end; gap: 6px; height: 80px; padding: 8px 0;">
+              <div style="flex: 1; background: rgba(0,102,255,0.3); border-radius: 4px 4px 0 0; height: 60%;"></div>
+              <div style="flex: 1; background: rgba(0,102,255,0.4); border-radius: 4px 4px 0 0; height: 75%;"></div>
+              <div style="flex: 1; background: rgba(0,102,255,0.5); border-radius: 4px 4px 0 0; height: 50%;"></div>
+              <div style="flex: 1; background: rgba(0,102,255,0.6); border-radius: 4px 4px 0 0; height: 80%;"></div>
+              <div style="flex: 1; background: rgba(0,102,255,0.7); border-radius: 4px 4px 0 0; height: 62.5%;"></div>
+              <div style="flex: 1; background: rgba(0,102,255,0.2); border-radius: 4px 4px 0 0; height: 40%;"></div>
+              <div style="flex: 1; background: rgba(0,102,255,0.2); border-radius: 4px 4px 0 0; height: 20%;"></div>
+            </div>
+            <div style="font-size: 7px; color: #999; display: flex; justify-content: space-between; margin-top: 4px;">
+              <span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span>
+            </div>
+            <!-- 返回按钮 -->
+            <div style="position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 0 16px rgba(0,102,255,0.4);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0066ff" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 8px; font-size: 9px; color: #666; text-align: left; padding: 6px; background: #f5f5f5; border-radius: 6px; line-height: 1.6;">
+          <div>左侧主卡片: 半透明保持可见</div>
+          <div>右侧: 统计图表</div>
+          <div>返回按钮: 替代Tab栏</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top: 24px;">
+  <h3>🔄 菜单按钮状态变化</h3>
+  <div style="background: #fafafa; border-radius: 16px; padding: 20px; border: 1px solid #e0e0e0;">
+    <div style="display: flex; justify-content: center; gap: 48px; align-items: center;">
+
+      <!-- 视图按钮状态 -->
+      <div style="text-align: center;">
+        <p style="font-size: 11px; color: #999; margin-bottom: 12px;">视图按钮 (日/周/月)</p>
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <!-- 正常状态 -->
+          <div style="text-align: center;">
+            <div style="width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
+              <span style="font-size: 14px; color: #0066ff; font-weight: 500;">日</span>
+            </div>
+            <p style="font-size: 9px; color: #666; margin-top: 6px;">正常</p>
+          </div>
+          <!-- 箭头 -->
+          <svg width="24" height="20" viewBox="0 0 24 20"><path d="M0 10 L18 10 M13 5 L18 10 L13 15" stroke="#999" stroke-width="1.5" fill="none"/></svg>
+          <!-- 展开状态 (显示关闭) -->
+          <div style="text-align: center;">
+            <div style="width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 0 16px rgba(0,102,255,0.5);">
+              <span style="font-size: 18px; color: #0066ff; font-weight: 300;">×</span>
+            </div>
+            <p style="font-size: 9px; color: #666; margin-top: 6px;">展开中</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 菜单按钮状态 -->
+      <div style="text-align: center;">
+        <p style="font-size: 11px; color: #999; margin-bottom: 12px;">菜单按钮 (设置/关于)</p>
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <!-- 正常状态 -->
+          <div style="text-align: center;">
+            <div style="width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 2px 12px rgba(0,0,0,0.08);">
+              <div style="display: flex; flex-direction: column; gap: 3px;">
+                <div style="width: 4px; height: 4px; border-radius: 50%; background: #666;"></div>
+                <div style="width: 4px; height: 4px; border-radius: 50%; background: #666;"></div>
+                <div style="width: 4px; height: 4px; border-radius: 50%; background: #666;"></div>
+              </div>
+            </div>
+            <p style="font-size: 9px; color: #666; margin-top: 6px;">正常</p>
+          </div>
+          <!-- 箭头 -->
+          <svg width="24" height="20" viewBox="0 0 24 20"><path d="M0 10 L18 10 M13 5 L18 10 L13 15" stroke="#999" stroke-width="1.5" fill="none"/></svg>
+          <!-- 展开状态 (显示关闭) -->
+          <div style="text-align: center;">
+            <div style="width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 0 16px rgba(0,102,255,0.5);">
+              <span style="font-size: 18px; color: #0066ff; font-weight: 300;">×</span>
+            </div>
+            <p style="font-size: 9px; color: #666; margin-top: 6px;">展开中</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top: 16px; padding: 12px; background: #e8f4fc; border-radius: 8px; text-align: center;">
+      <span style="font-size: 10px; color: #0066ff;"><strong>交互规则:</strong> 点击按钮 → 弹出菜单 → 按钮变为 × → 点击 × 关闭菜单</span>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top: 24px;">
+  <h3>📐 屏幕安全区</h3>
+  <div style="background: #fafafa; border-radius: 16px; padding: 20px; border: 1px solid #e0e0e0;">
+    <div style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;">
+
+      <!-- iPhone 安全区 -->
+      <div style="text-align: center;">
+        <p style="font-size: 11px; color: #999; margin-bottom: 8px;">iPhone 14 Pro (393×852px)</p>
+        <div style="width: 196px; height: 426px; border-radius: 20px; background: #fafafa; border: 1px solid #e0e0e0; position: relative;">
+          <!-- 安全区边框 -->
+          <div style="position: absolute; top: 23px; bottom: 17px; left: 0; right: 0; border: 1px dashed #ff6b6b; border-radius: 0 0 20px 20px;"></div>
+          <!-- 刘海 -->
+          <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 14px; background: #1a1a1a; border-radius: 0 0 10px 10px;"></div>
+          <!-- Home指示条 -->
+          <div style="position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background: #999; border-radius: 2px;"></div>
+          <!-- 标注 -->
+          <div style="position: absolute; top: 8px; right: 4px; font-size: 7px; color: #ff6b6b;">47px</div>
+          <div style="position: absolute; bottom: 8px; right: 4px; font-size: 7px; color: #ff6b6b;">34px</div>
+        </div>
+        <div style="margin-top: 8px; font-size: 9px; color: #666; line-height: 1.6;">
+          <div>顶部安全区: 47px (刘海)</div>
+          <div>底部安全区: 34px (Home条)</div>
+        </div>
+      </div>
+
+      <!-- iPad 安全区 -->
+      <div style="text-align: center;">
+        <p style="font-size: 11px; color: #999; margin-bottom: 8px;">iPad Mini (744×1133px)</p>
+        <div style="width: 186px; height: 283px; border-radius: 16px; background: #fafafa; border: 1px solid #e0e0e0; position: relative;">
+          <!-- 安全区边框 -->
+          <div style="position: absolute; top: 5px; bottom: 5px; left: 6px; right: 6px; border: 1px dashed #ff6b6b; border-radius: 12px;"></div>
+          <!-- 标注 -->
+          <div style="position: absolute; top: 2px; left: 50%; transform: translateX(-50%); font-size: 6px; color: #ff6b6b;">20px</div>
+          <div style="position: absolute; bottom: 2px; left: 50%; transform: translateX(-50%); font-size: 6px; color: #ff6b6b;">20px</div>
+          <div style="position: absolute; left: 2px; top: 50%; transform: translateY(-50%); font-size: 6px; color: #ff6b6b;">24px</div>
+        </div>
+        <div style="margin-top: 8px; font-size: 9px; color: #666; line-height: 1.6;">
+          <div>顶部/底部: 20px</div>
+          <div>左右: 24px</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top: 24px; padding: 16px; background: #e8f4fc; border-radius: 12px;">
+  <h3>组件尺寸规范表</h3>
+  <table style="width: 100%; font-size: 11px; color: #444; border-collapse: collapse;">
+    <tr style="border-bottom: 1px solid #ccc;">
+      <th style="padding: 8px 0; text-align: left;">组件</th>
+      <th style="padding: 8px 0; text-align: left;">手机竖屏</th>
+      <th style="padding: 8px 0; text-align: left;">手机横屏</th>
+      <th style="padding: 8px 0; text-align: left;">平板</th>
+    </tr>
+    <tr style="border-bottom: 1px solid #ddd;">
+      <td style="padding: 6px 0;">主数字</td>
+      <td>64px</td>
+      <td>48px</td>
+      <td>96px</td>
+    </tr>
+    <tr style="border-bottom: 1px solid #ddd;">
+      <td style="padding: 6px 0;">添加按钮</td>
+      <td>64px直径</td>
+      <td>48px直径</td>
+      <td>96px直径</td>
+    </tr>
+    <tr style="border-bottom: 1px solid #ddd;">
+      <td style="padding: 6px 0;">Tab栏</td>
+      <td>120×40px</td>
+      <td>100×32px</td>
+      <td>180×48px</td>
+    </tr>
+    <tr style="border-bottom: 1px solid #ddd;">
+      <td style="padding: 6px 0;">视图/菜单按钮</td>
+      <td>44px直径</td>
+      <td>36px直径</td>
+      <td>56px直径</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 0;">Tab栏位置</td>
+      <td>距底部 24px</td>
+      <td>距底部 16px</td>
+      <td>距底部 24px</td>
+    </tr>
+  </table>
+</div>
