@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Plus, Settings, Bell, BellOff, X, Clock, History, ArrowLeft } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
@@ -14,9 +14,20 @@ interface Bubble {
   id: number
   x: number
   size: number
-  duration: number
-  delay: number
+  speed: number
   wobble: number
+}
+
+// 简单的波浪路径
+function wavePath(time: number, amp: number, freq: number, baseY: number) {
+  const w = 1200
+  const pts: string[] = []
+  for (let i = 0; i <= 60; i++) {
+    const x = (i / 60) * w
+    const y = baseY + amp * Math.sin((x / w) * freq * Math.PI * 2 + time)
+    pts.push(`${x.toFixed(0)},${y.toFixed(1)}`)
+  }
+  return `M${pts.join(' L')} L${w},100 L0,100 Z`
 }
 
 export default function App() {
@@ -29,22 +40,43 @@ export default function App() {
   const [showSettings, setShowSettings] = useState(false)
   const [showHistory, setShowHistory] = useState(false)
   const [bubbles, setBubbles] = useState<Bubble[]>([])
+  const [time, setTime] = useState(0)
 
-  // Generate bubbles with 3D wobble
   useEffect(() => {
-    const generateBubble = () => {
-      const bubble: Bubble = {
-        id: Date.now() + Math.random(),
-        x: 10 + Math.random() * 80,
-        size: 3 + Math.random() * 6,
-        duration: 4 + Math.random() * 5,
-        delay: Math.random() * 2,
-        wobble: Math.random() * 20 - 10,
-      }
-      setBubbles(prev => [...prev.slice(-20), bubble])
+    let id: number
+    const animate = () => {
+      setTime(t => t + 0.02)
+      id = requestAnimationFrame(animate)
     }
+    id = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(id)
+  }, [])
 
-    const interval = setInterval(generateBubble, 600)
+  const waves = useMemo(() => ({
+    front: wavePath(time * 1.5, 8, 3, 45),
+    mid: wavePath(time * 1.2 + 1, 6, 2.5, 50),
+    back: wavePath(time * 0.8 + 2, 5, 2, 55),
+  }), [time])
+
+  useEffect(() => {
+    const spawn = () => {
+      setBubbles(prev => [...prev.slice(-20), {
+        id: Date.now() + Math.random(),
+        x: 5 + Math.random() * 90,
+        size: 4 + Math.random() * 8,
+        speed: 0.5 + Math.random() * 0.5,
+        wobble: Math.random() * 10 - 5,
+      }])
+    }
+    const interval = setInterval(spawn, 600)
+    return () => clearInterval(interval)
+  }, [])
+
+  useEffect(() => {
+    const update = () => {
+      setBubbles(prev => prev.map(b => ({ ...b, x: b.x + b.wobble * 0.01 })).filter(b => b.x > -5 && b.x < 105))
+    }
+    const interval = setInterval(update, 100)
     return () => clearInterval(interval)
   }, [])
 
@@ -75,6 +107,7 @@ export default function App() {
   }, [])
 
   const progress = Math.min((today / goal) * 100, 100)
+  const waterY = typeof window !== 'undefined' ? window.innerHeight * (100 - progress) / 100 : 0
   const todayRecords = history.filter(r => new Date(r.timestamp).toDateString() === new Date().toDateString()).reverse()
   const groupedHistory = history.reduce((acc, r) => {
     const date = new Date(r.timestamp).toLocaleDateString()
@@ -85,73 +118,39 @@ export default function App() {
 
   return (
     <div className="min-h-screen relative overflow-hidden bg-gradient-to-b from-sky-100 to-sky-200">
-      {/* 3D Water container */}
-      <div className="absolute inset-0" style={{ perspective: '1000px' }}>
-        <motion.div
-          className="absolute inset-0 water-3d"
-          initial={{ y: '100%' }}
-          animate={{ y: `${100 - progress}%` }}
-          transition={{ duration: 1.2, ease: [0.4, 0, 0.2, 1] }}
-          style={{ transformStyle: 'preserve-3d' }}
-        >
-          {/* Water surface with 3D transform */}
-          <div className="water-surface">
-            {/* Animated wave mesh - foreground dark, middle light, background dark */}
-            <div className="wave-mesh">
-              {/* Back wave - dark outline */}
-              <svg viewBox="0 0 400 30" preserveAspectRatio="none" className="wave-svg wave-back">
-                <path d="M0,15 C25,8 50,15 75,22 C100,15 125,8 150,15 C175,22 200,15 225,8 C250,15 275,22 300,15 C325,8 350,15 375,22 C400,15 400,30 L0,30 Z" />
-              </svg>
-              {/* Middle wave - light surface */}
-              <svg viewBox="0 0 400 30" preserveAspectRatio="none" className="wave-svg wave-middle">
-                <path d="M0,15 C33,22 66,15 100,8 C133,15 166,22 200,15 C233,8 266,15 300,22 C333,15 366,8 400,15 L400,30 L0,30 Z" />
-              </svg>
-              {/* Front wave - dark outline */}
-              <svg viewBox="0 0 400 30" preserveAspectRatio="none" className="wave-svg wave-front">
-                <path d="M0,15 C17,10 33,15 50,20 C67,15 83,10 100,15 C117,20 133,15 150,10 C167,15 183,20 200,15 C217,10 233,15 250,20 C267,15 283,10 300,15 C317,20 333,15 350,10 C367,15 383,20 400,15 L400,30 L0,30 Z" />
-              </svg>
-            </div>
+      <motion.div
+        className="water-container"
+        animate={{ y: waterY }}
+        transition={{ duration: 1.2, ease: [0.4, 0, 0.2, 1] }}
+      >
+        {/* 水面 */}
+        <div className="water-surface">
+          <svg viewBox="0 0 1200 100" preserveAspectRatio="none" className="wave-svg">
+            <path d={waves.back} className="wave wave-back" />
+            <path d={waves.mid} className="wave wave-mid" />
+            <path d={waves.front} className="wave wave-front" />
+          </svg>
+          {/* 水面高光 */}
+          <div className="surface-shine" />
+        </div>
 
-            {/* Caustics light patterns */}
-            <div className="caustics-3d" />
-
-            {/* Reflection layer */}
-            <div className="water-reflection" />
-          </div>
-
-          {/* Water body with depth gradient */}
-          <div className="water-body">
-            {/* Bubbles with 3D wobble */}
-            {bubbles.map(bubble => (
-              <motion.div
-                key={bubble.id}
-                className="bubble-3d"
-                style={{
-                  left: `${bubble.x}%`,
-                  width: bubble.size,
-                  height: bubble.size,
-                }}
-                initial={{ y: 0, opacity: 0, x: 0 }}
-                animate={{
-                  y: -500,
-                  opacity: [0, 0.6, 0.4, 0],
-                  x: [0, bubble.wobble, -bubble.wobble/2, bubble.wobble/3, 0]
-                }}
-                transition={{
-                  duration: bubble.duration,
-                  delay: bubble.delay,
-                  ease: 'easeOut'
-                }}
-              />
-            ))}
-
-            {/* Depth layers */}
-            <div className="depth-layer depth-1" />
-            <div className="depth-layer depth-2" />
-            <div className="depth-layer depth-3" />
-          </div>
-        </motion.div>
-      </div>
+        {/* 水体 */}
+        <div className="water-body">
+          {/* 气泡 */}
+          {bubbles.map(b => (
+            <motion.div
+              key={b.id}
+              className="bubble"
+              style={{ left: `${b.x}%`, width: b.size, height: b.size }}
+              initial={{ bottom: '0%', opacity: 0 }}
+              animate={{ bottom: '100%', opacity: [0, 0.7, 0.5, 0] }}
+              transition={{ duration: 4 / b.speed, ease: 'linear' }}
+            />
+          ))}
+          {/* 光线效果 */}
+          <div className="water-light" />
+        </div>
+      </motion.div>
 
       {/* Content */}
       <AnimatePresence mode="wait">
@@ -163,7 +162,6 @@ export default function App() {
             exit={{ opacity: 0 }}
             className="relative min-h-screen flex flex-col items-center justify-center gap-6"
           >
-            {/* Counter */}
             <div className="text-center">
               <motion.span
                 key={today}
@@ -176,7 +174,6 @@ export default function App() {
               <p className="text-white/80 mt-2">/ {goal} {t('glasses')}</p>
             </div>
 
-            {/* Add button */}
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={addDrink}
@@ -194,7 +191,6 @@ export default function App() {
               <Plus className="w-10 h-10 text-sky-700" />
             </motion.button>
 
-            {/* Bottom actions */}
             <button onClick={() => setShowHistory(true)} className="fixed bottom-8 left-8 text-white/60 hover:text-white/80 transition-colors">
               <History className="w-6 h-6" />
             </button>
@@ -203,7 +199,6 @@ export default function App() {
             </button>
           </motion.div>
         ) : (
-          /* History view */
           <motion.div
             key="history"
             initial={{ opacity: 0, x: 20 }}
