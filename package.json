@@ -5,9 +5,18 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:watch": "BUILD_TARGET=watch vite",
     "build": "tsc -b && vite build",
+    "build:watch": "BUILD_TARGET=watch vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "tauri": "tauri",
+    "tauri:dev": "tauri dev",
+    "tauri:dev:watch": "BUILD_TARGET=watch tauri dev",
+    "tauri:build": "tauri build",
+    "tauri:build:watch": "BUILD_TARGET=watch tauri build",
+    "tauri:build:android": "tauri android build",
+    "tauri:build:android:watch": "BUILD_TARGET=watch tauri android build"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",
