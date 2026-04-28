@@ -8,10 +8,10 @@
 
 | 优先级 | 平台 | 状态 |
 |--------|------|------|
-| P0 | Android 手机/平板 | 首批实现 |
-| P0 | Web/PWA | 首批实现 |
-| P1 | Android Watch | 首批实现 |
-| P2 | 桌面端 (Windows/macOS/Linux) | 后续实现 |
+| P0 | Android 手机/平板 | ✅ 架构完成，待 Tauri 构建 |
+| P0 | Web/PWA | ✅ 已完成 |
+| P1 | Android Watch | ✅ UI 完成，待 Tauri 构建 |
+| P2 | 桌面端 (Windows/macOS/Linux) | ✅ 架构完成，待 Tauri 构建 |
 | P3 | iOS (iPhone/iPad/Apple Watch) | 待办 |
 
 ## 架构设计
@@ -155,32 +155,56 @@ BUILD_TARGET=watch   # 手表UI
 
 ## 实施阶段
 
-### 阶段 1: 基础架构
-1. 安装 Tauri v2 CLI 和依赖
-2. 创建 `src-tauri/` 目录结构
-3. 配置环境变量和构建脚本
-4. 创建平台适配层
+### 阶段 1: 基础架构 ✅ 已完成
+1. ✅ 安装 Tauri v2 CLI 和依赖
+2. ✅ 创建 `src-tauri/` 目录结构
+3. ✅ 配置环境变量和构建脚本
+4. ✅ 创建平台适配层
 
-### 阶段 2: 通用 UI 迁移
-1. 重构现有代码到 `src/app/`
-2. 提取共享逻辑到 `src/shared/`
-3. 配置 PWA 支持
-4. 验证 Web 构建
+### 阶段 2: 通用 UI 迁移 ✅ 已完成
+1. ✅ 重构现有代码到 `src/app/`
+2. ✅ 提取共享逻辑到 `src/shared/`
+3. ✅ 配置 PWA 支持
+4. ✅ 验证 Web 构建
 
-### 阶段 3: Android 支持
-1. 配置 Tauri Android 构建
-2. 实现通知功能
-3. 测试手机/平板适配
+### 阶段 3: Android 支持 (待 Rust 环境)
+1. ✅ 配置 Tauri Android 构建
+2. ⏳ 实现通知功能（需 Tauri 运行环境）
+3. ⏳ 测试手机/平板适配（需 Android 模拟器/真机）
 
-### 阶段 4: 手表 UI
-1. 创建 `src/watch/` 独立 UI
-2. 配置手表 Tauri 构建
-3. 实现圆形/方形屏幕适配
+### 阶段 4: 手表 UI ✅ 已完成
+1. ✅ 创建 `src/watch/` 独立 UI
+2. ✅ 配置手表 Tauri 构建
+3. ✅ 实现圆形/方形屏幕适配
+4. ✅ 添加全屏菜单（历史/设置）
 
-### 阶段 5: 桌面端
-1. 配置桌面端构建
-2. 添加系统托盘支持
-3. 窗口管理优化
+### 阶段 5: 桌面端 (待 Rust 环境)
+1. ✅ 配置桌面端构建
+2. ⏳ 添加系统托盘支持
+3. ⏳ 窗口管理优化
+
+## 已实现功能
+
+### 共享组件
+- `WaterCanvas` - 水动画画布组件，支持配置气泡、高光、波浪幅度
+- `AddButton` - 添加按钮组件，支持 sm/md/lg 三种尺寸
+
+### 共享 Hooks
+- `useWaterData` - 水数据状态管理
+- `useStorage` - 存储抽象层
+- `useNotification` - 通知抽象层
+
+### 平台适配
+- `web.ts` - Web/PWA 实现（localStorage, Web Notifications）
+- `tauri.ts` - Tauri 实现（Tauri Store, Tauri Notifications）
+
+### 构建命令
+```bash
+pnpm build           # Web/PWA 构建 → dist/
+pnpm build:watch     # 手表构建 → dist-watch/
+pnpm tauri:dev       # Tauri 开发模式（需 Rust）
+pnpm tauri:build     # Tauri 生产构建（需 Rust）
+```
 
 ## 风险与缓解
 
