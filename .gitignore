@@ -23,3 +23,10 @@ dist-ssr
 *.sln
 *.sw?
 .omc
+
+# Tauri build outputs
+dist-watch/
+src-tauri/target/
+
+# Environment files
+.env.local
