@@ -1162,4 +1162,27 @@
       <div><strong>横屏适配：</strong>左右分屏布局，Tab栏隐藏，主卡片始终可见</div>
     </div>
   </div>
+
+  <!-- 实现状态 -->
+  <div style="margin-top: 24px; padding: 16px; background: #d4edda; border-radius: 12px; border: 1px solid #28a745;">
+    <h4 style="font-size: 13px; color: #155724; margin-bottom: 12px;">✅ 实现状态 (2026-04-28)</h4>
+    <div style="font-size: 11px; color: #155724; line-height: 2;">
+      <div><strong>Web/PWA:</strong> ✅ 已完成 - 响应式布局、PWA manifest、Service Worker</div>
+      <div><strong>手表 UI:</strong> ✅ 已完成 - 圆形/方形屏幕适配、全屏菜单、历史/设置视图</div>
+      <div><strong>共享组件:</strong> ✅ 已完成 - WaterCanvas、AddButton (sm/md/lg)</div>
+      <div><strong>共享 Hooks:</strong> ✅ 已完成 - useWaterData、useStorage、useNotification</div>
+      <div><strong>平台适配:</strong> ✅ 已完成 - web.ts、tauri.ts 平台抽象层</div>
+      <div><strong>Tauri 构建:</strong> ⏳ 待 Rust 环境 - 桌面端、Android、Android Watch</div>
+      <div><strong>iOS:</strong> 📋 待办 - 预留适配接口</div>
+    </div>
+    <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #28a745;">
+      <div style="font-size: 10px; color: #155724;"><strong>构建命令:</strong></div>
+      <code style="display: block; margin-top: 4px; padding: 8px; background: #f8f9fa; border-radius: 4px; font-size: 10px;">
+pnpm build           # Web/PWA → dist/<br>
+pnpm build:watch     # 手表 → dist-watch/<br>
+pnpm tauri:dev       # Tauri 开发模式<br>
+pnpm tauri:build     # Tauri 生产构建
+      </code>
+    </div>
+  </div>
 </div>
