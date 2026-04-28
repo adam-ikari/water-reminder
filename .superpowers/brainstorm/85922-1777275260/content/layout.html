@@ -1,0 +1,64 @@
+<h2>主界面布局</h2>
+<p class="subtitle">数字和按钮如何呈现？</p>
+
+<div class="cards">
+  <div class="card" data-choice="center" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: #fafafa; display: flex; align-items: center; justify-content: center; height: 180px; border: 1px solid #e0e0e0; border-radius: 12px; position: relative;">
+      <div style="text-align: center;">
+        <div style="font-size: 72px; font-weight: 200; color: #1a1a1a; line-height: 1;">5</div>
+        <div style="font-size: 14px; color: #999; margin-top: 4px;">/ 8 杯</div>
+        <div style="margin-top: 20px; width: 120px; height: 4px; background: #e0e0e0; margin-left: auto; margin-right: auto; border-radius: 2px;">
+          <div style="width: 62.5%; height: 100%; background: #0066ff; border-radius: 2px;"></div>
+        </div>
+        <div style="margin-top: 24px; width: 56px; height: 56px; border-radius: 50%; background: #0066ff; margin-left: auto; margin-right: auto; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,102,255,0.3);">
+          <span style="color: white; font-size: 28px; font-weight: 300;">+</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>居中聚焦</h3>
+      <p>大数字居中，进度条在下方，单个添加按钮。最简洁。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="cups" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: #fafafa; display: flex; align-items: center; justify-content: center; height: 180px; border: 1px solid #e0e0e0; border-radius: 12px;">
+      <div style="text-align: center;">
+        <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; max-width: 200px;">
+          <div style="width: 36px; height: 48px; background: #0066ff; border-radius: 4px 4px 12px 12px;"></div>
+          <div style="width: 36px; height: 48px; background: #0066ff; border-radius: 4px 4px 12px 12px;"></div>
+          <div style="width: 36px; height: 48px; background: #0066ff; border-radius: 4px 4px 12px 12px;"></div>
+          <div style="width: 36px; height: 48px; background: #0066ff; border-radius: 4px 4px 12px 12px;"></div>
+          <div style="width: 36px; height: 48px; background: #0066ff; border-radius: 4px 4px 12px 12px;"></div>
+          <div style="width: 36px; height: 48px; background: #e8e8e8; border-radius: 4px 4px 12px 12px; border: 2px dashed #ccc;"></div>
+          <div style="width: 36px; height: 48px; background: #e8e8e8; border-radius: 4px 4px 12px 12px; border: 2px dashed #ccc;"></div>
+          <div style="width: 36px; height: 48px; background: #e8e8e8; border-radius: 4px 4px 12px 12px; border: 2px dashed #ccc;"></div>
+        </div>
+        <div style="margin-top: 16px; font-size: 14px; color: #666;">点击杯子添加水</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>杯子阵列</h3>
+      <p>8个杯子可视化，点击空杯子添加。直观但占用空间。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="ring" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: #fafafa; display: flex; align-items: center; justify-content: center; height: 180px; border: 1px solid #e0e0e0; border-radius: 12px;">
+      <div style="text-align: center; position: relative;">
+        <svg width="120" height="120" viewBox="0 0 120 120">
+          <circle cx="60" cy="60" r="50" fill="none" stroke="#e8e8e8" stroke-width="8"/>
+          <circle cx="60" cy="60" r="50" fill="none" stroke="#0066ff" stroke-width="8" stroke-dasharray="314" stroke-dashoffset="118" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+        </svg>
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+          <div style="font-size: 36px; font-weight: 200; color: #1a1a1a;">5</div>
+          <div style="font-size: 10px; color: #999;">/ 8</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>环形进度</h3>
+      <p>圆环显示进度，数字在中心。类似 Apple Watch 活动圆环。</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<h2>按钮与交互</h2>
+<p class="subtitle">如何添加和减少水量？</p>
+
+<div class="cards">
+  <div class="card" data-choice="single" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: #fafafa; display: flex; align-items: center; justify-content: center; height: 160px; border: 1px solid #e0e0e0; border-radius: 12px;">
+      <div style="text-align: center;">
+        <div style="font-size: 48px; font-weight: 200; color: #1a1a1a;">5</div>
+        <div style="font-size: 12px; color: #999; margin-bottom: 16px;">/ 8 杯</div>
+        <div style="width: 64px; height: 64px; border-radius: 50%; background: #0066ff; margin-left: auto; margin-right: auto; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(0,102,255,0.3);">
+          <span style="color: white; font-size: 32px; font-weight: 300;">+</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>单按钮</h3>
+      <p>只显示一个"+"按钮，点击添加。长按或设置中减少。最简洁。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="dual" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: #fafafa; display: flex; align-items: center; justify-content: center; height: 160px; border: 1px solid #e0e0e0; border-radius: 12px;">
+      <div style="text-align: center;">
+        <div style="font-size: 48px; font-weight: 200; color: #1a1a1a;">5</div>
+        <div style="font-size: 12px; color: #999; margin-bottom: 16px;">/ 8 杯</div>
+        <div style="display: flex; gap: 16px; justify-content: center;">
+          <div style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid #e0e0e0; display: flex; align-items: center; justify-content: center;">
+            <span style="color: #999; font-size: 24px;">−</span>
+          </div>
+          <div style="width: 48px; height: 48px; border-radius: 50%; background: #0066ff; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,102,255,0.3);">
+            <span style="color: white; font-size: 24px;">+</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>加减按钮</h3>
+      <p>"+"和"−"两个按钮并排，操作直观。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="swipe" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: #fafafa; display: flex; align-items: center; justify-content: center; height: 160px; border: 1px solid #e0e0e0; border-radius: 12px;">
+      <div style="text-align: center;">
+        <div style="font-size: 48px; font-weight: 200; color: #1a1a1a;">5</div>
+        <div style="font-size: 12px; color: #999; margin-bottom: 12px;">/ 8 杯</div>
+        <div style="color: #0066ff; font-size: 12px; display: flex; align-items: center; justify-content: center; gap: 4px;">
+          <span>↑</span> 上滑添加 <span style="margin-left: 8px;">↓</span> 下滑减少
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>滑动手势</h3>
+      <p>无按钮，上滑添加、下滑减少。最极简，但需要学习成本。</p>
+    </div>
+  </div>
+</div>

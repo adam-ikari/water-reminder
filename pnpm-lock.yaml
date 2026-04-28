@@ -14,6 +14,9 @@ importers:
       '@fontsource-variable/geist':
         specifier: ^5.2.8
         version: 5.2.8
+      '@rive-app/react-canvas':
+        specifier: ^4.28.2
+        version: 4.28.2(react@19.2.5)
       '@tailwindcss/vite':
         specifier: ^4.2.4
         version: 4.2.4(vite@8.0.9(@types/node@24.12.2)(jiti@2.6.1))
@@ -472,6 +475,14 @@ packages:
 
   '@oxc-project/types@0.126.0':
     resolution: {integrity: sha512-oGfVtjAgwQVVpfBrbtk4e1XDyWHRFta6BS3GWVzrF8xYBT2VGQAk39yJS/wFSMrZqoiCU4oghT3Ch0HaHGIHcQ==}
+
+  '@rive-app/canvas@2.37.4':
+    resolution: {integrity: sha512-I1DLeA8daBGxXybRDncGibMwZMhfMdKqcnkBozoCl33wDidk75r7UijjJYE9hPJ/VMYNpYCaAYLXLqnRAEryRw==}
+
+  '@rive-app/react-canvas@4.28.2':
+    resolution: {integrity: sha512-60g0yJ/k7O89DA0V5llrZ6T91cybEV1EYqwIHm7aVGa8f4jJVAn09rJvJErZG087JpFxrVuOt9K8HZb8pMpwiA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0
 
   '@rolldown/binding-android-arm64@1.0.0-rc.16':
     resolution: {integrity: sha512-rhY3k7Bsae9qQfOtph2Pm2jZEA+s8Gmjoz4hhmx70K9iMQ/ddeae+xhRQcM5IuVx5ry1+bGfkvMn7D6MJggVSA==}
@@ -2842,6 +2853,13 @@ snapshots:
   '@open-draft/until@2.1.0': {}
 
   '@oxc-project/types@0.126.0': {}
+
+  '@rive-app/canvas@2.37.4': {}
+
+  '@rive-app/react-canvas@4.28.2(react@19.2.5)':
+    dependencies:
+      '@rive-app/canvas': 2.37.4
+      react: 19.2.5
 
   '@rolldown/binding-android-arm64@1.0.0-rc.16':
     optional: true

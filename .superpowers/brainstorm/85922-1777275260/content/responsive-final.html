@@ -1,0 +1,236 @@
+<h2>全端适配方案</h2>
+<p class="subtitle">手表、折叠屏、移动端、平板、桌面 + 横屏适配</p>
+
+<div class="section">
+  <h3>⌚ 手表 (≤280px)</h3>
+  <div style="display: flex; justify-content: center; gap: 16px;">
+    <!-- 圆形手表 -->
+    <div class="mockup" style="background: #1a1a1a; border-radius: 50%; width: 160px; height: 160px; padding: 4px; position: relative; overflow: hidden;">
+      <!-- 水位 -->
+      <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 62.5%; background: linear-gradient(180deg, rgba(77, 166, 255, 0.4) 0%, rgba(0, 102, 204, 0.5) 50%, rgba(0, 61, 122, 0.6) 100%); border-radius: 0 0 50% 50%;">
+        <svg viewBox="0 0 200 20" style="position: absolute; top: -8px; left: 0; width: 100%; height: 20px;">
+          <path d="M0,10 Q25,0 50,10 T100,10 T150,10 T200,10 L200,20 L0,20 Z" fill="rgba(77, 166, 255, 0.4)"/>
+        </svg>
+      </div>
+      <!-- 内容 -->
+      <div style="position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <div style="display: flex; align-items: baseline; gap: 2px;">
+          <span style="font-size: 36px; font-weight: 200; color: #fff; line-height: 1;">5</span>
+          <span style="font-size: 12px; font-weight: 200; color: rgba(255,255,255,0.5);">/8</span>
+        </div>
+        <div style="margin-top: 10px; width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); box-shadow: 0 0 16px rgba(0,102,255,0.4);">
+          <span style="color: #4da6ff; font-size: 22px; font-weight: 300;">+</span>
+        </div>
+      </div>
+    </div>
+    <!-- 方形手表 -->
+    <div class="mockup" style="background: #1a1a1a; border-radius: 24px; width: 140px; height: 170px; position: relative; overflow: hidden;">
+      <!-- 水位 -->
+      <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 62.5%; background: linear-gradient(180deg, rgba(77, 166, 255, 0.4) 0%, rgba(0, 102, 204, 0.5) 50%, rgba(0, 61, 122, 0.6) 100%); border-radius: 0 0 24px 24px;">
+        <svg viewBox="0 0 200 20" style="position: absolute; top: -8px; left: 0; width: 100%; height: 20px;">
+          <path d="M0,10 Q25,0 50,10 T100,10 T150,10 T200,10 L200,20 L0,20 Z" fill="rgba(77, 166, 255, 0.4)"/>
+        </svg>
+      </div>
+      <!-- 内容 -->
+      <div style="position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <div style="display: flex; align-items: baseline; gap: 2px;">
+          <span style="font-size: 32px; font-weight: 200; color: #fff; line-height: 1;">5</span>
+          <span style="font-size: 11px; font-weight: 200; color: rgba(255,255,255,0.5);">/8</span>
+        </div>
+        <div style="margin-top: 12px; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); box-shadow: 0 0 14px rgba(0,102,255,0.4);">
+          <span style="color: #4da6ff; font-size: 18px; font-weight: 300;">+</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p style="color: #666; font-size: 13px; margin-top: 8px; text-align: center;">深色优先，水位填满，极简数字</p>
+</div>
+
+<div class="section" style="margin-top: 24px;">
+  <h3>📱 移动端竖屏 (281px - 600px)</h3>
+  <div class="mockup" style="background: #fafafa; border-radius: 16px; padding: 12px; border: 1px solid #e0e0e0; max-width: 200px; margin: 0 auto;">
+    <div style="text-align: center; position: relative; height: 280px;">
+      <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 62.5%; background: linear-gradient(180deg, rgba(77, 166, 255, 0.5) 0%, rgba(0, 102, 204, 0.6) 50%, rgba(0, 61, 122, 0.7) 100%); border-radius: 0 0 16px 16px;">
+        <svg viewBox="0 0 200 20" style="position: absolute; top: -10px; left: 0; width: 100%; height: 20px;">
+          <path d="M0,10 Q25,0 50,10 T100,10 T150,10 T200,10 L200,20 L0,20 Z" fill="rgba(77, 166, 255, 0.5)"/>
+        </svg>
+      </div>
+      <div style="position: relative; z-index: 1; padding-top: 50px;">
+        <div style="display: flex; align-items: baseline; justify-content: center; gap: 4px;">
+          <span style="font-size: 56px; font-weight: 200; color: #1a1a1a; line-height: 1;">5</span>
+          <span style="font-size: 20px; font-weight: 200; color: #999;">/8杯</span>
+        </div>
+        <div style="margin-top: 40px;">
+          <div style="width: 52px; height: 52px; border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%); border: 1px solid rgba(255,255,255,0.5); box-shadow: 0 0 24px rgba(0,102,255,0.5);">
+            <span style="color: #0066ff; font-size: 26px; font-weight: 300; text-shadow: 0 0 8px rgba(0,102,255,0.8);">+</span>
+          </div>
+        </div>
+      </div>
+      <div style="position: absolute; bottom: 10px; left: 0; right: 0; display: flex; justify-content: center; gap: 20px;">
+        <span style="font-size: 10px; color: #999;">历史</span>
+        <span style="font-size: 10px; color: #999;">设置</span>
+      </div>
+    </div>
+  </div>
+  <p style="color: #666; font-size: 13px; margin-top: 8px; text-align: center;">全屏沉浸，底部导航</p>
+</div>
+
+<div class="section" style="margin-top: 24px;">
+  <h3>📱 移动端横屏 (高度 ≤400px)</h3>
+  <div class="mockup" style="background: #fafafa; border-radius: 16px; padding: 12px; border: 1px solid #e0e0e0; max-width: 420px; margin: 0 auto;">
+    <div style="display: flex; align-items: center; justify-content: center; height: 180px; gap: 24px;">
+      <!-- 左侧水位区域 -->
+      <div style="flex: 1; height: 100%; position: relative; border-radius: 16px; overflow: hidden;">
+        <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 62.5%; background: linear-gradient(180deg, rgba(77, 166, 255, 0.5) 0%, rgba(0, 102, 204, 0.6) 50%, rgba(0, 61, 122, 0.7) 100%);">
+          <svg viewBox="0 0 200 20" style="position: absolute; top: -10px; left: 0; width: 100%; height: 20px;">
+            <path d="M0,10 Q25,0 50,10 T100,10 T150,10 T200,10 L200,20 L0,20 Z" fill="rgba(77, 166, 255, 0.5)"/>
+          </svg>
+        </div>
+        <div style="position: relative; z-index: 1; height: 100%; display: flex; align-items: center; justify-content: center;">
+          <div style="display: flex; align-items: baseline; gap: 4px;">
+            <span style="font-size: 48px; font-weight: 200; color: #1a1a1a; line-height: 1;">5</span>
+            <span style="font-size: 18px; font-weight: 200; color: #999;">/8杯</span>
+          </div>
+        </div>
+      </div>
+      <!-- 右侧按钮 -->
+      <div style="width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%); border: 1px solid rgba(255,255,255,0.5); box-shadow: 0 0 24px rgba(0,102,255,0.5);">
+        <span style="color: #0066ff; font-size: 32px; font-weight: 300; text-shadow: 0 0 8px rgba(0,102,255,0.8);">+</span>
+      </div>
+    </div>
+  </div>
+  <p style="color: #666; font-size: 13px; margin-top: 8px; text-align: center;">左右分栏，水位区 + 按钮</p>
+</div>
+
+<div class="section" style="margin-top: 24px;">
+  <h3>📱 折叠屏展开 (600px - 900px)</h3>
+  <div class="mockup" style="background: #fafafa; border-radius: 16px; padding: 16px; border: 1px solid #e0e0e0; max-width: 500px; margin: 0 auto;">
+    <div style="display: flex; gap: 12px; height: 280px;">
+      <!-- 左侧 50% - 主卡片 -->
+      <div style="flex: 1; background: #fff; border-radius: 20px; position: relative; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 62.5%; background: linear-gradient(180deg, rgba(77, 166, 255, 0.5) 0%, rgba(0, 102, 204, 0.6) 50%, rgba(0, 61, 122, 0.7) 100%); border-radius: 0 0 20px 20px;">
+          <svg viewBox="0 0 200 20" style="position: absolute; top: -10px; left: 0; width: 100%; height: 20px;">
+            <path d="M0,10 Q25,0 50,10 T100,10 T150,10 T200,10 L200,20 L0,20 Z" fill="rgba(77, 166, 255, 0.5)"/>
+          </svg>
+        </div>
+        <div style="position: relative; z-index: 1; padding-top: 40px; text-align: center;">
+          <div style="display: flex; align-items: baseline; justify-content: center; gap: 4px;">
+            <span style="font-size: 48px; font-weight: 200; color: #1a1a1a; line-height: 1;">5</span>
+            <span style="font-size: 18px; font-weight: 200; color: #999;">/8杯</span>
+          </div>
+          <div style="margin-top: 32px;">
+            <div style="width: 52px; height: 52px; border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%); border: 1px solid rgba(255,255,255,0.5); box-shadow: 0 0 24px rgba(0,102,255,0.5);">
+              <span style="color: #0066ff; font-size: 26px; font-weight: 300; text-shadow: 0 0 8px rgba(0,102,255,0.8);">+</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 右侧 50% - 历史面板 -->
+      <div style="flex: 1; background: #fff; border-radius: 20px; padding: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+        <div style="font-size: 12px; color: #999; margin-bottom: 12px; font-weight: 500;">今日记录</div>
+        <div style="font-size: 11px; color: #666; line-height: 2.4;">
+          <div style="display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #f0f0f0;">
+            <span>09:30</span><span>+1杯</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #f0f0f0;">
+            <span>11:45</span><span>+1杯</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #f0f0f0;">
+            <span>14:20</span><span>+1杯</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; padding: 4px 0;">
+            <span>16:05</span><span>+1杯</span>
+          </div>
+        </div>
+        <div style="margin-top: 12px; font-size: 11px; color: #0066ff;">查看全部 →</div>
+      </div>
+    </div>
+  </div>
+  <p style="color: #666; font-size: 13px; margin-top: 8px; text-align: center;">左右各占50%，主卡片 + 历史面板</p>
+</div>
+
+<div class="section" style="margin-top: 24px;">
+  <h3>📱 平板 (900px - 1280px)</h3>
+  <div class="mockup" style="background: #fafafa; border-radius: 16px; padding: 20px; border: 1px solid #e0e0e0; max-width: 600px; margin: 0 auto;">
+    <div style="display: flex; gap: 16px; height: 320px;">
+      <!-- 左侧 - 主卡片 -->
+      <div style="flex: 1; background: #fff; border-radius: 24px; position: relative; overflow: hidden; box-shadow: 0 6px 24px rgba(0,0,0,0.1);">
+        <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 62.5%; background: linear-gradient(180deg, rgba(77, 166, 255, 0.5) 0%, rgba(0, 102, 204, 0.6) 50%, rgba(0, 61, 122, 0.7) 100%); border-radius: 0 0 24px 24px;">
+          <svg viewBox="0 0 200 20" style="position: absolute; top: -10px; left: 0; width: 100%; height: 20px;">
+            <path d="M0,10 Q25,0 50,10 T100,10 T150,10 T200,10 L200,20 L0,20 Z" fill="rgba(77, 166, 255, 0.5)"/>
+          </svg>
+        </div>
+        <div style="position: relative; z-index: 1; padding-top: 50px; text-align: center;">
+          <div style="display: flex; align-items: baseline; justify-content: center; gap: 4px;">
+            <span style="font-size: 56px; font-weight: 200; color: #1a1a1a; line-height: 1;">5</span>
+            <span style="font-size: 20px; font-weight: 200; color: #999;">/8杯</span>
+          </div>
+          <div style="margin-top: 40px;">
+            <div style="width: 60px; height: 60px; border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%); border: 1px solid rgba(255,255,255,0.5); box-shadow: 0 0 28px rgba(0,102,255,0.5);">
+              <span style="color: #0066ff; font-size: 30px; font-weight: 300; text-shadow: 0 0 10px rgba(0,102,255,0.8);">+</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 右侧 - 历史面板 -->
+      <div style="flex: 1; background: #fff; border-radius: 20px; padding: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.08);">
+        <div style="font-size: 13px; color: #999; margin-bottom: 16px; font-weight: 500;">今日记录</div>
+        <div style="font-size: 12px; color: #666; line-height: 2.6;">
+          <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #f0f0f0;">
+            <span>09:30</span><span>+1杯</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #f0f0f0;">
+            <span>11:45</span><span>+1杯</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #f0f0f0;">
+            <span>14:20</span><span>+1杯</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #f0f0f0;">
+            <span>16:05</span><span>+1杯</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; padding: 6px 0;">
+            <span>18:30</span><span>+1杯</span>
+          </div>
+        </div>
+        <div style="margin-top: 16px; font-size: 12px; color: #0066ff;">查看全部 →</div>
+      </div>
+    </div>
+  </div>
+  <p style="color: #666; font-size: 13px; margin-top: 8px; text-align: center;">左右各占50%，充分利用屏幕</p>
+</div>
+
+<div class="section" style="margin-top: 24px; padding: 16px; background: #f5f5f5; border-radius: 12px;">
+  <h3>断点总览</h3>
+  <table style="width: 100%; font-size: 12px; color: #444; border-collapse: collapse;">
+    <tr style="border-bottom: 1px solid #e0e0e0;">
+      <td style="padding: 6px 0;"><strong>≤280px</strong></td>
+      <td>手表</td>
+      <td>深色优先，水位填满</td>
+    </tr>
+    <tr style="border-bottom: 1px solid #e0e0e0;">
+      <td style="padding: 6px 0;"><strong>281-600px</strong></td>
+      <td>移动端竖屏</td>
+      <td>全屏沉浸</td>
+    </tr>
+    <tr style="border-bottom: 1px solid #e0e0e0;">
+      <td style="padding: 6px 0;"><strong>高度≤400px</strong></td>
+      <td>移动端横屏</td>
+      <td>左右分栏</td>
+    </tr>
+    <tr style="border-bottom: 1px solid #e0e0e0;">
+      <td style="padding: 6px 0;"><strong>600-900px</strong></td>
+      <td>折叠屏</td>
+      <td>左右各50%（主卡片 + 历史）</td>
+    </tr>
+    <tr style="border-bottom: 1px solid #e0e0e0;">
+      <td style="padding: 6px 0;"><strong>900-1280px</strong></td>
+      <td>平板</td>
+      <td>左右各50%（主卡片 + 历史）</td>
+    </tr>
+    <tr>
+      <td style="padding: 6px 0;"><strong>≥1280px</strong></td>
+      <td>桌面</td>
+      <td>主卡片 + 侧边信息面板</td>
+    </tr>
+  </table>
+</div>

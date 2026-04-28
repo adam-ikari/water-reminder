@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1777019402483,
+  "lastScanned": 1777259848780,
   "projectRoot": "/home/gem/water-reminder",
   "techStack": {
     "languages": [
@@ -42,7 +42,7 @@
     "runtime": null
   },
   "build": {
-    "buildCommand": "npm run build 2>&1 | tail -3",
+    "buildCommand": "pnpm build 2>&1 | tail -15",
     "testCommand": null,
     "lintCommand": "pnpm lint",
     "devCommand": "pnpm dev",
@@ -77,7 +77,7 @@
       "path": "dist",
       "purpose": "Distribution/build output",
       "fileCount": 3,
-      "lastAccessed": 1777019402469,
+      "lastAccessed": 1777259848758,
       "keyFiles": [
         "favicon.svg",
         "icons.svg",
@@ -88,7 +88,7 @@
       "path": "public",
       "purpose": "Public files",
       "fileCount": 2,
-      "lastAccessed": 1777019402470,
+      "lastAccessed": 1777259848759,
       "keyFiles": [
         "favicon.svg",
         "icons.svg"
@@ -98,7 +98,7 @@
       "path": "src",
       "purpose": "Source code",
       "fileCount": 5,
-      "lastAccessed": 1777019402475,
+      "lastAccessed": 1777259848771,
       "keyFiles": [
         "App.css",
         "App.tsx",
@@ -111,7 +111,7 @@
       "path": "dist/assets",
       "purpose": "Static assets",
       "fileCount": 5,
-      "lastAccessed": 1777019402480,
+      "lastAccessed": 1777259848774,
       "keyFiles": [
         "geist-cyrillic-wght-normal-CHSlOQsW.woff2",
         "geist-latin-ext-wght-normal-DMtmJ5ZE.woff2",
@@ -122,7 +122,7 @@
       "path": "src/assets",
       "purpose": "Static assets",
       "fileCount": 3,
-      "lastAccessed": 1777019402481,
+      "lastAccessed": 1777259848775,
       "keyFiles": [
         "hero.png",
         "react.svg",
@@ -133,21 +133,39 @@
       "path": "src/components",
       "purpose": "UI components",
       "fileCount": 0,
-      "lastAccessed": 1777019402481,
+      "lastAccessed": 1777259848776,
       "keyFiles": []
     }
   },
   "hotPaths": [
     {
       "path": "src/App.tsx",
-      "accessCount": 45,
-      "lastAccessed": 1777021712576,
+      "accessCount": 136,
+      "lastAccessed": 1777275196723,
       "type": "file"
     },
     {
       "path": "src/index.css",
-      "accessCount": 16,
-      "lastAccessed": 1777021760466,
+      "accessCount": 45,
+      "lastAccessed": 1777275196689,
+      "type": "file"
+    },
+    {
+      "path": ".superpowers/brainstorm/85922-1777275260/content/ui-ux-complete.html",
+      "accessCount": 29,
+      "lastAccessed": 1777285395314,
+      "type": "file"
+    },
+    {
+      "path": "src/i18n.ts",
+      "accessCount": 8,
+      "lastAccessed": 1777268838537,
+      "type": "file"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-04-27-water-reminder-ui-design.md",
+      "accessCount": 4,
+      "lastAccessed": 1777285429829,
       "type": "file"
     },
     {
@@ -157,9 +175,9 @@
       "type": "file"
     },
     {
-      "path": "src/i18n.ts",
+      "path": "DESIGN.md",
       "accessCount": 3,
-      "lastAccessed": 1776752199261,
+      "lastAccessed": 1777275196708,
       "type": "file"
     },
     {
@@ -196,6 +214,174 @@
       "path": "vite.config.ts",
       "accessCount": 1,
       "lastAccessed": 1776745285863,
+      "type": "file"
+    },
+    {
+      "path": "RIVE.md",
+      "accessCount": 1,
+      "lastAccessed": 1777264457039,
+      "type": "file"
+    },
+    {
+      "path": ".superpowers/brainstorm/85922-1777275260/content/style-direction.html",
+      "accessCount": 1,
+      "lastAccessed": 1777275366406,
+      "type": "file"
+    },
+    {
+      "path": ".superpowers/brainstorm/85922-1777275260/content/color-scheme.html",
+      "accessCount": 1,
+      "lastAccessed": 1777275460111,
+      "type": "file"
+    },
+    {
+      "path": ".superpowers/brainstorm/85922-1777275260/content/accent-color.html",
+      "accessCount": 1,
+      "lastAccessed": 1777275518113,
+      "type": "file"
+    },
+    {
+      "path": ".superpowers/brainstorm/85922-1777275260/content/layout.html",
+      "accessCount": 1,
+      "lastAccessed": 1777275579501,
+      "type": "file"
+    },
+    {
+      "path": ".superpowers/brainstorm/85922-1777275260/content/water-style.html",
+      "accessCount": 1,
+      "lastAccessed": 1777275648079,
+      "type": "file"
+    },
+    {
+      "path": ".superpowers/brainstorm/85922-1777275260/content/buttons.html",
+      "accessCount": 1,
+      "lastAccessed": 1777275708306,
+      "type": "file"
+    },
+    {
+      "path": ".superpowers/brainstorm/85922-1777275260/content/confirm.html",
+      "accessCount": 1,
+      "lastAccessed": 1777275790744,
+      "type": "file"
+    },
+    {
+      "path": ".superpowers/brainstorm/85922-1777275260/content/confirm-v2.html",
+      "accessCount": 1,
+      "lastAccessed": 1777275827582,
+      "type": "file"
+    },
+    {
+      "path": ".superpowers/brainstorm/85922-1777275260/content/confirm-v3.html",
+      "accessCount": 1,
+      "lastAccessed": 1777275879421,
+      "type": "file"
+    },
+    {
+      "path": ".superpowers/brainstorm/85922-1777275260/content/confirm-v4.html",
+      "accessCount": 1,
+      "lastAccessed": 1777275963447,
+      "type": "file"
+    },
+    {
+      "path": ".superpowers/brainstorm/85922-1777275260/content/confirm-v5.html",
+      "accessCount": 1,
+      "lastAccessed": 1777276001513,
+      "type": "file"
+    },
+    {
+      "path": ".superpowers/brainstorm/85922-1777275260/content/confirm-v6.html",
+      "accessCount": 1,
+      "lastAccessed": 1777276078371,
+      "type": "file"
+    },
+    {
+      "path": ".superpowers/brainstorm/85922-1777275260/content/confirm-v7.html",
+      "accessCount": 1,
+      "lastAccessed": 1777276107293,
+      "type": "file"
+    },
+    {
+      "path": ".superpowers/brainstorm/85922-1777275260/content/responsive.html",
+      "accessCount": 1,
+      "lastAccessed": 1777276230823,
+      "type": "file"
+    },
+    {
+      "path": ".superpowers/brainstorm/85922-1777275260/content/responsive-full.html",
+      "accessCount": 1,
+      "lastAccessed": 1777276369418,
+      "type": "file"
+    },
+    {
+      "path": ".superpowers/brainstorm/85922-1777275260/content/responsive-complete.html",
+      "accessCount": 1,
+      "lastAccessed": 1777276550737,
+      "type": "file"
+    },
+    {
+      "path": ".superpowers/brainstorm/85922-1777275260/content/responsive-final.html",
+      "accessCount": 1,
+      "lastAccessed": 1777276654203,
+      "type": "file"
+    },
+    {
+      "path": ".superpowers/brainstorm/85922-1777275260/content/responsive-v2.html",
+      "accessCount": 1,
+      "lastAccessed": 1777276794022,
+      "type": "file"
+    },
+    {
+      "path": ".superpowers/brainstorm/85922-1777275260/content/responsive-v3.html",
+      "accessCount": 1,
+      "lastAccessed": 1777276909501,
+      "type": "file"
+    },
+    {
+      "path": ".superpowers/brainstorm/85922-1777275260/content/responsive-final-v2.html",
+      "accessCount": 1,
+      "lastAccessed": 1777277148268,
+      "type": "file"
+    },
+    {
+      "path": ".superpowers/brainstorm/85922-1777275260/content/responsive-final-v3.html",
+      "accessCount": 1,
+      "lastAccessed": 1777277690758,
+      "type": "file"
+    },
+    {
+      "path": ".superpowers/brainstorm/85922-1777275260/content/responsive-final-v4.html",
+      "accessCount": 1,
+      "lastAccessed": 1777277808722,
+      "type": "file"
+    },
+    {
+      "path": ".superpowers/brainstorm/85922-1777275260/content/responsive-final-v5.html",
+      "accessCount": 1,
+      "lastAccessed": 1777277916445,
+      "type": "file"
+    },
+    {
+      "path": ".superpowers/brainstorm/85922-1777275260/content/responsive-final-v6.html",
+      "accessCount": 1,
+      "lastAccessed": 1777278045002,
+      "type": "file"
+    },
+    {
+      "path": ".superpowers/brainstorm/85922-1777275260/content/responsive-final-v7.html",
+      "accessCount": 1,
+      "lastAccessed": 1777278164582,
+      "type": "file"
+    },
+    {
+      "path": ".superpowers/brainstorm/85922-1777275260/content/responsive-ux-final.html",
+      "accessCount": 1,
+      "lastAccessed": 1777278317733,
+      "type": "file"
+    },
+    {
+      "path": ".superpowers/brainstorm/85922-1777275260/content/ux-flow-diagram.html",
+      "accessCount": 1,
+      "lastAccessed": 1777278590249,
       "type": "file"
     }
   ],

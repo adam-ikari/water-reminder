@@ -1,0 +1,63 @@
+<h2>水位效果风格</h2>
+<p class="subtitle">极简主义 + 水位动画，如何呈现？</p>
+
+<div class="cards">
+  <div class="card" data-choice="flat" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: #fafafa; display: flex; align-items: center; justify-content: center; height: 180px; border: 1px solid #e0e0e0; border-radius: 12px; overflow: hidden; position: relative;">
+      <!-- 水位 -->
+      <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 62.5%; background: linear-gradient(180deg, #e6f2ff 0%, #cce5ff 100%);"></div>
+      <!-- 内容 -->
+      <div style="position: relative; z-index: 1; text-align: center;">
+        <div style="font-size: 64px; font-weight: 200; color: #1a1a1a; line-height: 1;">5</div>
+        <div style="font-size: 12px; color: #666;">/ 8 杯</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>平面水位</h3>
+      <p>简单的水平面，无波浪。最干净，水位用浅蓝色填充。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="wave" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: #fafafa; display: flex; align-items: center; justify-content: center; height: 180px; border: 1px solid #e0e0e0; border-radius: 12px; overflow: hidden; position: relative;">
+      <!-- 水位带波浪 -->
+      <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 62.5%; background: linear-gradient(180deg, #e6f2ff 0%, #cce5ff 100%);">
+        <svg viewBox="0 0 200 20" style="position: absolute; top: -10px; left: 0; width: 100%; height: 20px;">
+          <path d="M0,10 Q25,0 50,10 T100,10 T150,10 T200,10 L200,20 L0,20 Z" fill="#e6f2ff"/>
+        </svg>
+      </div>
+      <!-- 内容 -->
+      <div style="position: relative; z-index: 1; text-align: center;">
+        <div style="font-size: 64px; font-weight: 200; color: #1a1a1a; line-height: 1;">5</div>
+        <div style="font-size: 12px; color: #666;">/ 8 杯</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>柔和波浪</h3>
+      <p>水面有轻微波浪动画，保持简洁但不失动感。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="glass" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: #fafafa; display: flex; align-items: center; justify-content: center; height: 180px; border: 1px solid #e0e0e0; border-radius: 12px; overflow: hidden; position: relative;">
+      <!-- 容器轮廓 -->
+      <div style="width: 100px; height: 140px; border: 3px solid #1a1a1a; border-radius: 8px 8px 24px 24px; position: relative; overflow: hidden;">
+        <!-- 水位 -->
+        <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 62.5%; background: linear-gradient(180deg, #0066ff 0%, #0052cc 100%);"></div>
+      </div>
+      <!-- 数字 -->
+      <div style="position: absolute; top: 20px; text-align: center;">
+        <div style="font-size: 32px; font-weight: 200; color: #1a1a1a; line-height: 1;">5/8</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>容器隐喻</h3>
+      <p>一个简洁的杯子/容器轮廓，水位在其中上升。隐喻清晰。</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top: 24px;">
+  <p class="label">关于动画</p>
+  <p style="color: #666; font-size: 14px;">所有方案的水位变化都会有平滑过渡动画，波浪方案会有持续的波浪动画。</p>
+</div>
