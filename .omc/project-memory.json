@@ -152,8 +152,8 @@
     },
     {
       "path": ".superpowers/brainstorm/85922-1777275260/content/ui-ux-complete.html",
-      "accessCount": 29,
-      "lastAccessed": 1777285395314,
+      "accessCount": 33,
+      "lastAccessed": 1777341691087,
       "type": "file"
     },
     {
@@ -164,8 +164,8 @@
     },
     {
       "path": "docs/superpowers/specs/2026-04-27-water-reminder-ui-design.md",
-      "accessCount": 4,
-      "lastAccessed": 1777285429829,
+      "accessCount": 7,
+      "lastAccessed": 1777342276214,
       "type": "file"
     },
     {
@@ -178,6 +178,12 @@
       "path": "DESIGN.md",
       "accessCount": 3,
       "lastAccessed": 1777275196708,
+      "type": "file"
+    },
+    {
+      "path": "docs/ui-ux-design.html",
+      "accessCount": 3,
+      "lastAccessed": 1777342835097,
       "type": "file"
     },
     {
@@ -196,6 +202,18 @@
       "path": "src/main.tsx",
       "accessCount": 2,
       "lastAccessed": 1776750594535,
+      "type": "file"
+    },
+    {
+      "path": ".superpowers/brainstorm/85922-1777275260/content/ux-flow-diagram.html",
+      "accessCount": 2,
+      "lastAccessed": 1777341332063,
+      "type": "file"
+    },
+    {
+      "path": ".superpowers/brainstorm/85922-1777275260/content/responsive-ux-final.html",
+      "accessCount": 2,
+      "lastAccessed": 1777341471409,
       "type": "file"
     },
     {
@@ -370,18 +388,6 @@
       "path": ".superpowers/brainstorm/85922-1777275260/content/responsive-final-v7.html",
       "accessCount": 1,
       "lastAccessed": 1777278164582,
-      "type": "file"
-    },
-    {
-      "path": ".superpowers/brainstorm/85922-1777275260/content/responsive-ux-final.html",
-      "accessCount": 1,
-      "lastAccessed": 1777278317733,
-      "type": "file"
-    },
-    {
-      "path": ".superpowers/brainstorm/85922-1777275260/content/ux-flow-diagram.html",
-      "accessCount": 1,
-      "lastAccessed": 1777278590249,
       "type": "file"
     }
   ],
