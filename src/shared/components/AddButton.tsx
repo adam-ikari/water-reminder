@@ -3,14 +3,27 @@ import { motion } from 'framer-motion'
 interface Props {
   onAdd: () => void
   dark: boolean
+  size?: 'sm' | 'md' | 'lg'
 }
 
-export function WatchButtons({ onAdd, dark }: Props) {
+const sizeMap = {
+  sm: { button: 'w-12 h-12', icon: 'w-6 h-6' },
+  md: { button: 'w-14 h-14', icon: 'w-7 h-7' },
+  lg: { button: 'w-16 h-16', icon: 'w-8 h-8' },
+}
+
+/**
+ * Shared add water button for all platforms
+ * Used by: Mobile, Desktop card, Watch
+ */
+export function AddButton({ onAdd, dark, size = 'md' }: Props) {
+  const { button, icon } = sizeMap[size]
+
   return (
     <motion.button
       whileTap={{ scale: 0.9 }}
       onClick={onAdd}
-      className={`w-16 h-16 rounded-full flex items-center justify-center mt-6 ${
+      className={`${button} rounded-full flex items-center justify-center ${
         dark
           ? 'bg-white/10 border border-white/20'
           : 'bg-white/30 border border-white/50'
@@ -24,7 +37,7 @@ export function WatchButtons({ onAdd, dark }: Props) {
       }}
     >
       <svg
-        className={`w-8 h-8 ${dark ? 'text-[#4fc3f7]' : 'text-[#0288d1]'}`}
+        className={`${icon} ${dark ? 'text-[#4fc3f7]' : 'text-[#0288d1]'}`}
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
