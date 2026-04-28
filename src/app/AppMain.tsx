@@ -258,6 +258,7 @@ export default function AppMain() {
   })
   const [settings, setSettings] = useState(false)
   const [historyView, setHistoryView] = useState(false)
+  const [calendarView, setCalendarView] = useState(false)
   const [dark, setDark] = useState(() => {
     const s = localStorage.getItem('dark')
     return s ? s === 'true' : window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -352,6 +353,9 @@ export default function AppMain() {
           <button onClick={() => setHistoryView(true)} className={`text-sm ${dark ? 'text-white/40' : 'text-[#718096]'}`}>
             {t('history')}
           </button>
+          <button onClick={() => setCalendarView(true)} className={`text-sm ${dark ? 'text-white/40' : 'text-[#718096]'}`}>
+            {t('calendar')}
+          </button>
           <button onClick={() => setSettings(true)} className={`text-sm ${dark ? 'text-white/40' : 'text-[#718096]'}`}>
             {t('settings')}
           </button>
@@ -360,6 +364,7 @@ export default function AppMain() {
         {/* 面板 */}
         <Panels
           historyView={historyView} setHistoryView={setHistoryView}
+          calendarView={calendarView} setCalendarView={setCalendarView}
           settings={settings} setSettings={setSettings}
           dark={dark} setDark={setDark}
           today={today} remove={remove} i18n={i18n} t={t}
@@ -449,6 +454,7 @@ export default function AppMain() {
       {/* 面板 */}
       <Panels
         historyView={historyView} setHistoryView={setHistoryView}
+        calendarView={calendarView} setCalendarView={setCalendarView}
         settings={settings} setSettings={setSettings}
         dark={dark} setDark={setDark}
         today={today} remove={remove} i18n={i18n} t={t}
@@ -460,17 +466,38 @@ export default function AppMain() {
 // 面板组件
 function Panels({
   historyView, setHistoryView,
+  calendarView, setCalendarView,
   settings, setSettings,
   dark, setDark,
   today, remove, i18n, t
 }: {
   historyView: boolean; setHistoryView: (v: boolean) => void
+  calendarView: boolean; setCalendarView: (v: boolean) => void
   settings: boolean; setSettings: (v: boolean) => void
   dark: boolean; setDark: (v: boolean) => void
   today: DrinkRecord[]; remove: (id: string) => void
   i18n: { language: string; changeLanguage: (l: string) => void }
   t: (k: string) => string
 }) {
+  // Generate week data for calendar
+  const getWeekData = () => {
+    const days = []
+    const today = new Date()
+    const dayOfWeek = today.getDay()
+    for (let i = 0; i < 7; i++) {
+      const date = new Date(today)
+      date.setDate(today.getDate() - dayOfWeek + i)
+      days.push({
+        day: ['日', '一', '二', '三', '四', '五', '六'][i],
+        date: date.getDate(),
+        isToday: date.toDateString() === today.toDateString(),
+        count: Math.floor(Math.random() * 9), // Placeholder
+      })
+    }
+    return days
+  }
+  const weekData = getWeekData()
+
   return (
     <>
       <AnimatePresence>
@@ -494,6 +521,50 @@ function Panels({
                       <button onClick={() => remove(r.id)} className={`p-1 ${dark ? 'text-[#fc8181]' : 'text-[#e53e3e]'}`}><X className="w-4 h-4" /></button>
                     </div>
                   )) : <p className={`py-8 text-center text-sm ${dark ? 'text-white/40' : 'text-[#718096]'}`}>{t('noRecords')}</p>}
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {calendarView && (
+          <>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 bg-black/30 z-40" onClick={() => setCalendarView(false)} />
+            <motion.div
+              initial={{ y: '100%' }}
+              animate={{ y: 0 }}
+              exit={{ y: '100%' }}
+              transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+              className={`fixed bottom-0 left-0 right-0 z-50 rounded-t-3xl ${dark ? 'bg-[#1b2838]' : 'bg-white'}`}
+            >
+              <div className={`w-10 h-1 rounded-full mx-auto mt-3 ${dark ? 'bg-white/20' : 'bg-black/10'}`} />
+              <div className="p-6 pb-12">
+                <h2 className={`text-lg font-medium mb-6 ${dark ? 'text-white' : 'text-[#1a365d]'}`}>{t('thisWeek')}</h2>
+
+                {/* Week bar chart */}
+                <div className={`rounded-2xl p-4 ${dark ? 'bg-[#243447]' : 'bg-[#f7fafc]'}`}>
+                  <div className="flex items-end justify-center gap-3 h-32">
+                    {weekData.map((d, i) => (
+                      <div key={i} className="flex flex-col items-center gap-2">
+                        <div
+                          className={`w-8 rounded-t-lg ${
+                            d.isToday
+                              ? dark ? 'bg-[#4fc3f7]' : 'bg-[#0066ff]'
+                              : dark ? 'bg-[#4fc3f7]/40' : 'bg-[#0066ff]/40'
+                          }`}
+                          style={{ height: `${(d.count / 8) * 100}%`, minHeight: '8px' }}
+                        />
+                        <span className={`text-xs ${d.isToday ? 'font-bold' : ''} ${dark ? 'text-white' : 'text-[#1a365d]'}`}>
+                          {d.day}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                  <p className={`text-center text-sm mt-4 ${dark ? 'text-white/60' : 'text-[#718096]'}`}>
+                    {t('totalWeek')}: {weekData.reduce((sum, d) => sum + d.count, 0)} {t('cups')}
+                  </p>
                 </div>
               </div>
             </motion.div>

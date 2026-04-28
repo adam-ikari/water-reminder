@@ -1,14 +1,35 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useWaterData } from '../shared/hooks/useWaterData'
 import { WaterCanvas, AddButton } from '../shared/components'
 
-type View = 'main' | 'history' | 'settings'
+type View = 'main' | 'history' | 'calendar' | 'settings'
 
 export default function WatchApp() {
   const { count, goal, level, dark, history, add, setDark } = useWaterData()
   const [view, setView] = useState<View>('main')
   const [menuOpen, setMenuOpen] = useState(false)
+  const [showBackButton, setShowBackButton] = useState(true)
+  const scrollRef = useRef<HTMLDivElement>(null)
+
+  // Generate calendar data for current week
+  const getWeekData = () => {
+    const today = new Date()
+    const dayOfWeek = today.getDay()
+    const days = []
+    for (let i = 0; i < 7; i++) {
+      const date = new Date(today)
+      date.setDate(today.getDate() - dayOfWeek + i)
+      days.push({
+        day: ['日', '一', '二', '三', '四', '五', '六'][i],
+        date: date.getDate(),
+        isToday: date.toDateString() === today.toDateString(),
+        count: Math.floor(Math.random() * 9), // Placeholder - should be from history
+      })
+    }
+    return days
+  }
+  const weekData = getWeekData()
 
   // Detect round vs square screen
   const [isRound, setIsRound] = useState(false)
@@ -21,6 +42,30 @@ export default function WatchApp() {
     window.addEventListener('resize', check)
     return () => window.removeEventListener('resize', check)
   }, [])
+
+  // Hide back button on scroll
+  useEffect(() => {
+    const scrollEl = scrollRef.current
+    if (!scrollEl) return
+
+    let timeout: ReturnType<typeof setTimeout>
+    const handleScroll = () => {
+      setShowBackButton(false)
+      clearTimeout(timeout)
+      timeout = setTimeout(() => setShowBackButton(true), 800)
+    }
+
+    scrollEl.addEventListener('scroll', handleScroll)
+    return () => {
+      scrollEl.removeEventListener('scroll', handleScroll)
+      clearTimeout(timeout)
+    }
+  }, [view])
+
+  // Reset back button visibility when view changes
+  useEffect(() => {
+    setShowBackButton(true)
+  }, [view])
 
   // Close menu when changing view
   const handleViewChange = (newView: View) => {
@@ -101,7 +146,7 @@ export default function WatchApp() {
           <div className={`text-center text-sm font-medium mb-4 ${dark ? 'text-white' : 'text-[#1a365d]'}`}>
             Today
           </div>
-          <div className="flex-1 overflow-y-auto">
+          <div ref={scrollRef} className="flex-1 overflow-y-auto">
             {history.length > 0 ? (
               <div className="space-y-2">
                 {history.map((r) => (
@@ -127,17 +172,75 @@ export default function WatchApp() {
               </p>
             )}
           </div>
-          {/* Back button */}
-          <button
-            onClick={() => setView('main')}
-            className="mt-4 w-10 h-10 rounded-full flex items-center justify-center mx-auto"
-            style={{
-              background: dark ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.3)',
-              backdropFilter: 'blur(10px)',
-            }}
-          >
-            <span className={`text-lg ${dark ? 'text-white' : 'text-[#1a365d]'}`}>←</span>
-          </button>
+          {/* Floating Back button */}
+          <AnimatePresence>
+            {showBackButton && (
+              <motion.button
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                onClick={() => setView('main')}
+                className="fixed bottom-6 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full flex items-center justify-center z-20"
+                style={{
+                  background: dark ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.3)',
+                  backdropFilter: 'blur(10px)',
+                }}
+              >
+                <span className={`text-lg ${dark ? 'text-white' : 'text-[#1a365d]'}`}>←</span>
+              </motion.button>
+            )}
+          </AnimatePresence>
+        </div>
+      )}
+
+      {/* Calendar View */}
+      {view === 'calendar' && (
+        <div className="relative z-10 w-full h-full flex flex-col p-4">
+          <div className={`text-center text-sm font-medium mb-4 ${dark ? 'text-white' : 'text-[#1a365d]'}`}>
+            This Week
+          </div>
+          <div ref={scrollRef} className="flex-1 flex flex-col items-center justify-center">
+            {/* Week bar chart */}
+            <div className="flex items-end justify-center gap-2 h-32">
+              {weekData.map((d, i) => (
+                <div key={i} className="flex flex-col items-center gap-1">
+                  <div
+                    className={`w-6 rounded-t-lg ${
+                      d.isToday
+                        ? dark ? 'bg-[#4fc3f7]' : 'bg-[#0066ff]'
+                        : dark ? 'bg-[#4fc3f7]/40' : 'bg-[#0066ff]/40'
+                    }`}
+                    style={{ height: `${(d.count / 8) * 100}%`, minHeight: '4px' }}
+                  />
+                  <span className={`text-xs ${d.isToday ? 'font-bold' : ''} ${dark ? 'text-white' : 'text-[#1a365d]'}`}>
+                    {d.day}
+                  </span>
+                </div>
+              ))}
+            </div>
+            {/* Summary */}
+            <div className={`mt-4 text-xs ${dark ? 'text-white/60' : 'text-[#1a365d]/60'}`}>
+              Total: {weekData.reduce((sum, d) => sum + d.count, 0)} cups this week
+            </div>
+          </div>
+          {/* Floating Back button */}
+          <AnimatePresence>
+            {showBackButton && (
+              <motion.button
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                onClick={() => setView('main')}
+                className="fixed bottom-6 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full flex items-center justify-center z-20"
+                style={{
+                  background: dark ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.3)',
+                  backdropFilter: 'blur(10px)',
+                }}
+              >
+                <span className={`text-lg ${dark ? 'text-white' : 'text-[#1a365d]'}`}>←</span>
+              </motion.button>
+            )}
+          </AnimatePresence>
         </div>
       )}
 
@@ -168,17 +271,24 @@ export default function WatchApp() {
               </div>
             </button>
           </div>
-          {/* Back button */}
-          <button
-            onClick={() => setView('main')}
-            className="mt-4 w-10 h-10 rounded-full flex items-center justify-center mx-auto"
-            style={{
-              background: dark ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.3)',
-              backdropFilter: 'blur(10px)',
-            }}
-          >
-            <span className={`text-lg ${dark ? 'text-white' : 'text-[#1a365d]'}`}>←</span>
-          </button>
+          {/* Floating Back button */}
+          <AnimatePresence>
+            {showBackButton && (
+              <motion.button
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                onClick={() => setView('main')}
+                className="fixed bottom-6 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full flex items-center justify-center z-20"
+                style={{
+                  background: dark ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.3)',
+                  backdropFilter: 'blur(10px)',
+                }}
+              >
+                <span className={`text-lg ${dark ? 'text-white' : 'text-[#1a365d]'}`}>←</span>
+              </motion.button>
+            )}
+          </AnimatePresence>
         </div>
       )}
 
@@ -201,7 +311,7 @@ export default function WatchApp() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className={`fixed inset-0 z-40 flex flex-col items-center justify-center gap-6 ${
+              className={`fixed inset-0 z-40 flex flex-col items-center justify-center gap-4 ${
                 dark ? 'bg-[#1b2838]' : 'bg-white'
               }`}
             >
@@ -214,6 +324,16 @@ export default function WatchApp() {
                 }`}
               >
                 History
+              </button>
+              <button
+                onClick={() => handleViewChange('calendar')}
+                className={`w-32 h-12 rounded-2xl flex items-center justify-center text-sm font-medium ${
+                  dark
+                    ? 'bg-[#4fc3f7]/20 text-[#4fc3f7]'
+                    : 'bg-[#0066ff]/10 text-[#0066ff]'
+                }`}
+              >
+                Calendar
               </button>
               <button
                 onClick={() => handleViewChange('settings')}
