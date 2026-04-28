@@ -201,12 +201,9 @@ export default function WatchApp() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className={`fixed inset-4 z-40 rounded-3xl flex flex-col items-center justify-center gap-6 ${
+              className={`fixed inset-0 z-40 flex flex-col items-center justify-center gap-6 ${
                 dark ? 'bg-[#1b2838]' : 'bg-white'
               }`}
-              style={{
-                boxShadow: '0 20px 60px rgba(0,0,0,0.3)',
-              }}
             >
               <button
                 onClick={() => handleViewChange('history')}
@@ -227,6 +224,16 @@ export default function WatchApp() {
                 }`}
               >
                 Settings
+              </button>
+              {/* Close button - bottom center */}
+              <button
+                onClick={() => setMenuOpen(false)}
+                className="mt-4 w-10 h-10 rounded-full flex items-center justify-center"
+                style={{
+                  background: dark ? 'rgba(255,255,255,0.1)' : 'rgba(0,102,255,0.1)',
+                }}
+              >
+                <span className={`text-lg ${dark ? 'text-white' : 'text-[#0066ff]'}`}>×</span>
               </button>
             </motion.div>
           </>
