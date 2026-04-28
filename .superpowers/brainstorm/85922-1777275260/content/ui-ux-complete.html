@@ -596,6 +596,129 @@
   </div>
 </div>
 
+<div class="section" style="margin-top: 24px;">
+  <h3>📱 小组件设计 (Widget)</h3>
+  <div style="background: #fafafa; border-radius: 16px; padding: 20px; border: 1px solid #e0e0e0;">
+    <div style="display: flex; justify-content: center; gap: 24px; margin-bottom: 20px; flex-wrap: wrap;">
+
+      <!-- 小尺寸小组件 (2×2) -->
+      <div style="text-align: center;">
+        <p style="font-size: 12px; color: #999; margin-bottom: 8px;">小尺寸 (2×2)</p>
+        <div style="width: 140px; height: 140px; border-radius: 20px; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); backdrop-filter: blur(20px); border: 1px solid rgba(0,0,0,0.06); position: relative; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+          <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 62.5%; background: linear-gradient(180deg, rgba(77, 166, 255, 0.5) 0%, rgba(0, 102, 204, 0.6) 50%, rgba(0, 61, 122, 0.7) 100%); border-radius: 0 0 20px 20px;">
+            <svg viewBox="0 0 200 20" style="position: absolute; top: -8px; left: 0; width: 100%; height: 16px;"><path d="M0,10 Q25,0 50,10 T100,10 T150,10 T200,10 L200,20 L0,20 Z" fill="rgba(77, 166, 255, 0.5)"/></svg>
+          </div>
+          <div style="position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <div style="display: flex; align-items: baseline; gap: 2px;">
+              <span style="font-size: 36px; font-weight: 200; color: #1a1a1a;">5</span>
+              <span style="font-size: 12px; color: #999;">/8杯</span>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 8px; font-size: 9px; color: #666; text-align: left; padding: 6px; background: #f5f5f5; border-radius: 6px; line-height: 1.6;">
+          <div>尺寸: 140×140px</div>
+          <div>数字: 36px</div>
+          <div>交互: 点击打开App</div>
+        </div>
+      </div>
+
+      <!-- 中尺寸小组件 (2×4) -->
+      <div style="text-align: center;">
+        <p style="font-size: 12px; color: #999; margin-bottom: 8px;">中尺寸 (2×4)</p>
+        <div style="width: 140px; height: 280px; border-radius: 20px; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); backdrop-filter: blur(20px); border: 1px solid rgba(0,0,0,0.06); position: relative; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+          <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 62.5%; background: linear-gradient(180deg, rgba(77, 166, 255, 0.5) 0%, rgba(0, 102, 204, 0.6) 50%, rgba(0, 61, 122, 0.7) 100%); border-radius: 0 0 20px 20px;">
+            <svg viewBox="0 0 200 20" style="position: absolute; top: -10px; left: 0; width: 100%; height: 20px;"><path d="M0,10 Q25,0 50,10 T100,10 T150,10 T200,10 L200,20 L0,20 Z" fill="rgba(77, 166, 255, 0.5)"/></svg>
+          </div>
+          <div style="position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <div style="display: flex; align-items: baseline; gap: 3px;">
+              <span style="font-size: 48px; font-weight: 200; color: #1a1a1a;">5</span>
+              <span style="font-size: 14px; color: #999;">/8杯</span>
+            </div>
+            <div style="margin-top: 20px;">
+              <div style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%); border: 1px solid rgba(255,255,255,0.5); box-shadow: 0 0 16px rgba(0,102,255,0.5);">
+                <span style="color: #0066ff; font-size: 20px; font-weight: 300;">+</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 8px; font-size: 9px; color: #666; text-align: left; padding: 6px; background: #f5f5f5; border-radius: 6px; line-height: 1.6;">
+          <div>尺寸: 140×280px</div>
+          <div>数字: 48px</div>
+          <div>添加按钮: 40px直径</div>
+          <div>交互: 点击+直接添加</div>
+        </div>
+      </div>
+
+      <!-- 大尺寸小组件 (4×4) -->
+      <div style="text-align: center;">
+        <p style="font-size: 12px; color: #999; margin-bottom: 8px;">大尺寸 (4×4)</p>
+        <div style="width: 280px; height: 280px; border-radius: 24px; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); backdrop-filter: blur(20px); border: 1px solid rgba(0,0,0,0.06); position: relative; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+          <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 62.5%; background: linear-gradient(180deg, rgba(77, 166, 255, 0.5) 0%, rgba(0, 102, 204, 0.6) 50%, rgba(0, 61, 122, 0.7) 100%); border-radius: 0 0 24px 24px;">
+            <svg viewBox="0 0 200 20" style="position: absolute; top: -10px; left: 0; width: 100%; height: 20px;"><path d="M0,10 Q25,0 50,10 T100,10 T150,10 T200,10 L200,20 L0,20 Z" fill="rgba(77, 166, 255, 0.5)"/></svg>
+          </div>
+          <div style="position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <div style="display: flex; align-items: baseline; gap: 4px;">
+              <span style="font-size: 56px; font-weight: 200; color: #1a1a1a;">5</span>
+              <span style="font-size: 18px; color: #999;">/8杯</span>
+            </div>
+            <div style="margin-top: 24px;">
+              <div style="width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%); border: 1px solid rgba(255,255,255,0.5); box-shadow: 0 0 20px rgba(0,102,255,0.5);">
+                <span style="color: #0066ff; font-size: 24px; font-weight: 300;">+</span>
+              </div>
+            </div>
+            <!-- 今日进度 -->
+            <div style="position: absolute; bottom: 16px; left: 16px; right: 16px;">
+              <div style="font-size: 10px; color: #666; margin-bottom: 6px;">今日进度</div>
+              <div style="height: 6px; background: rgba(0,0,0,0.06); border-radius: 3px; overflow: hidden;">
+                <div style="width: 62.5%; height: 100%; background: linear-gradient(90deg, #0066ff 0%, #4da6ff 100%); border-radius: 3px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 8px; font-size: 9px; color: #666; text-align: left; padding: 6px; background: #f5f5f5; border-radius: 6px; line-height: 1.6;">
+          <div>尺寸: 280×280px</div>
+          <div>数字: 56px</div>
+          <div>添加按钮: 48px直径</div>
+          <div>进度条: 底部显示</div>
+        </div>
+      </div>
+
+      <!-- 灵动岛小组件 -->
+      <div style="text-align: center;">
+        <p style="font-size: 12px; color: #999; margin-bottom: 8px;">灵动岛</p>
+        <div style="width: 200px; height: 44px; border-radius: 22px; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); backdrop-filter: blur(20px); border: 1px solid rgba(0,0,0,0.06); display: flex; align-items: center; justify-content: space-between; padding: 0 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="width: 24px; height: 24px; border-radius: 50%; background: linear-gradient(180deg, rgba(77, 166, 255, 0.8) 0%, rgba(0, 102, 204, 0.9) 100%); display: flex; align-items: center; justify-content: center;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2v6m0 0l-3-3m3 3l3-3"/></svg>
+            </div>
+            <span style="font-size: 14px; font-weight: 200; color: #1a1a1a;">5/8 杯</span>
+          </div>
+          <div style="width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%); border: 1px solid rgba(255,255,255,0.5); box-shadow: 0 0 12px rgba(0,102,255,0.5);">
+            <span style="color: #0066ff; font-size: 14px; font-weight: 300;">+</span>
+          </div>
+        </div>
+        <div style="margin-top: 8px; font-size: 9px; color: #666; text-align: left; padding: 6px; background: #f5f5f5; border-radius: 6px; line-height: 1.6;">
+          <div>尺寸: 200×44px (展开)</div>
+          <div>收缩态: 44×44px</div>
+          <div>交互: 点击+添加一杯</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 小组件交互说明 -->
+    <div style="margin-top: 16px; padding: 12px; background: linear-gradient(135deg, rgba(0,102,255,0.1) 0%, rgba(0,102,255,0.05) 100%); border-radius: 8px; border: 1px solid rgba(0,102,255,0.2);">
+      <h4 style="font-size: 12px; color: #0066ff; margin-bottom: 8px;">小组件交互逻辑</h4>
+      <div style="font-size: 11px; color: #444; line-height: 1.8;">
+        <div><strong>点击小组件：</strong>打开主应用</div>
+        <div><strong>点击 + 按钮：</strong>直接添加一杯水，无需打开应用</div>
+        <div><strong>长按小组件：</strong>进入编辑模式，可调整目标杯数</div>
+        <div><strong>水位动画：</strong>添加后平滑上升（1.2s ease-out）</div>
+        <div><strong>完成提示：</strong>达到目标时显示庆祝动画</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="section" style="margin-top: 24px; padding: 16px; background: #e8f4fc; border-radius: 12px;">
   <h3>组件尺寸规范表</h3>
   <table style="width: 100%; font-size: 11px; color: #444; border-collapse: collapse;">

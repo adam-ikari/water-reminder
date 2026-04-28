@@ -261,19 +261,6 @@ When tapping the menu button (•••):
 
 ---
 
-## Files to Modify
-
-| File | Purpose |
-|------|---------|
-| `src/App.tsx` | Main component with navigation state |
-| `src/index.css` | Liquid glass styles, animations |
-| `src/components/WaterLevel.tsx` | Water visualization component |
-| `src/components/BottomBar.tsx` | Tab bar + view/menu buttons |
-| `src/components/HistoryPage.tsx` | History with date navigation |
-| `src/components/SettingsPage.tsx` | Settings page |
-
----
-
 ## Verification
 
 1. Run `pnpm dev` to start development server
@@ -288,3 +275,57 @@ When tapping the menu button (•••):
    - Water level animates on add
    - Date navigation works in History
    - Split layout works on landscape and tablet
+
+---
+
+## Widget Design (小组件)
+
+### Widget Sizes
+
+| Size | Dimensions | Main Number | Add Button | Features |
+|------|------------|-------------|------------|----------|
+| Small (2×2) | 140×140px | 36px | None | Water level + count |
+| Medium (2×4) | 140×280px | 48px | 40px diameter | Water level + count + add |
+| Large (4×4) | 280×280px | 56px | 48px diameter | Water level + count + add + progress bar |
+| Dynamic Island | 200×44px (expanded) | 14px | 28px diameter | Compact inline display |
+
+### Widget Visual Design
+
+All widgets use the same liquid glass effect:
+
+```css
+background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%);
+backdrop-filter: blur(20px);
+border: 1px solid rgba(0,0,0,0.06);
+box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+```
+
+### Widget Interactions
+
+| Action | Behavior |
+|--------|----------|
+| Tap widget | Open main app |
+| Tap + button | Add one cup directly (no app open) |
+| Long press widget | Enter edit mode, adjust target |
+| Water animation | Smooth rise (1.2s ease-out) |
+| Goal reached | Celebration animation |
+
+### Dynamic Island States
+
+- **Collapsed:** 44×44px circular icon with water drop
+- **Expanded:** 200×44px showing count and quick add button
+- **Transition:** Smooth expand/collapse animation (300ms)
+
+---
+
+## Files to Modify
+
+| File | Purpose |
+|------|---------|
+| `src/App.tsx` | Main component with navigation state |
+| `src/index.css` | Liquid glass styles, animations |
+| `src/components/WaterLevel.tsx` | Water visualization component |
+| `src/components/BottomBar.tsx` | Tab bar + view/menu buttons |
+| `src/components/HistoryPage.tsx` | History with date navigation |
+| `src/components/SettingsPage.tsx` | Settings page |
+| `src/widgets/` | Widget components for iOS/Android |
