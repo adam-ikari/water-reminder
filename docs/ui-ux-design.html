@@ -17,9 +17,11 @@
   <div style="font-size: 11px; color: #444; line-height: 2;">
     <div><strong>Tab栏:</strong> 始终居中，左右按钮使用绝对定位，不影响Tab栏位置</div>
     <div><strong>菜单按钮:</strong> 点击弹出菜单后变为 × 关闭按钮，带自发光效果</div>
-    <div><strong>页面切换:</strong> Tab栏收缩为返回按钮（300ms ease-out动画）</div>
+    <div><strong>页面切换:</strong> 全屏页面切换，返回按钮底部居中</div>
     <div><strong>添加水:</strong> 数字弹跳动画 + 水位平滑上升（1.2s ease-out）</div>
-    <div><strong>分屏布局:</strong> 宽度≥600px时，左侧主卡片始终可见，右侧面板切换内容</div>
+    <div><strong>历史视图:</strong> 日/周/月视图切换，周视图显示柱状图</div>
+    <div><strong>设置页面:</strong> 全屏页面，语言为二级菜单</div>
+    <div><strong>分屏布局:</strong> 宽度≥600px且高度≥500px时启用。元素保持固定尺寸居中显示，不随屏幕拉伸，留白处理更优雅</div>
   </div>
 </div>
 
@@ -56,7 +58,13 @@
         <p style="font-size: 11px; color: #999; margin-bottom: 8px;">圆形屏幕 - 历史记录</p>
         <div style="width: 120px; height: 120px; border-radius: 50%; background: white; position: relative; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
           <div style="padding: 8px; height: 100%; display: flex; flex-direction: column; align-items: center;">
-            <div style="font-size: 7px; color: #1a365d; font-weight: 500; margin-bottom: 6px;">今日</div>
+            <div style="font-size: 7px; color: #1a365d; font-weight: 500; margin-bottom: 4px;">今日</div>
+            <!-- 视图切换 -->
+            <div style="display: flex; gap: 4px; margin-bottom: 4px;">
+              <span style="font-size: 5px; color: #0066ff; padding: 2px 6px; border-radius: 4px; background: rgba(0,102,255,0.15);">日</span>
+              <span style="font-size: 5px; color: #666; padding: 2px 4px;">周</span>
+              <span style="font-size: 5px; color: #666; padding: 2px 4px;">月</span>
+            </div>
             <div style="flex: 1; overflow: hidden; width: 100%;">
               <div style="display: flex; justify-content: space-between; padding: 3px 6px; margin-bottom: 3px; border-radius: 4px; background: rgba(0,102,255,0.05);">
                 <span style="font-size: 6px; color: #555;">09:30</span>
@@ -78,8 +86,8 @@
           </div>
         </div>
         <div style="margin-top: 8px; font-size: 9px; color: #555; text-align: left; padding: 6px; background: #f5f5f5; border-radius: 6px;">
+          <div>视图切换: 日/周/月</div>
           <div>显示今日记录</div>
-          <div>时间 + 数量</div>
           <div>返回按钮退出</div>
         </div>
       </div>
@@ -112,12 +120,18 @@
         </div>
       </div>
 
-      <!-- 圆形手表 - 日历视图 -->
+      <!-- 圆形手表 - 日历视图（历史-周视图） -->
       <div style="text-align: center;">
-        <p style="font-size: 11px; color: #999; margin-bottom: 8px;">圆形屏幕 - 日历视图</p>
+        <p style="font-size: 11px; color: #999; margin-bottom: 8px;">圆形屏幕 - 历史-周视图</p>
         <div style="width: 120px; height: 120px; border-radius: 50%; background: white; position: relative; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
           <div style="padding: 8px; height: 100%; display: flex; flex-direction: column; align-items: center;">
-            <div style="font-size: 7px; color: #1a365d; font-weight: 500; margin-bottom: 6px;">本周</div>
+            <div style="font-size: 7px; color: #1a365d; font-weight: 500; margin-bottom: 4px;">本周</div>
+            <!-- 视图切换 -->
+            <div style="display: flex; gap: 4px; margin-bottom: 4px;">
+              <span style="font-size: 5px; color: #666; padding: 2px 4px;">日</span>
+              <span style="font-size: 5px; color: #0066ff; padding: 2px 6px; border-radius: 4px; background: rgba(0,102,255,0.15);">周</span>
+              <span style="font-size: 5px; color: #666; padding: 2px 4px;">月</span>
+            </div>
             <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
               <!-- 周柱状图 -->
               <div style="display: flex; align-items: flex-end; justify-content: center; gap: 4px; height: 50px;">
@@ -140,8 +154,8 @@
           </div>
         </div>
         <div style="margin-top: 8px; font-size: 9px; color: #555; text-align: left; padding: 6px; background: #f5f5f5; border-radius: 6px;">
+          <div>视图切换: 日/周/月</div>
           <div>本周喝水统计</div>
-          <div>柱状图显示</div>
           <div>今日高亮显示</div>
         </div>
       </div>
@@ -151,12 +165,11 @@
         <p style="font-size: 11px; color: #999; margin-bottom: 8px;">圆形屏幕 - 全屏菜单</p>
         <div style="width: 120px; height: 120px; border-radius: 50%; background: white; position: relative; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
           <!-- 全屏菜单面板 - 无边距 -->
-          <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;">
+          <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;">
             <div style="font-size: 8px; color: #0066ff; padding: 6px 20px; border-radius: 8px; background: rgba(0,102,255,0.15);">历史</div>
-            <div style="font-size: 8px; color: #0066ff; padding: 6px 20px; border-radius: 8px; background: rgba(0,102,255,0.15);">日历</div>
             <div style="font-size: 8px; color: #555; padding: 6px 20px; border-radius: 8px; background: rgba(0,0,0,0.05);">设置</div>
             <!-- 关闭按钮 - 底部居中 -->
-            <div style="margin-top: 4px; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(0,102,255,0.1);">
+            <div style="margin-top: 6px; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(0,102,255,0.1);">
               <span style="font-size: 12px; color: #0066ff; font-weight: 300;">×</span>
             </div>
           </div>
@@ -205,12 +218,11 @@
         <p style="font-size: 11px; color: #999; margin-bottom: 8px;">方形屏幕 - 全屏菜单</p>
         <div style="width: 120px; height: 146px; border-radius: 16px; background: white; position: relative; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
           <!-- 全屏菜单面板 - 无边距 -->
-          <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;">
+          <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;">
             <div style="font-size: 9px; color: #0066ff; padding: 8px 24px; border-radius: 10px; background: rgba(0,102,255,0.15);">历史</div>
-            <div style="font-size: 9px; color: #0066ff; padding: 8px 24px; border-radius: 10px; background: rgba(0,102,255,0.15);">日历</div>
             <div style="font-size: 9px; color: #555; padding: 8px 24px; border-radius: 10px; background: rgba(0,0,0,0.05);">设置</div>
             <!-- 关闭按钮 - 底部居中 -->
-            <div style="margin-top: 6px; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(0,102,255,0.1);">
+            <div style="margin-top: 8px; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(0,102,255,0.1);">
               <span style="font-size: 14px; color: #0066ff; font-weight: 300;">×</span>
             </div>
           </div>
@@ -227,7 +239,13 @@
         <p style="font-size: 11px; color: #999; margin-bottom: 8px;">方形屏幕 - 历史视图</p>
         <div style="width: 120px; height: 146px; border-radius: 16px; background: white; position: relative; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
           <div style="padding: 12px; height: 100%; display: flex; flex-direction: column;">
-            <div style="font-size: 9px; color: #1a365d; font-weight: 500; text-align: center; margin-bottom: 8px;">今日</div>
+            <div style="font-size: 9px; color: #1a365d; font-weight: 500; text-align: center; margin-bottom: 6px;">今日</div>
+            <!-- 视图切换 -->
+            <div style="display: flex; justify-content: center; gap: 6px; margin-bottom: 8px;">
+              <span style="font-size: 7px; color: #0066ff; padding: 3px 8px; border-radius: 6px; background: rgba(0,102,255,0.15);">日</span>
+              <span style="font-size: 7px; color: #666; padding: 3px 6px;">周</span>
+              <span style="font-size: 7px; color: #666; padding: 3px 6px;">月</span>
+            </div>
             <div style="flex: 1; overflow: hidden;">
               <div style="display: flex; justify-content: space-between; padding: 4px 8px; margin-bottom: 4px; border-radius: 6px; background: rgba(0,102,255,0.05);">
                 <span style="font-size: 7px; color: #555;">09:30</span>
@@ -249,8 +267,8 @@
           </div>
         </div>
         <div style="margin-top: 8px; font-size: 9px; color: #555; text-align: left; padding: 6px; background: #f5f5f5; border-radius: 6px;">
+          <div>视图切换: 日/周/月</div>
           <div>显示今日记录</div>
-          <div>时间 + 数量</div>
           <div>返回按钮退出</div>
         </div>
       </div>
@@ -283,27 +301,122 @@
         </div>
       </div>
 
-      <!-- 方形手表 - 日历视图 -->
+      <!-- 圆形手表 - 历史-月视图 -->
       <div style="text-align: center;">
-        <p style="font-size: 11px; color: #999; margin-bottom: 8px;">方形屏幕 - 日历视图</p>
-        <div style="width: 120px; height: 146px; border-radius: 16px; background: white; position: relative; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
-          <div style="padding: 12px; height: 100%; display: flex; flex-direction: column;">
-            <div style="font-size: 9px; color: #1a365d; font-weight: 500; text-align: center; margin-bottom: 8px;">本周</div>
+        <p style="font-size: 11px; color: #999; margin-bottom: 8px;">圆形屏幕 - 历史-月视图</p>
+        <div style="width: 120px; height: 120px; border-radius: 50%; background: white; position: relative; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+          <div style="padding: 8px; height: 100%; display: flex; flex-direction: column; align-items: center;">
+            <div style="font-size: 7px; color: #1a365d; font-weight: 500; margin-bottom: 4px;">2026年4月</div>
+            <!-- 视图切换 -->
+            <div style="display: flex; gap: 4px; margin-bottom: 4px;">
+              <span style="font-size: 5px; color: #666; padding: 2px 4px;">日</span>
+              <span style="font-size: 5px; color: #666; padding: 2px 4px;">周</span>
+              <span style="font-size: 5px; color: #0066ff; padding: 2px 6px; border-radius: 4px; background: rgba(0,102,255,0.15);">月</span>
+            </div>
+            <!-- 日历网格 -->
             <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
-              <!-- 周柱状图 -->
-              <div style="display: flex; align-items: flex-end; justify-content: center; gap: 4px; height: 60px;">
-                <div style="width: 10px; background: rgba(0,102,255,0.4); border-radius: 2px; height: 60%;"></div>
-                <div style="width: 10px; background: rgba(0,102,255,0.5); border-radius: 2px; height: 80%;"></div>
-                <div style="width: 10px; background: rgba(0,102,255,0.35); border-radius: 2px; height: 50%;"></div>
-                <div style="width: 10px; background: #0066ff; border-radius: 2px; height: 62.5%;"></div>
-                <div style="width: 10px; background: rgba(0,102,255,0.3); border-radius: 2px; height: 40%;"></div>
-                <div style="width: 10px; background: rgba(0,102,255,0.2); border-radius: 2px; height: 25%;"></div>
-                <div style="width: 10px; background: rgba(0,102,255,0.15); border-radius: 2px; height: 15%;"></div>
-              </div>
-              <div style="font-size: 6px; color: #555; display: flex; justify-content: center; gap: 8px; margin-top: 6px;">
+              <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; font-size: 4px; color: #999; text-align: center;">
                 <span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span>
               </div>
-              <div style="font-size: 7px; color: #555; text-align: center; margin-top: 8px;">本周共 28 杯</div>
+              <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; font-size: 4px; color: #666; text-align: center; margin-top: 2px;">
+                <div style="color: #ccc;"></div>
+                <div style="color: #ccc;"></div>
+                <div style="padding: 1px; border-radius: 2px; background: rgba(0,102,255,0.5); color: white;">1</div>
+                <div style="padding: 1px; border-radius: 2px; background: rgba(0,102,255,0.6); color: white;">2</div>
+                <div style="padding: 1px; border-radius: 2px; background: rgba(0,102,255,0.4); color: white;">3</div>
+                <div style="padding: 1px;">4</div>
+                <div style="padding: 1px;">5</div>
+                <div style="padding: 1px; border-radius: 2px; background: rgba(0,102,255,0.7); color: white;">6</div>
+                <div style="padding: 1px; border-radius: 2px; background: #0066ff; color: white;">7</div>
+                <div style="padding: 1px;">8</div>
+                <div style="padding: 1px;">9</div>
+                <div style="padding: 1px;">10</div>
+                <div style="padding: 1px;">11</div>
+                <div style="padding: 1px;">12</div>
+                <div style="padding: 1px;">13</div>
+                <div style="padding: 1px;">14</div>
+                <div style="padding: 1px;">15</div>
+                <div style="padding: 1px;">16</div>
+                <div style="padding: 1px; border-radius: 2px; background: rgba(0,102,255,0.5); color: white; border: 1px solid #0066ff;">17</div>
+                <div style="padding: 1px;">18</div>
+                <div style="padding: 1px;">19</div>
+                <div style="padding: 1px;">20</div>
+                <div style="padding: 1px;">21</div>
+                <div style="padding: 1px;">22</div>
+                <div style="padding: 1px;">23</div>
+                <div style="padding: 1px;">24</div>
+                <div style="padding: 1px;">25</div>
+                <div style="padding: 1px;">26</div>
+                <div style="padding: 1px;">27</div>
+                <div style="padding: 1px;">28</div>
+                <div style="padding: 1px;">29</div>
+                <div style="padding: 1px;">30</div>
+              </div>
+            </div>
+            <!-- 返回按钮 -->
+            <div style="width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: 4px; background: rgba(0,102,255,0.1);">
+              <span style="font-size: 10px; color: #0066ff;">←</span>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 8px; font-size: 9px; color: #555; text-align: left; padding: 6px; background: #f5f5f5; border-radius: 6px;">
+          <div>视图切换: 日/周/月</div>
+          <div>日历网格显示</div>
+          <div>当天边框高亮</div>
+        </div>
+      </div>
+
+      <!-- 方形手表 - 历史-月视图 -->
+      <div style="text-align: center;">
+        <p style="font-size: 11px; color: #999; margin-bottom: 8px;">方形屏幕 - 历史-月视图</p>
+        <div style="width: 120px; height: 146px; border-radius: 16px; background: white; position: relative; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+          <div style="padding: 12px; height: 100%; display: flex; flex-direction: column;">
+            <div style="font-size: 9px; color: #1a365d; font-weight: 500; text-align: center; margin-bottom: 6px;">2026年4月</div>
+            <!-- 视图切换 -->
+            <div style="display: flex; justify-content: center; gap: 6px; margin-bottom: 8px;">
+              <span style="font-size: 7px; color: #666; padding: 3px 6px;">日</span>
+              <span style="font-size: 7px; color: #666; padding: 3px 6px;">周</span>
+              <span style="font-size: 7px; color: #0066ff; padding: 3px 8px; border-radius: 6px; background: rgba(0,102,255,0.15);">月</span>
+            </div>
+            <!-- 日历网格 -->
+            <div style="flex: 1; display: flex; flex-direction: column;">
+              <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; font-size: 5px; color: #999; text-align: center;">
+                <span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span>
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; font-size: 5px; color: #666; text-align: center; margin-top: 2px;">
+                <div style="color: #ccc;"></div>
+                <div style="color: #ccc;"></div>
+                <div style="padding: 2px; border-radius: 2px; background: rgba(0,102,255,0.5); color: white;">1</div>
+                <div style="padding: 2px; border-radius: 2px; background: rgba(0,102,255,0.6); color: white;">2</div>
+                <div style="padding: 2px; border-radius: 2px; background: rgba(0,102,255,0.4); color: white;">3</div>
+                <div style="padding: 2px;">4</div>
+                <div style="padding: 2px;">5</div>
+                <div style="padding: 2px; border-radius: 2px; background: rgba(0,102,255,0.7); color: white;">6</div>
+                <div style="padding: 2px; border-radius: 2px; background: #0066ff; color: white;">7</div>
+                <div style="padding: 2px;">8</div>
+                <div style="padding: 2px;">9</div>
+                <div style="padding: 2px;">10</div>
+                <div style="padding: 2px;">11</div>
+                <div style="padding: 2px;">12</div>
+                <div style="padding: 2px;">13</div>
+                <div style="padding: 2px;">14</div>
+                <div style="padding: 2px;">15</div>
+                <div style="padding: 2px;">16</div>
+                <div style="padding: 2px; border-radius: 2px; background: rgba(0,102,255,0.5); color: white; border: 1px solid #0066ff;">17</div>
+                <div style="padding: 2px;">18</div>
+                <div style="padding: 2px;">19</div>
+                <div style="padding: 2px;">20</div>
+                <div style="padding: 2px;">21</div>
+                <div style="padding: 2px;">22</div>
+                <div style="padding: 2px;">23</div>
+                <div style="padding: 2px;">24</div>
+                <div style="padding: 2px;">25</div>
+                <div style="padding: 2px;">26</div>
+                <div style="padding: 2px;">27</div>
+                <div style="padding: 2px;">28</div>
+                <div style="padding: 2px;">29</div>
+                <div style="padding: 2px;">30</div>
+              </div>
             </div>
             <!-- 返回按钮 -->
             <div style="width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 8px auto 0; background: rgba(0,102,255,0.1);">
@@ -312,9 +425,9 @@
           </div>
         </div>
         <div style="margin-top: 8px; font-size: 9px; color: #555; text-align: left; padding: 6px; background: #f5f5f5; border-radius: 6px;">
-          <div>本周喝水统计</div>
-          <div>柱状图显示</div>
-          <div>今日高亮显示</div>
+          <div>视图切换: 日/周/月</div>
+          <div>日历网格显示</div>
+          <div>当天边框高亮</div>
         </div>
       </div>
     </div>
@@ -326,7 +439,7 @@
         <div><strong>点击+按钮：</strong>直接添加一杯水，数字弹跳动画</div>
         <div><strong>菜单按钮：</strong>点击进入全屏菜单覆盖层，按钮变为×关闭</div>
         <div><strong>全屏菜单：</strong>显示"历史"和"设置"选项，点击进入对应视图</div>
-        <div><strong>历史视图：</strong>显示今日喝水记录列表，返回按钮退出</div>
+        <div><strong>历史视图：</strong>日/周/月视图切换，显示对应时间段的喝水记录</div>
         <div><strong>设置视图：</strong>深色模式开关，返回按钮退出</div>
         <div><strong>完成提示：</strong>达到目标时振动反馈+庆祝动画</div>
       </div>
@@ -529,6 +642,299 @@
           <div>菜单按钮: 变为×关闭</div>
         </div>
       </div>
+
+      <!-- 设置页面 - 全屏页面 -->
+      <div style="text-align: center;">
+        <p style="font-size: 12px; color: #999; margin-bottom: 8px;">设置页面</p>
+        <div style="width: 196px; height: 426px; border-radius: 20px; background: white; position: relative; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+          <div style="padding: 16px; height: 100%; display: flex; flex-direction: column;">
+            <!-- 标题 -->
+            <div style="font-size: 12px; color: #1a365d; font-weight: 500; text-align: center; margin-bottom: 16px;">设置</div>
+            <!-- 设置项 -->
+            <div style="flex: 1;">
+              <!-- 深色模式 -->
+              <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; border-radius: 12px; background: #f7fafc; margin-bottom: 8px;">
+                <span style="font-size: 10px; color: #1a365d;">深色模式</span>
+                <div style="width: 44px; height: 24px; border-radius: 12px; background: #cbd5e0; padding: 2px; position: relative;">
+                  <div style="width: 20px; height: 20px; border-radius: 50%; background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></div>
+                </div>
+              </div>
+              <!-- 语言设置 - 点击进入二级 -->
+              <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; border-radius: 12px; background: #f7fafc;">
+                <span style="font-size: 10px; color: #1a365d;">语言</span>
+                <div style="display: flex; align-items: center; gap: 4px;">
+                  <span style="font-size: 9px; color: #666;">中文</span>
+                  <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                </div>
+              </div>
+            </div>
+            <!-- 返回按钮 -->
+            <div style="width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 16px auto 0; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 0 12px rgba(0,102,255,0.4);">
+              <span style="font-size: 18px; color: #0066ff;">←</span>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 8px; font-size: 9px; color: #666; text-align: left; padding: 6px; background: #f5f5f5; border-radius: 6px; line-height: 1.6;">
+          <div>设置页面: 全屏</div>
+          <div>背景: 纯白/深色</div>
+          <div>语言: 点击进入二级菜单</div>
+          <div>返回按钮: 底部居中</div>
+        </div>
+      </div>
+
+      <!-- 语言设置二级页面 -->
+      <div style="text-align: center;">
+        <p style="font-size: 12px; color: #999; margin-bottom: 8px;">语言设置</p>
+        <div style="width: 196px; height: 426px; border-radius: 20px; background: white; position: relative; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+          <div style="padding: 16px; height: 100%; display: flex; flex-direction: column;">
+            <!-- 标题 -->
+            <div style="font-size: 12px; color: #1a365d; font-weight: 500; text-align: center; margin-bottom: 16px;">语言</div>
+            <!-- 语言列表 -->
+            <div style="flex: 1;">
+              <div style="border-radius: 12px; background: #f7fafc; overflow: hidden;">
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; border-bottom: 1px solid rgba(0,0,0,0.05);">
+                  <span style="font-size: 10px; color: #1a365d;">中文</span>
+                  <div style="width: 8px; height: 8px; border-radius: 50%; background: #4fc3f7;"></div>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px;">
+                  <span style="font-size: 10px; color: #1a365d;">English</span>
+                </div>
+              </div>
+            </div>
+            <!-- 返回按钮 -->
+            <div style="width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 16px auto 0; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 0 12px rgba(0,102,255,0.4);">
+              <span style="font-size: 18px; color: #0066ff;">←</span>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 8px; font-size: 9px; color: #666; text-align: left; padding: 6px; background: #f5f5f5; border-radius: 6px; line-height: 1.6;">
+          <div>二级菜单: 全屏</div>
+          <div>当前语言高亮</div>
+          <div>返回按钮: 底部居中</div>
+        </div>
+      </div>
+
+      <!-- 周视图页面 -->
+      <div style="text-align: center;">
+        <p style="font-size: 12px; color: #999; margin-bottom: 8px;">历史-周视图</p>
+        <div style="width: 196px; height: 426px; border-radius: 20px; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); backdrop-filter: blur(10px); border: 1px solid rgba(0,0,0,0.06); position: relative; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+          <div style="padding: 10px;">
+            <div style="font-size: 8px; color: #1a1a1a; font-weight: 500; text-align: center; margin-bottom: 8px;">4月14日 - 4月20日</div>
+            <!-- 周视图柱状图 -->
+            <div style="display: flex; align-items: flex-end; gap: 6px; height: 160px; padding: 10px 0;">
+              <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                <div style="width: 100%; background: rgba(0,102,255,0.6); border-radius: 4px 4px 0 0; height: 75%;"></div>
+                <span style="font-size: 7px; color: #999; margin-top: 4px;">一</span>
+              </div>
+              <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                <div style="width: 100%; background: rgba(0,102,255,0.7); border-radius: 4px 4px 0 0; height: 87.5%;"></div>
+                <span style="font-size: 7px; color: #999; margin-top: 4px;">二</span>
+              </div>
+              <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                <div style="width: 100%; background: rgba(0,102,255,0.5); border-radius: 4px 4px 0 0; height: 50%;"></div>
+                <span style="font-size: 7px; color: #999; margin-top: 4px;">三</span>
+              </div>
+              <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                <div style="width: 100%; background: rgba(0,102,255,0.8); border-radius: 4px 4px 0 0; height: 100%;"></div>
+                <span style="font-size: 7px; color: #999; margin-top: 4px;">四</span>
+              </div>
+              <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                <div style="width: 100%; background: #0066ff; border-radius: 4px 4px 0 0; height: 62.5%;"></div>
+                <span style="font-size: 7px; color: #0066ff; margin-top: 4px; font-weight: 500;">五</span>
+              </div>
+              <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                <div style="width: 100%; background: rgba(0,102,255,0.3); border-radius: 4px 4px 0 0; height: 37.5%;"></div>
+                <span style="font-size: 7px; color: #999; margin-top: 4px;">六</span>
+              </div>
+              <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                <div style="width: 100%; background: rgba(0,102,255,0.2); border-radius: 4px 4px 0 0; height: 25%;"></div>
+                <span style="font-size: 7px; color: #999; margin-top: 4px;">日</span>
+              </div>
+            </div>
+            <!-- 统计信息 -->
+            <div style="display: flex; justify-content: space-around; margin-top: 8px; font-size: 7px; color: #666;">
+              <div style="text-align: center;">
+                <div style="font-size: 12px; color: #0066ff; font-weight: 500;">32</div>
+                <div>本周总计</div>
+              </div>
+              <div style="text-align: center;">
+                <div style="font-size: 12px; color: #1a1a1a;">4.6</div>
+                <div>日均</div>
+              </div>
+              <div style="text-align: center;">
+                <div style="font-size: 12px; color: #28a745;">57%</div>
+                <div>达成率</div>
+              </div>
+            </div>
+          </div>
+          <!-- 底部导航 -->
+          <div style="position: absolute; bottom: 12px; left: 0; right: 0; display: flex; justify-content: center;">
+            <div style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 0 8px rgba(0,102,255,0.5);">
+              <span style="font-size: 7px; color: #0066ff; font-weight: 500;">周</span>
+            </div>
+            <div style="display: flex; gap: 4px; padding: 4px 9px; border-radius: 12px; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); backdrop-filter: blur(10px); border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+              <span style="font-size: 7px; color: #666; padding: 4px 8px;">主页</span>
+              <span style="font-size: 7px; color: #0066ff; padding: 4px 8px; border-radius: 8px; background: rgba(0,102,255,0.15);">历史</span>
+            </div>
+            <div style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 1px 8px rgba(0,0,0,0.08);">
+              <div style="display: flex; flex-direction: column; gap: 2px;">
+                <div style="width: 2px; height: 2px; border-radius: 50%; background: #666;"></div>
+                <div style="width: 2px; height: 2px; border-radius: 50%; background: #666;"></div>
+                <div style="width: 2px; height: 2px; border-radius: 50%; background: #666;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 8px; font-size: 9px; color: #666; text-align: left; padding: 6px; background: #f5f5f5; border-radius: 6px; line-height: 1.6;">
+          <div>柱状图: 每日完成量</div>
+          <div>当天高亮显示</div>
+          <div>统计: 总计/日均/达成率</div>
+        </div>
+      </div>
+
+      <!-- 月视图页面 -->
+      <div style="text-align: center;">
+        <p style="font-size: 12px; color: #999; margin-bottom: 8px;">历史-月视图</p>
+        <div style="width: 196px; height: 426px; border-radius: 20px; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); backdrop-filter: blur(10px); border: 1px solid rgba(0,0,0,0.06); position: relative; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+          <div style="padding: 10px;">
+            <!-- 月份导航 -->
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <div style="width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%); border: 1px solid rgba(0,0,0,0.06);">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+              </div>
+              <span style="font-size: 9px; color: #1a1a1a; font-weight: 500;">2026年4月</span>
+              <div style="width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%); border: 1px solid rgba(0,0,0,0.06);">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+              </div>
+            </div>
+            <!-- 星期标题 -->
+            <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; font-size: 7px; color: #999; text-align: center; margin-bottom: 4px;">
+              <span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span>
+            </div>
+            <!-- 日历网格 -->
+            <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; font-size: 8px; color: #666; text-align: center;">
+              <!-- 第1周 -->
+              <div style="padding: 4px; color: #ccc;"></div>
+              <div style="padding: 4px; color: #ccc;"></div>
+              <div style="padding: 4px; border-radius: 4px; background: rgba(0,102,255,0.6); color: white;">1</div>
+              <div style="padding: 4px; border-radius: 4px; background: rgba(0,102,255,0.7); color: white;">2</div>
+              <div style="padding: 4px; border-radius: 4px; background: rgba(0,102,255,0.5); color: white;">3</div>
+              <div style="padding: 4px; border-radius: 4px; background: rgba(0,102,255,0.4); color: white;">4</div>
+              <div style="padding: 4px; border-radius: 4px; background: rgba(0,102,255,0.3); color: white;">5</div>
+              <!-- 第2周 -->
+              <div style="padding: 4px; border-radius: 4px; background: rgba(0,102,255,0.8); color: white;">6</div>
+              <div style="padding: 4px; border-radius: 4px; background: #0066ff; color: white;">7</div>
+              <div style="padding: 4px; border-radius: 4px; background: rgba(0,102,255,0.6); color: white;">8</div>
+              <div style="padding: 4px; border-radius: 4px; background: rgba(0,102,255,0.5); color: white;">9</div>
+              <div style="padding: 4px; border-radius: 4px; background: rgba(0,102,255,0.7); color: white;">10</div>
+              <div style="padding: 4px; border-radius: 4px; background: rgba(0,102,255,0.4); color: white;">11</div>
+              <div style="padding: 4px; border-radius: 4px; background: rgba(0,102,255,0.3); color: white;">12</div>
+              <!-- 第3周 -->
+              <div style="padding: 4px; border-radius: 4px; background: rgba(0,102,255,0.6); color: white;">13</div>
+              <div style="padding: 4px; border-radius: 4px; background: rgba(0,102,255,0.8); color: white;">14</div>
+              <div style="padding: 4px; border-radius: 4px; background: #0066ff; color: white;">15</div>
+              <div style="padding: 4px; border-radius: 4px; background: rgba(0,102,255,0.7); color: white;">16</div>
+              <div style="padding: 4px; border-radius: 4px; background: rgba(0,102,255,0.5); color: white; border: 2px solid #0066ff;">17</div>
+              <div style="padding: 4px;">18</div>
+              <div style="padding: 4px;">19</div>
+              <!-- 第4周 -->
+              <div style="padding: 4px;">20</div>
+              <div style="padding: 4px;">21</div>
+              <div style="padding: 4px;">22</div>
+              <div style="padding: 4px;">23</div>
+              <div style="padding: 4px;">24</div>
+              <div style="padding: 4px;">25</div>
+              <div style="padding: 4px;">26</div>
+              <!-- 第5周 -->
+              <div style="padding: 4px;">27</div>
+              <div style="padding: 4px;">28</div>
+              <div style="padding: 4px;">29</div>
+              <div style="padding: 4px;">30</div>
+              <div style="padding: 4px; color: #ccc;"></div>
+              <div style="padding: 4px; color: #ccc;"></div>
+              <div style="padding: 4px; color: #ccc;"></div>
+            </div>
+            <!-- 图例 -->
+            <div style="display: flex; justify-content: center; gap: 12px; margin-top: 12px; font-size: 7px; color: #666;">
+              <div style="display: flex; align-items: center; gap: 4px;">
+                <div style="width: 10px; height: 10px; border-radius: 3px; background: #0066ff;"></div>
+                <span>达标</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 4px;">
+                <div style="width: 10px; height: 10px; border-radius: 3px; background: rgba(0,102,255,0.5);"></div>
+                <span>部分</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 4px;">
+                <div style="width: 10px; height: 10px; border-radius: 3px; background: rgba(0,0,0,0.06);"></div>
+                <span>未完成</span>
+              </div>
+            </div>
+          </div>
+          <!-- 底部导航 -->
+          <div style="position: absolute; bottom: 12px; left: 0; right: 0; display: flex; justify-content: center;">
+            <div style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 0 8px rgba(0,102,255,0.5);">
+              <span style="font-size: 7px; color: #0066ff; font-weight: 500;">月</span>
+            </div>
+            <div style="display: flex; gap: 4px; padding: 4px 9px; border-radius: 12px; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); backdrop-filter: blur(10px); border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 2px 12px rgba(0,0,0,0.1);">
+              <span style="font-size: 7px; color: #666; padding: 4px 8px;">主页</span>
+              <span style="font-size: 7px; color: #0066ff; padding: 4px 8px; border-radius: 8px; background: rgba(0,102,255,0.15);">历史</span>
+            </div>
+            <div style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 1px 8px rgba(0,0,0,0.08);">
+              <div style="display: flex; flex-direction: column; gap: 2px;">
+                <div style="width: 2px; height: 2px; border-radius: 50%; background: #666;"></div>
+                <div style="width: 2px; height: 2px; border-radius: 50%; background: #666;"></div>
+                <div style="width: 2px; height: 2px; border-radius: 50%; background: #666;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 8px; font-size: 9px; color: #666; text-align: left; padding: 6px; background: #f5f5f5; border-radius: 6px; line-height: 1.6;">
+          <div>日历网格: 颜色表示完成度</div>
+          <div>当天: 边框高亮</div>
+          <div>点击日期: 查看详情</div>
+        </div>
+      </div>
+
+      <!-- 关于页面 -->
+      <div style="text-align: center;">
+        <p style="font-size: 12px; color: #999; margin-bottom: 8px;">关于页面</p>
+        <div style="width: 196px; height: 426px; border-radius: 20px; background: white; position: relative; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+          <div style="padding: 16px; height: 100%; display: flex; flex-direction: column; align-items: center;">
+            <!-- 应用图标 -->
+            <div style="width: 64px; height: 64px; border-radius: 16px; background: linear-gradient(135deg, rgba(77, 166, 255, 0.5) 0%, rgba(0, 102, 204, 0.6) 100%); margin-top: 32px; display: flex; align-items: center; justify-content: center;">
+              <span style="font-size: 32px; color: white;">💧</span>
+            </div>
+            <!-- 应用名称 -->
+            <div style="font-size: 14px; color: #1a365d; font-weight: 500; margin-top: 12px;">Water Reminder</div>
+            <div style="font-size: 10px; color: #666; margin-top: 4px;">v1.0.0</div>
+            <!-- 信息列表 -->
+            <div style="width: 100%; margin-top: 24px; flex: 1;">
+              <div style="display: flex; justify-content: space-between; padding: 10px 12px; border-radius: 8px; background: #f7fafc; margin-bottom: 6px;">
+                <span style="font-size: 9px; color: #666;">开发者</span>
+                <span style="font-size: 9px; color: #1a365d;">Water Team</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: 10px 12px; border-radius: 8px; background: #f7fafc; margin-bottom: 6px;">
+                <span style="font-size: 9px; color: #666;">开源许可</span>
+                <span style="font-size: 9px; color: #0066ff;">查看 →</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: 10px 12px; border-radius: 8px; background: #f7fafc;">
+                <span style="font-size: 9px; color: #666;">隐私政策</span>
+                <span style="font-size: 9px; color: #0066ff;">查看 →</span>
+              </div>
+            </div>
+            <!-- 返回按钮 -->
+            <div style="width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 16px 0; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 0 12px rgba(0,102,255,0.4);">
+              <span style="font-size: 18px; color: #0066ff;">←</span>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 8px; font-size: 9px; color: #666; text-align: left; padding: 6px; background: #f5f5f5; border-radius: 6px; line-height: 1.6;">
+          <div>应用图标 + 名称</div>
+          <div>版本号</div>
+          <div>开发者信息</div>
+          <div>开源许可/隐私政策链接</div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -590,6 +996,7 @@
           <div>左侧按钮: 视图切换</div>
           <div>右侧按钮: 更多菜单(设置/关于)</div>
           <div>安全区: 左右47px, 底部34px</div>
+          <div style="color: #0066ff; font-weight: 500;">元素固定尺寸居中，不随屏幕拉伸</div>
         </div>
       </div>
 
@@ -997,6 +1404,7 @@
           <div>左侧按钮: 视图切换</div>
           <div>右侧按钮: 更多菜单(设置/关于)</div>
           <div>安全区: 左右24px, 顶部20px, 底部20px</div>
+          <div style="color: #0066ff; font-weight: 500;">元素固定尺寸居中，不随屏幕拉伸</div>
         </div>
       </div>
 
@@ -1051,6 +1459,209 @@
           <div>左侧主卡片: 半透明保持可见</div>
           <div>右侧: 历史页面（周视图统计）</div>
           <div>Tab栏: 隐藏 (左侧卡片即主页)</div>
+        </div>
+      </div>
+
+      <!-- 平板日视图 -->
+      <div style="text-align: center;">
+        <p style="font-size: 12px; color: #999; margin-bottom: 8px;">历史页面（日视图）</p>
+        <div style="display: flex; gap: 8px; width: 372px; height: 566px; border-radius: 16px; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); backdrop-filter: blur(10px); border: 1px solid rgba(0,0,0,0.06); padding: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+          <!-- 左侧主卡片 -->
+          <div style="flex: 1; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); backdrop-filter: blur(10px); border-radius: 16px; position: relative; overflow: hidden; border: 1px solid rgba(0,0,0,0.06);">
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 62.5%; background: linear-gradient(180deg, rgba(77, 166, 255, 0.5) 0%, rgba(0, 102, 204, 0.6) 50%, rgba(0, 61, 122, 0.7) 100%); border-radius: 0 0 16px 16px;">
+              <svg viewBox="0 0 200 20" style="position: absolute; top: -8px; left: 0; width: 100%; height: 16px;"><path d="M0,10 Q25,0 50,10 T100,10 T150,10 T200,10 L200,20 L0,20 Z" fill="rgba(77, 166, 255, 0.5)"/></svg>
+            </div>
+            <div style="position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+              <div style="display: flex; align-items: baseline; gap: 4px;">
+                <span style="font-size: 48px; font-weight: 200; color: #1a1a1a;">5</span>
+                <span style="font-size: 14px; color: #999;">/8杯</span>
+              </div>
+            </div>
+          </div>
+          <!-- 右侧日视图面板 -->
+          <div style="flex: 1; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); backdrop-filter: blur(10px); border-radius: 16px; padding: 12px; position: relative; border: 1px solid rgba(0,0,0,0.06);">
+            <!-- 日期导航 -->
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+              <div style="width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%); border: 1px solid rgba(0,0,0,0.06);">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+              </div>
+              <span style="font-size: 10px; color: #1a1a1a; font-weight: 500;">4月17日</span>
+              <div style="width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%); border: 1px solid rgba(0,0,0,0.06);">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+              </div>
+            </div>
+            <div style="font-size: 9px; color: #666; line-height: 2.2;">
+              <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid rgba(0,0,0,0.06);"><span>09:30</span><span style="color: #0066ff;">+1杯</span></div>
+              <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid rgba(0,0,0,0.06);"><span>11:45</span><span style="color: #0066ff;">+1杯</span></div>
+              <div style="display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid rgba(0,0,0,0.06);"><span>14:20</span><span style="color: #0066ff;">+1杯</span></div>
+              <div style="display: flex; justify-content: space-between; padding: 6px 0;"><span>16:05</span><span style="color: #0066ff;">+1杯</span></div>
+            </div>
+            <!-- 底部导航 -->
+            <div style="position: absolute; bottom: 12px; left: 0; right: 0; display: flex; justify-content: center;">
+              <div style="position: absolute; left: 8px; top: 50%; transform: translateY(-50%); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 0 10px rgba(0,102,255,0.5);">
+                <span style="font-size: 8px; color: #0066ff; font-weight: 500;">日</span>
+              </div>
+              <div style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); border: 1px solid rgba(0,0,0,0.06);">
+                <div style="display: flex; flex-direction: column; gap: 2px;">
+                  <div style="width: 3px; height: 3px; border-radius: 50%; background: #666;"></div>
+                  <div style="width: 3px; height: 3px; border-radius: 50%; background: #666;"></div>
+                  <div style="width: 3px; height: 3px; border-radius: 50%; background: #666;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 8px; font-size: 9px; color: #666; text-align: left; padding: 6px; background: #f5f5f5; border-radius: 6px; line-height: 1.6;">
+          <div>日期导航: 左右箭头切换</div>
+          <div>记录列表: 时间 + 杯数</div>
+          <div>左滑删除记录</div>
+        </div>
+      </div>
+
+      <!-- 平板月视图 -->
+      <div style="text-align: center;">
+        <p style="font-size: 12px; color: #999; margin-bottom: 8px;">历史页面（月视图）</p>
+        <div style="display: flex; gap: 8px; width: 372px; height: 566px; border-radius: 16px; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); backdrop-filter: blur(10px); border: 1px solid rgba(0,0,0,0.06); padding: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+          <!-- 左侧主卡片 -->
+          <div style="flex: 1; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); backdrop-filter: blur(10px); border-radius: 16px; position: relative; overflow: hidden; border: 1px solid rgba(0,0,0,0.06);">
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 62.5%; background: linear-gradient(180deg, rgba(77, 166, 255, 0.5) 0%, rgba(0, 102, 204, 0.6) 50%, rgba(0, 61, 122, 0.7) 100%); border-radius: 0 0 16px 16px;">
+              <svg viewBox="0 0 200 20" style="position: absolute; top: -8px; left: 0; width: 100%; height: 16px;"><path d="M0,10 Q25,0 50,10 T100,10 T150,10 T200,10 L200,20 L0,20 Z" fill="rgba(77, 166, 255, 0.5)"/></svg>
+            </div>
+            <div style="position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+              <div style="display: flex; align-items: baseline; gap: 4px;">
+                <span style="font-size: 48px; font-weight: 200; color: #1a1a1a;">5</span>
+                <span style="font-size: 14px; color: #999;">/8杯</span>
+              </div>
+            </div>
+          </div>
+          <!-- 右侧月视图面板 -->
+          <div style="flex: 1; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); backdrop-filter: blur(10px); border-radius: 16px; padding: 10px; position: relative; border: 1px solid rgba(0,0,0,0.06);">
+            <!-- 月份导航 -->
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <div style="width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%); border: 1px solid rgba(0,0,0,0.06);">
+                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+              </div>
+              <span style="font-size: 10px; color: #1a1a1a; font-weight: 500;">2026年4月</span>
+              <div style="width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%); border: 1px solid rgba(0,0,0,0.06);">
+                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+              </div>
+            </div>
+            <!-- 星期标题 -->
+            <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; font-size: 7px; color: #999; text-align: center; margin-bottom: 4px;">
+              <span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span>
+            </div>
+            <!-- 日历网格 -->
+            <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; font-size: 8px; color: #666; text-align: center;">
+              <div style="padding: 6px; color: #ccc;"></div>
+              <div style="padding: 6px; color: #ccc;"></div>
+              <div style="padding: 6px; border-radius: 4px; background: rgba(0,102,255,0.6); color: white;">1</div>
+              <div style="padding: 6px; border-radius: 4px; background: rgba(0,102,255,0.7); color: white;">2</div>
+              <div style="padding: 6px; border-radius: 4px; background: rgba(0,102,255,0.5); color: white;">3</div>
+              <div style="padding: 6px; border-radius: 4px; background: rgba(0,102,255,0.4); color: white;">4</div>
+              <div style="padding: 6px; border-radius: 4px; background: rgba(0,102,255,0.3); color: white;">5</div>
+              <div style="padding: 6px; border-radius: 4px; background: rgba(0,102,255,0.8); color: white;">6</div>
+              <div style="padding: 6px; border-radius: 4px; background: #0066ff; color: white;">7</div>
+              <div style="padding: 6px; border-radius: 4px; background: rgba(0,102,255,0.6); color: white;">8</div>
+              <div style="padding: 6px; border-radius: 4px; background: rgba(0,102,255,0.5); color: white;">9</div>
+              <div style="padding: 6px; border-radius: 4px; background: rgba(0,102,255,0.7); color: white;">10</div>
+              <div style="padding: 6px; border-radius: 4px; background: rgba(0,102,255,0.4); color: white;">11</div>
+              <div style="padding: 6px; border-radius: 4px; background: rgba(0,102,255,0.3); color: white;">12</div>
+              <div style="padding: 6px; border-radius: 4px; background: rgba(0,102,255,0.6); color: white;">13</div>
+              <div style="padding: 6px; border-radius: 4px; background: rgba(0,102,255,0.8); color: white;">14</div>
+              <div style="padding: 6px; border-radius: 4px; background: #0066ff; color: white;">15</div>
+              <div style="padding: 6px; border-radius: 4px; background: rgba(0,102,255,0.7); color: white;">16</div>
+              <div style="padding: 6px; border-radius: 4px; background: rgba(0,102,255,0.5); color: white; border: 2px solid #0066ff;">17</div>
+              <div style="padding: 6px;">18</div>
+              <div style="padding: 6px;">19</div>
+              <div style="padding: 6px;">20</div>
+              <div style="padding: 6px;">21</div>
+              <div style="padding: 6px;">22</div>
+              <div style="padding: 6px;">23</div>
+              <div style="padding: 6px;">24</div>
+              <div style="padding: 6px;">25</div>
+              <div style="padding: 6px;">26</div>
+              <div style="padding: 6px;">27</div>
+              <div style="padding: 6px;">28</div>
+              <div style="padding: 6px;">29</div>
+              <div style="padding: 6px;">30</div>
+            </div>
+            <!-- 底部导航 -->
+            <div style="position: absolute; bottom: 12px; left: 0; right: 0; display: flex; justify-content: center;">
+              <div style="position: absolute; left: 8px; top: 50%; transform: translateY(-50%); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 0 10px rgba(0,102,255,0.5);">
+                <span style="font-size: 8px; color: #0066ff; font-weight: 500;">月</span>
+              </div>
+              <div style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); border: 1px solid rgba(0,0,0,0.06);">
+                <div style="display: flex; flex-direction: column; gap: 2px;">
+                  <div style="width: 3px; height: 3px; border-radius: 50%; background: #666;"></div>
+                  <div style="width: 3px; height: 3px; border-radius: 50%; background: #666;"></div>
+                  <div style="width: 3px; height: 3px; border-radius: 50%; background: #666;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 8px; font-size: 9px; color: #666; text-align: left; padding: 6px; background: #f5f5f5; border-radius: 6px; line-height: 1.6;">
+          <div>日历网格: 颜色表示完成度</div>
+          <div>当天: 边框高亮</div>
+          <div>点击日期: 查看详情</div>
+        </div>
+      </div>
+
+      <!-- 平板设置页面 -->
+      <div style="text-align: center;">
+        <p style="font-size: 12px; color: #999; margin-bottom: 8px;">设置页面</p>
+        <div style="display: flex; gap: 8px; width: 372px; height: 566px; border-radius: 16px; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); backdrop-filter: blur(10px); border: 1px solid rgba(0,0,0,0.06); padding: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+          <!-- 左侧主卡片 (半透明) -->
+          <div style="flex: 1; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); backdrop-filter: blur(10px); border-radius: 16px; position: relative; overflow: hidden; border: 1px solid rgba(0,0,0,0.06); opacity: 0.7;">
+            <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 62.5%; background: linear-gradient(180deg, rgba(77, 166, 255, 0.5) 0%, rgba(0, 102, 204, 0.6) 50%, rgba(0, 61, 122, 0.7) 100%); border-radius: 0 0 16px 16px;">
+              <svg viewBox="0 0 200 20" style="position: absolute; top: -8px; left: 0; width: 100%; height: 16px;"><path d="M0,10 Q25,0 50,10 T100,10 T150,10 T200,10 L200,20 L0,20 Z" fill="rgba(77, 166, 255, 0.5)"/></svg>
+            </div>
+            <div style="position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+              <div style="display: flex; align-items: baseline; gap: 4px;">
+                <span style="font-size: 48px; font-weight: 200; color: #1a1a1a;">5</span>
+                <span style="font-size: 14px; color: #999;">/8杯</span>
+              </div>
+            </div>
+          </div>
+          <!-- 右侧设置面板 -->
+          <div style="flex: 1; background: white; border-radius: 16px; padding: 16px; position: relative; border: 1px solid rgba(0,0,0,0.06);">
+            <div style="font-size: 12px; color: #1a365d; font-weight: 500; text-align: center; margin-bottom: 16px;">设置</div>
+            <!-- 设置项 -->
+            <div style="flex: 1;">
+              <!-- 深色模式 -->
+              <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; border-radius: 12px; background: #f7fafc; margin-bottom: 8px;">
+                <span style="font-size: 10px; color: #1a365d;">深色模式</span>
+                <div style="width: 44px; height: 24px; border-radius: 12px; background: #cbd5e0; padding: 2px; position: relative;">
+                  <div style="width: 20px; height: 20px; border-radius: 50%; background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></div>
+                </div>
+              </div>
+              <!-- 语言设置 -->
+              <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; border-radius: 12px; background: #f7fafc; margin-bottom: 8px;">
+                <span style="font-size: 10px; color: #1a365d;">语言</span>
+                <div style="display: flex; align-items: center; gap: 4px;">
+                  <span style="font-size: 9px; color: #666;">中文</span>
+                  <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                </div>
+              </div>
+              <!-- 每日目标 -->
+              <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; border-radius: 12px; background: #f7fafc;">
+                <span style="font-size: 10px; color: #1a365d;">每日目标</span>
+                <div style="display: flex; align-items: center; gap: 4px;">
+                  <span style="font-size: 9px; color: #666;">8 杯</span>
+                  <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                </div>
+              </div>
+            </div>
+            <!-- 返回按钮 -->
+            <div style="position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%); border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 0 12px rgba(0,102,255,0.4);">
+              <span style="font-size: 18px; color: #0066ff;">←</span>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 8px; font-size: 9px; color: #666; text-align: left; padding: 6px; background: #f5f5f5; border-radius: 6px; line-height: 1.6;">
+          <div>左侧主卡片: 半透明保持可见</div>
+          <div>右侧: 设置面板</div>
+          <div>语言/目标: 点击进入二级</div>
         </div>
       </div>
     </div>
@@ -1253,6 +1864,194 @@
         <div><strong>长按小组件：</strong>进入编辑模式，可调整目标杯数</div>
         <div><strong>水位动画：</strong>添加后平滑上升（1.2s ease-out）</div>
         <div><strong>完成提示：</strong>达到目标时显示庆祝动画</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top: 24px;">
+  <h3>📋 菜单结构设计</h3>
+  <div style="background: #fafafa; border-radius: 16px; padding: 20px; border: 1px solid #e0e0e0;">
+
+    <!-- 手表菜单结构 -->
+    <div style="margin-bottom: 24px;">
+      <h4 style="font-size: 13px; color: #1a365d; margin-bottom: 12px;">⌚ 手表端菜单结构</h4>
+      <div style="background: white; border-radius: 12px; padding: 16px; border: 1px solid rgba(0,0,0,0.06);">
+        <div style="font-size: 11px; color: #444; line-height: 2;">
+          <div style="padding: 8px 12px; background: rgba(0,102,255,0.1); border-radius: 8px; margin-bottom: 8px;">
+            <strong>主界面</strong> (默认)
+          </div>
+          <div style="padding-left: 20px;">
+            <div style="display: flex; align-items: center; gap: 8px; padding: 6px 0;">
+              <span style="color: #0066ff;">→</span>
+              <strong>历史</strong> → 日/周/月视图切换
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; padding: 6px 0;">
+              <span style="color: #0066ff;">→</span>
+              <strong>设置</strong> → 深色模式开关
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 移动端菜单结构 -->
+    <div style="margin-bottom: 24px;">
+      <h4 style="font-size: 13px; color: #1a365d; margin-bottom: 12px;">📱 移动端菜单结构</h4>
+      <div style="background: white; border-radius: 12px; padding: 16px; border: 1px solid rgba(0,0,0,0.06);">
+        <div style="font-size: 11px; color: #444; line-height: 2;">
+          <!-- Tab栏导航 -->
+          <div style="padding: 8px 12px; background: rgba(0,102,255,0.1); border-radius: 8px; margin-bottom: 8px;">
+            <strong>Tab栏导航</strong> (底部居中)
+          </div>
+          <div style="padding-left: 20px; margin-bottom: 12px;">
+            <div style="display: flex; align-items: center; gap: 8px; padding: 6px 0;">
+              <span style="color: #0066ff;">•</span>
+              <strong>主页</strong> - 水位显示 + 添加按钮
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; padding: 6px 0;">
+              <span style="color: #0066ff;">•</span>
+              <strong>历史</strong> - 日/周/月视图
+            </div>
+          </div>
+
+          <!-- 左侧视图按钮 -->
+          <div style="padding: 8px 12px; background: rgba(0,102,255,0.05); border-radius: 8px; margin-bottom: 8px;">
+            <strong>左侧按钮</strong> (视图切换)
+          </div>
+          <div style="padding-left: 20px; margin-bottom: 12px;">
+            <div style="display: flex; align-items: center; gap: 8px; padding: 6px 0;">
+              <span style="color: #0066ff;">→</span>
+              点击弹出: 日视图 / 周视图 / 月视图
+            </div>
+          </div>
+
+          <!-- 右侧菜单按钮 -->
+          <div style="padding: 8px 12px; background: rgba(0,102,255,0.05); border-radius: 8px; margin-bottom: 8px;">
+            <strong>右侧按钮</strong> (更多菜单)
+          </div>
+          <div style="padding-left: 20px;">
+            <div style="display: flex; align-items: center; gap: 8px; padding: 6px 0;">
+              <span style="color: #0066ff;">→</span>
+              <strong>设置</strong> → 全屏页面
+            </div>
+            <div style="padding-left: 20px;">
+              <div style="padding: 4px 0; color: #666;">├ 深色模式开关</div>
+              <div style="padding: 4px 0; color: #666;">├ <strong>语言</strong> → 二级页面 (中文/English)</div>
+              <div style="padding: 4px 0; color: #666;">└ 每日目标设置</div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; padding: 6px 0;">
+              <span style="color: #0066ff;">→</span>
+              <strong>关于</strong> → 全屏页面
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 分屏布局菜单结构 -->
+    <div>
+      <h4 style="font-size: 13px; color: #1a365d; margin-bottom: 12px;">🖥️ 分屏布局菜单结构</h4>
+      <div style="background: white; border-radius: 12px; padding: 16px; border: 1px solid rgba(0,0,0,0.06);">
+        <div style="font-size: 11px; color: #444; line-height: 2;">
+          <div style="padding: 8px 12px; background: rgba(0,102,255,0.1); border-radius: 8px; margin-bottom: 8px;">
+            <strong>左侧面板</strong> - 主卡片 (始终可见)
+          </div>
+          <div style="padding-left: 20px; margin-bottom: 12px;">
+            <div style="padding: 4px 0;">• 水位显示</div>
+            <div style="padding: 4px 0;">• 添加按钮</div>
+            <div style="padding: 4px 0;">• Tab栏隐藏</div>
+          </div>
+
+          <div style="padding: 8px 12px; background: rgba(0,102,255,0.05); border-radius: 8px; margin-bottom: 8px;">
+            <strong>右侧面板</strong> - 功能区 (动态切换)
+          </div>
+          <div style="padding-left: 20px;">
+            <div style="padding: 4px 0;">• 历史记录 (日/周/月)</div>
+            <div style="padding: 4px 0;">• 设置页面</div>
+            <div style="padding: 4px 0;">• 关于页面</div>
+          </div>
+
+          <div style="padding: 8px 12px; background: rgba(0,102,255,0.05); border-radius: 8px; margin-bottom: 8px; margin-top: 12px;">
+            <strong>底部按钮</strong>
+          </div>
+          <div style="padding-left: 20px;">
+            <div style="padding: 4px 0;">• 左侧按钮: 视图切换 (日/周/月)</div>
+            <div style="padding: 4px 0;">• 右侧按钮: 更多菜单 (设置/关于)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top: 24px;">
+  <h3>🔄 完整交互流程</h3>
+  <div style="background: #fafafa; border-radius: 16px; padding: 20px; border: 1px solid #e0e0e0;">
+
+    <!-- 添加水交互 -->
+    <div style="margin-bottom: 20px; padding: 16px; background: white; border-radius: 12px; border: 1px solid rgba(0,0,0,0.06);">
+      <h4 style="font-size: 12px; color: #0066ff; margin-bottom: 10px;">💧 添加水</h4>
+      <div style="font-size: 11px; color: #444; line-height: 2;">
+        <div><strong>触发:</strong> 点击 + 按钮</div>
+        <div><strong>动画:</strong> 数字弹跳 (scale 1.2 → 1.0, 0.3s) + 水位平滑上升 (1.2s ease-out)</div>
+        <div><strong>记录:</strong> 自动记录时间戳到历史</div>
+        <div><strong>目标达成:</strong> 振动反馈 + 庆祝动画 (confetti) + "目标达成！" 提示</div>
+        <div><strong>上限:</strong> 最多添加到目标数，不可超出</div>
+      </div>
+    </div>
+
+    <!-- 删除记录交互 -->
+    <div style="margin-bottom: 20px; padding: 16px; background: white; border-radius: 12px; border: 1px solid rgba(0,0,0,0.06);">
+      <h4 style="font-size: 12px; color: #0066ff; margin-bottom: 10px;">🗑️ 删除记录</h4>
+      <div style="font-size: 11px; color: #444; line-height: 2;">
+        <div><strong>移动端:</strong> 左滑记录项 → 显示删除按钮 → 点击确认删除</div>
+        <div><strong>手表端:</strong> 长按记录项 → 弹出确认对话框 → 确认删除</div>
+        <div><strong>动画:</strong> 记录项滑出 + 数字减少 + 水位下降</div>
+        <div><strong>撤销:</strong> 删除后显示 3 秒撤销提示，点击可恢复</div>
+      </div>
+    </div>
+
+    <!-- 视图切换交互 -->
+    <div style="margin-bottom: 20px; padding: 16px; background: white; border-radius: 12px; border: 1px solid rgba(0,0,0,0.06);">
+      <h4 style="font-size: 12px; color: #0066ff; margin-bottom: 10px;">📊 视图切换</h4>
+      <div style="font-size: 11px; color: #444; line-height: 2;">
+        <div><strong>触发:</strong> 点击左侧视图按钮</div>
+        <div><strong>弹出菜单:</strong> 日视图 / 周视图 / 月视图</div>
+        <div><strong>按钮状态:</strong> 显示当前视图名称，展开时变为 × 关闭</div>
+        <div><strong>切换动画:</strong> 淡入淡出 (0.2s)</div>
+        <div><strong>日视图:</strong> 显示当天记录列表，支持日期导航</div>
+        <div><strong>周视图:</strong> 显示本周柱状图，当天高亮</div>
+        <div><strong>月视图:</strong> 显示日历网格，颜色表示完成度</div>
+      </div>
+    </div>
+
+    <!-- 设置交互 -->
+    <div style="margin-bottom: 20px; padding: 16px; background: white; border-radius: 12px; border: 1px solid rgba(0,0,0,0.06);">
+      <h4 style="font-size: 12px; color: #0066ff; margin-bottom: 10px;">⚙️ 设置页面</h4>
+      <div style="font-size: 11px; color: #444; line-height: 2;">
+        <div><strong>进入:</strong> 点击右侧菜单按钮 → 选择"设置" → 全屏页面滑入</div>
+        <div><strong>深色模式:</strong> 开关切换，立即生效，全局主题变化</div>
+        <div><strong>语言:</strong> 点击进入二级页面，选择后自动返回</div>
+        <div><strong>每日目标:</strong> 点击弹出数字选择器 (1-20杯)，确认后更新</div>
+        <div><strong>退出:</strong> 点击底部返回按钮 → 页面滑出</div>
+      </div>
+    </div>
+
+    <!-- 关于页面 -->
+    <div style="padding: 16px; background: white; border-radius: 12px; border: 1px solid rgba(0,0,0,0.06);">
+      <h4 style="font-size: 12px; color: #0066ff; margin-bottom: 10px;">ℹ️ 关于页面</h4>
+      <div style="font-size: 11px; color: #444; line-height: 2;">
+        <div><strong>进入:</strong> 点击右侧菜单按钮 → 选择"关于" → 全屏页面滑入</div>
+        <div><strong>内容:</strong></div>
+        <div style="padding-left: 20px;">
+          <div>• 应用名称 + 图标</div>
+          <div>• 版本号</div>
+          <div>• 开发者信息</div>
+          <div>• 开源许可</div>
+          <div>• 隐私政策链接</div>
+        </div>
+        <div><strong>退出:</strong> 点击底部返回按钮</div>
       </div>
     </div>
   </div>

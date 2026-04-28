@@ -22,11 +22,11 @@ export function SettingsPage({ onBack, dark, onDarkChange, onLanguageClick, onGo
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="min-h-screen p-6"
+      className={`min-h-screen p-6 ${dark ? 'bg-[#0d1b2a]' : 'bg-white'}`}
     >
       <div className="flex items-center gap-4 mb-8">
         <BackButton onClick={onBack} dark={dark} />
-        <h1 className={`text-2xl font-bold ${dark ? 'text-white' : 'text-white'}`}>
+        <h1 className={`text-2xl font-bold ${dark ? 'text-white' : 'text-gray-900'}`}>
           {t('settings')}
         </h1>
       </div>
@@ -52,7 +52,7 @@ export function SettingsPage({ onBack, dark, onDarkChange, onLanguageClick, onGo
           dark={dark}
           onClick={onLanguageClick}
           rightElement={
-            <svg className={`w-5 h-5 ${dark ? 'text-white/60' : 'text-white/80'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className={`w-5 h-5 ${dark ? 'text-white/60' : 'text-gray-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           }
@@ -63,7 +63,7 @@ export function SettingsPage({ onBack, dark, onDarkChange, onLanguageClick, onGo
           dark={dark}
           onClick={onGoalClick}
           rightElement={
-            <svg className={`w-5 h-5 ${dark ? 'text-white/60' : 'text-white/80'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className={`w-5 h-5 ${dark ? 'text-white/60' : 'text-gray-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           }
@@ -74,7 +74,7 @@ export function SettingsPage({ onBack, dark, onDarkChange, onLanguageClick, onGo
           dark={dark}
           onClick={onAboutClick}
           rightElement={
-            <svg className={`w-5 h-5 ${dark ? 'text-white/60' : 'text-white/80'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className={`w-5 h-5 ${dark ? 'text-white/60' : 'text-gray-400'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           }
@@ -97,11 +97,10 @@ function SettingsItem({ label, dark, onClick, rightElement }: SettingsItemProps)
       whileTap={{ scale: 0.98 }}
       onClick={onClick}
       className={`w-full flex items-center justify-between p-4 rounded-2xl ${
-        dark ? 'bg-white/5' : 'bg-white/20'
+        dark ? 'bg-white/10' : 'bg-gray-100'
       }`}
-      style={{ backdropFilter: 'blur(20px)' }}
     >
-      <span className={dark ? 'text-white/80' : 'text-white'}>{label}</span>
+      <span className={dark ? 'text-white/80' : 'text-gray-900'}>{label}</span>
       {rightElement}
     </motion.button>
   )

@@ -27,14 +27,14 @@ export function MobilePortraitLayout() {
 
   if (!loaded) {
     return (
-      <div className={`min-h-screen flex items-center justify-center ${dark ? 'bg-gray-900' : 'bg-gradient-to-b from-sky-400 to-blue-500'}`}>
-        <div className={`text-xl ${dark ? 'text-white' : 'text-white'}`}>{t('loading')}</div>
+      <div className={`min-h-screen flex items-center justify-center ${dark ? 'bg-[#0d1b2a]' : 'bg-gradient-to-br from-white/60 to-white/30'}`}>
+        <div className={`text-xl ${dark ? 'text-white' : 'text-gray-800'}`}>{t('loading')}</div>
       </div>
     )
   }
 
   return (
-    <div className={`min-h-screen relative overflow-hidden ${dark ? 'bg-gray-900' : 'bg-gradient-to-b from-sky-400 to-blue-500'}`}>
+    <div className={`min-h-screen relative overflow-hidden ${dark ? 'bg-[#0d1b2a]' : 'bg-gradient-to-br from-white/60 to-white/30'}`} style={dark ? {} : { backdropFilter: 'blur(20px)' }}>
       <WaterCanvas level={level} dark={dark} mode="fullscreen" />
 
       <AnimatePresence mode="wait">

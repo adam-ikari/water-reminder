@@ -67,8 +67,8 @@ export function WatchLayout() {
 
   if (!loaded) {
     return (
-      <div className={`min-h-screen flex items-center justify-center ${dark ? 'bg-gray-900' : 'bg-gradient-to-b from-sky-400 to-blue-500'}`}>
-        <div className={`text-sm ${dark ? 'text-white' : 'text-white'}`}>{t('loading')}</div>
+      <div className={`min-h-screen flex items-center justify-center ${dark ? 'bg-[#0d1b2a]' : 'bg-gradient-to-br from-white/60 to-white/30'}`}>
+        <div className={`text-sm ${dark ? 'text-white' : 'text-gray-800'}`}>{t('loading')}</div>
       </div>
     )
   }
@@ -76,11 +76,12 @@ export function WatchLayout() {
   return (
     <div
       className={`min-h-screen flex flex-col items-center justify-center ${
-        dark ? 'bg-gray-900' : 'bg-gradient-to-b from-sky-400 to-blue-500'
+        dark ? 'bg-[#0d1b2a]' : 'bg-gradient-to-br from-white/60 to-white/30'
       }`}
       style={{
         borderRadius: isRound ? '50%' : '16px',
         overflow: 'hidden',
+        ...(dark ? {} : { backdropFilter: 'blur(20px)' })
       }}
     >
       <WaterCanvas level={level} dark={dark} mode="fullscreen" bubbles={false} waveAmplitude={0.8} />
@@ -259,7 +260,7 @@ export function WatchLayout() {
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
               className={`fixed inset-0 z-40 flex flex-col items-center justify-center gap-4 ${
-                dark ? 'bg-gray-900' : 'bg-gradient-to-b from-sky-400 to-blue-500'
+                dark ? 'bg-[#0d1b2a]' : 'bg-gradient-to-br from-white/60 to-white/30'
               }`}
             >
               <button

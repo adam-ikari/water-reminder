@@ -25,14 +25,14 @@ export function MobileLandscapeLayout() {
 
   if (!loaded) {
     return (
-      <div className={`h-screen flex items-center justify-center ${dark ? 'bg-gray-900' : 'bg-gradient-to-r from-sky-400 to-blue-500'}`}>
-        <div className={`text-xl ${dark ? 'text-white' : 'text-white'}`}>{t('loading')}</div>
+      <div className={`h-screen flex items-center justify-center ${dark ? 'bg-[#0d1b2a]' : 'bg-gradient-to-br from-white/60 to-white/30'}`}>
+        <div className={`text-xl ${dark ? 'text-white' : 'text-gray-800'}`}>{t('loading')}</div>
       </div>
     )
   }
 
   return (
-    <div className={`h-screen flex ${dark ? 'bg-gray-900' : 'bg-gradient-to-r from-sky-400 to-blue-500'}`}>
+    <div className={`h-screen flex ${dark ? 'bg-[#0d1b2a]' : 'bg-gradient-to-br from-white/60 to-white/30'}`} style={dark ? {} : { backdropFilter: 'blur(20px)' }}>
       {/* Left: Water Card - Always visible */}
       <div className="w-1/2 relative flex items-center justify-center p-4">
         <motion.div
