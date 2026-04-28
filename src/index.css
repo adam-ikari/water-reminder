@@ -5,46 +5,86 @@
   --font-sans: 'Geist Variable', -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
 }
 
-/* ===== Liquid Glass Design System ===== */
+/* ===== Water Reminder Design System ===== */
 
 :root {
-  /* Glass Colors - Light */
-  --glass-bg: rgba(255, 255, 255, 0.25);
-  --glass-border: rgba(255, 255, 255, 0.4);
-  --glass-shadow: rgba(0, 0, 0, 0.06);
+  /* Background Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --bg-glass: rgba(255, 255, 255, 0.25);
+  --bg-glass-strong: rgba(255, 255, 255, 0.35);
+
+  /* Text Colors - 浅色模式 */
+  --text-primary: #1a1a1a;
+  --text-secondary: #666666;
+  --text-muted: #999999;
+  --text-on-water: #ffffff;
+  --text-on-accent: #ffffff;
+
+  /* Accent Colors (主色调) */
+  --accent-primary: #0066ff;
+  --accent-secondary: #4da6ff;
+  --accent-tertiary: #0066cc;
+  --accent-glow: rgba(0, 102, 255, 0.5);
+
+  /* Water Gradient Colors */
+  --water-surface: rgba(77, 166, 255, 0.5);
+  --water-body: rgba(0, 102, 204, 0.6);
+  --water-deep: rgba(0, 61, 122, 0.7);
+
+  /* Semantic Colors */
+  --success: #4caf50;
+  --warning: #ff9800;
+  --error: #f44336;
+
+  /* Glass Effect */
+  --glass-border: rgba(0, 0, 0, 0.06);
+  --glass-shadow: rgba(0, 0, 0, 0.1);
   --glass-highlight: rgba(255, 255, 255, 0.6);
 
-  /* Text */
-  --text-primary: #1a365d;
-  --text-secondary: #4a7ba7;
-  --text-muted: rgba(26, 54, 93, 0.5);
-
-  /* Accent */
-  --accent: #0ea5e9;
-  --accent-glow: rgba(14, 165, 233, 0.4);
-
-  /* Water */
-  --water-surface: rgba(79, 172, 254, 0.6);
-  --water-body: rgba(45, 127, 229, 0.8);
-  --water-deep: rgba(30, 80, 180, 0.9);
+  /* Interactive States */
+  --interactive-hover: rgba(0, 102, 255, 0.1);
+  --interactive-active: rgba(0, 102, 255, 0.15);
 }
 
 .dark {
-  --glass-bg: rgba(255, 255, 255, 0.05);
+  /* Background Colors */
+  --bg-primary: #0d1b2a;
+  --bg-secondary: #1b2838;
+  --bg-glass: rgba(255, 255, 255, 0.05);
+  --bg-glass-strong: rgba(255, 255, 255, 0.08);
+
+  /* Text Colors - 深色模式 */
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.8);
+  --text-muted: rgba(255, 255, 255, 0.6);
+  --text-on-water: #ffffff;
+  --text-on-accent: #ffffff;
+
+  /* Accent Colors (深色模式强调色) */
+  --accent-primary: #4fc3f7;
+  --accent-secondary: #29b6f6;
+  --accent-tertiary: #0288d1;
+  --accent-glow: rgba(79, 195, 247, 0.5);
+
+  /* Water Gradient Colors - 深色模式 */
+  --water-surface: rgba(77, 166, 255, 0.5);
+  --water-body: rgba(0, 102, 204, 0.6);
+  --water-deep: rgba(0, 61, 122, 0.7);
+
+  /* Semantic Colors */
+  --success: #4caf50;
+  --warning: #ffb74d;
+  --error: #ef5350;
+
+  /* Glass Effect */
   --glass-border: rgba(255, 255, 255, 0.1);
   --glass-shadow: rgba(0, 0, 0, 0.3);
   --glass-highlight: rgba(255, 255, 255, 0.1);
 
-  --text-primary: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --text-muted: rgba(255, 255, 255, 0.4);
-
-  --accent: #22d3ee;
-  --accent-glow: rgba(34, 211, 238, 0.3);
-
-  --water-surface: rgba(34, 211, 238, 0.4);
-  --water-body: rgba(6, 182, 212, 0.6);
-  --water-deep: rgba(8, 145, 178, 0.8);
+  /* Interactive States */
+  --interactive-hover: rgba(79, 195, 247, 0.1);
+  --interactive-active: rgba(79, 195, 247, 0.2);
 }
 
 /* ===== Base ===== */
@@ -59,7 +99,7 @@ body {
 
 /* Glass Surface */
 .glass {
-  background: var(--glass-bg);
+  background: var(--bg-glass);
   backdrop-filter: blur(40px) saturate(180%);
   -webkit-backdrop-filter: blur(40px) saturate(180%);
   border: 1px solid var(--glass-border);
@@ -69,25 +109,20 @@ body {
 }
 
 .glass-subtle {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--bg-glass);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--glass-border);
 }
 
 .glass-strong {
-  background: rgba(255, 255, 255, 0.35);
+  background: var(--bg-glass-strong);
   backdrop-filter: blur(60px) saturate(200%);
   -webkit-backdrop-filter: blur(60px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--glass-border);
   box-shadow:
     0 12px 40px var(--glass-shadow),
     inset 0 2px 0 var(--glass-highlight);
-}
-
-.dark .glass-strong {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 /* Liquid Button */
@@ -138,7 +173,7 @@ body {
 
 /* Glass Card */
 .glass-card {
-  background: var(--glass-bg);
+  background: var(--bg-glass);
   backdrop-filter: blur(40px) saturate(180%);
   -webkit-backdrop-filter: blur(40px) saturate(180%);
   border: 1px solid var(--glass-border);
