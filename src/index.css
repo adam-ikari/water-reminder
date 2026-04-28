@@ -3,6 +3,14 @@
 
 @theme {
   --font-sans: 'Geist Variable', -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+
+  /* Custom colors for Tailwind */
+  --color-accent: var(--accent-primary);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-accent-tertiary: var(--accent-tertiary);
+  --color-bg-dark: #0d1b2a;
+  --color-bg-dark-secondary: #1b2838;
+  --color-success: #4caf50;
 }
 
 /* ===== Water Reminder Design System ===== */

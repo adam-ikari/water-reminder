@@ -37,6 +37,12 @@ export function WaterCanvas({
     let frame = 0
     let animId: number
 
+    // Get CSS variable colors
+    const style = getComputedStyle(document.documentElement)
+    const waterSurface = style.getPropertyValue('--water-surface').trim() || 'rgba(77, 166, 255, 0.5)'
+    const waterBody = style.getPropertyValue('--water-body').trim() || 'rgba(0, 102, 204, 0.6)'
+    const waterDeep = style.getPropertyValue('--water-deep').trim() || 'rgba(0, 61, 122, 0.7)'
+
     const resize = () => {
       if (mode === 'fullscreen') {
         canvas.width = window.innerWidth * 2
@@ -91,11 +97,11 @@ export function WaterCanvas({
           ctx.clip()
         }
 
-        // Water gradient
+        // Water gradient using CSS variables
         const grad = ctx.createLinearGradient(0, surfaceY, 0, h)
-        grad.addColorStop(0, dark ? '#4fc3f7' : '#81d4fa')
-        grad.addColorStop(0.5, dark ? '#29b6f6' : '#4fc3f7')
-        grad.addColorStop(1, dark ? '#0288d1' : '#29b6f6')
+        grad.addColorStop(0, waterSurface)
+        grad.addColorStop(0.5, waterBody)
+        grad.addColorStop(1, waterDeep)
 
         // Wave surface
         ctx.beginPath()

@@ -27,14 +27,14 @@ export function MobilePortraitLayout() {
 
   if (!loaded) {
     return (
-      <div className={`min-h-screen flex items-center justify-center ${dark ? 'bg-[#0d1b2a]' : 'bg-gradient-to-br from-white/60 to-white/30'}`}>
+      <div className={`min-h-screen flex items-center justify-center ${dark ? 'bg-bg-dark' : 'bg-gradient-to-br from-white/60 to-white/30'}`}>
         <div className={`text-xl ${dark ? 'text-white' : 'text-gray-800'}`}>{t('loading')}</div>
       </div>
     )
   }
 
   return (
-    <div className={`min-h-screen relative overflow-hidden ${dark ? 'bg-[#0d1b2a]' : 'bg-gradient-to-br from-white/60 to-white/30'}`} style={dark ? {} : { backdropFilter: 'blur(20px)' }}>
+    <div className={`min-h-screen relative overflow-hidden ${dark ? 'bg-bg-dark' : 'bg-gradient-to-br from-white/60 to-white/30'}`} style={dark ? {} : { backdropFilter: 'blur(20px)' }}>
       <WaterCanvas level={level} dark={dark} mode="fullscreen" />
 
       <AnimatePresence mode="wait">
@@ -75,7 +75,7 @@ export function MobilePortraitLayout() {
                     <motion.p
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      className={`mt-6 text-lg ${dark ? 'text-[#4caf50]' : 'text-white'}`}
+                      className="mt-6 text-lg text-success"
                     >
                       🎉 {t('goalReached')}
                     </motion.p>
@@ -114,9 +114,9 @@ export function MobilePortraitLayout() {
                   style={{ backdropFilter: 'blur(10px)' }}
                 >
                   {viewMenuOpen ? (
-                    <span className={`text-lg ${dark ? 'text-[#4fc3f7]' : 'text-[#0288d1]'}`}>×</span>
+                    <span className="text-lg text-accent">×</span>
                   ) : (
-                    <span className={`text-sm font-medium ${dark ? 'text-[#4fc3f7]' : 'text-[#0288d1]'}`}>
+                    <span className="text-sm font-medium text-accent">
                       {view === 'day' ? t('day') : view === 'week' ? t('week') : t('month')}
                     </span>
                   )}
@@ -132,7 +132,7 @@ export function MobilePortraitLayout() {
                   onClick={() => setTab('home')}
                   className={`px-5 py-2 rounded-xl text-sm transition-colors ${
                     tab === 'home'
-                      ? dark ? 'bg-[#4fc3f7]/20 text-[#4fc3f7]' : 'bg-white/50 text-[#0288d1]'
+                      ? 'bg-accent/20 text-accent'
                       : dark ? 'text-white/60' : 'text-white/80'
                   }`}
                 >
@@ -142,7 +142,7 @@ export function MobilePortraitLayout() {
                   onClick={() => setTab('history')}
                   className={`px-5 py-2 rounded-xl text-sm transition-colors ${
                     tab === 'history'
-                      ? dark ? 'bg-[#4fc3f7]/20 text-[#4fc3f7]' : 'bg-white/50 text-[#0288d1]'
+                      ? 'bg-accent/20 text-accent'
                       : dark ? 'text-white/60' : 'text-white/80'
                   }`}
                 >
@@ -160,7 +160,7 @@ export function MobilePortraitLayout() {
                 style={{ backdropFilter: 'blur(10px)' }}
               >
                 {settingsMenuOpen ? (
-                  <span className={`text-lg ${dark ? 'text-[#4fc3f7]' : 'text-[#0288d1]'}`}>×</span>
+                  <span className="text-lg text-accent">×</span>
                 ) : (
                   <div className="flex flex-col gap-1">
                     <div className={`w-1.5 h-1.5 rounded-full ${dark ? 'bg-white' : 'bg-white'}`} />
@@ -197,7 +197,7 @@ export function MobilePortraitLayout() {
                         onClick={() => { setView(mode); setViewMenuOpen(false) }}
                         className={`block w-full px-4 py-2 text-sm rounded-lg transition-colors ${
                           view === mode
-                            ? dark ? 'bg-[#4fc3f7]/20 text-[#4fc3f7]' : 'bg-[#0288d1]/10 text-[#0288d1]'
+                            ? 'bg-accent/20 text-accent'
                             : dark ? 'text-white/80' : 'text-gray-700'
                         }`}
                       >

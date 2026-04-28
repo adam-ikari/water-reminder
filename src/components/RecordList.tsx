@@ -31,8 +31,8 @@ export function RecordList({ records, onRemove, dark }: Props) {
             }`}
           >
             <div className="flex items-center gap-3">
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center ${dark ? 'bg-[#4fc3f7]/20' : 'bg-[#0288d1]/20'}`}>
-                <svg className={`w-4 h-4 ${dark ? 'text-[#4fc3f7]' : 'text-[#0288d1]'}`} fill="currentColor" viewBox="0 0 24 24">
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center bg-accent/20`}>
+                <svg className={`w-4 h-4 text-accent`} fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2c-5.33 4.67-8 8.67-8 12 0 3.31 2.69 6 6 6s6-2.69 6-6c0-3.33-2.67-7.33-8-12z" />
                 </svg>
               </div>

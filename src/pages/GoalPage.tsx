@@ -27,7 +27,7 @@ export function GoalPage({ onBack, dark, goal, onGoalChange }: Props) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className={`min-h-screen p-6 ${dark ? 'bg-[#0d1b2a]' : 'bg-white'}`}
+      className={`min-h-screen p-6 ${dark ? 'bg-bg-dark' : 'bg-white'}`}
     >
       <div className="flex items-center gap-4 mb-8">
         <BackButton onClick={onBack} dark={dark} />
@@ -38,7 +38,7 @@ export function GoalPage({ onBack, dark, goal, onGoalChange }: Props) {
 
       <div className={`rounded-2xl p-6 ${dark ? 'bg-white/10' : 'bg-gray-100'}`}>
         <div className="text-center mb-6">
-          <span className={`text-6xl font-bold ${dark ? 'text-[#4fc3f7]' : 'text-[#0066ff]'}`}>
+          <span className={`text-6xl font-bold text-accent`}>
             {tempGoal}
           </span>
           <span className={`text-xl ml-2 ${dark ? 'text-white/60' : 'text-gray-500'}`}>
@@ -80,9 +80,7 @@ export function GoalPage({ onBack, dark, goal, onGoalChange }: Props) {
       <motion.button
         whileTap={{ scale: 0.98 }}
         onClick={handleSave}
-        className={`w-full mt-6 p-4 rounded-2xl font-bold ${
-          dark ? 'bg-[#4fc3f7] text-white' : 'bg-[#0066ff] text-white'
-        }`}
+        className={`w-full mt-6 p-4 rounded-2xl font-bold bg-accent text-white`}
       >
         {t('save')}
       </motion.button>

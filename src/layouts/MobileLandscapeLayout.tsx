@@ -25,14 +25,14 @@ export function MobileLandscapeLayout() {
 
   if (!loaded) {
     return (
-      <div className={`h-screen flex items-center justify-center ${dark ? 'bg-[#0d1b2a]' : 'bg-gradient-to-br from-white/60 to-white/30'}`}>
+      <div className={`h-screen flex items-center justify-center ${dark ? 'bg-bg-dark' : 'bg-gradient-to-br from-white/60 to-white/30'}`}>
         <div className={`text-xl ${dark ? 'text-white' : 'text-gray-800'}`}>{t('loading')}</div>
       </div>
     )
   }
 
   return (
-    <div className={`h-screen flex ${dark ? 'bg-[#0d1b2a]' : 'bg-gradient-to-br from-white/60 to-white/30'}`} style={dark ? {} : { backdropFilter: 'blur(20px)' }}>
+    <div className={`h-screen flex ${dark ? 'bg-bg-dark' : 'bg-gradient-to-br from-white/60 to-white/30'}`} style={dark ? {} : { backdropFilter: 'blur(20px)' }}>
       {/* Left: Water Card - Always visible */}
       <div className="w-1/2 relative flex items-center justify-center p-4">
         <motion.div
@@ -69,7 +69,7 @@ export function MobileLandscapeLayout() {
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className={`mt-4 text-sm ${dark ? 'text-[#4caf50]' : 'text-white'}`}
+                className="mt-4 text-sm text-success"
               >
                 🎉 {t('goalReached')}
               </motion.p>
@@ -127,9 +127,9 @@ export function MobileLandscapeLayout() {
                     style={{ backdropFilter: 'blur(10px)' }}
                   >
                     {viewMenuOpen ? (
-                      <span className={`text-base ${dark ? 'text-[#4fc3f7]' : 'text-[#0288d1]'}`}>×</span>
+                      <span className="text-base text-accent">×</span>
                     ) : (
-                      <span className={`text-xs font-medium ${dark ? 'text-[#4fc3f7]' : 'text-[#0288d1]'}`}>
+                      <span className="text-xs font-medium text-accent">
                         {view === 'day' ? t('day') : view === 'week' ? t('week') : t('month')}
                       </span>
                     )}
@@ -145,7 +145,7 @@ export function MobileLandscapeLayout() {
                     style={{ backdropFilter: 'blur(10px)' }}
                   >
                     {settingsMenuOpen ? (
-                      <span className={`text-base ${dark ? 'text-[#4fc3f7]' : 'text-[#0288d1]'}`}>×</span>
+                      <span className="text-base text-accent">×</span>
                     ) : (
                       <div className="flex flex-col gap-1">
                         <div className={`w-1 h-1 rounded-full ${dark ? 'bg-white' : 'bg-white'}`} />
@@ -182,7 +182,7 @@ export function MobileLandscapeLayout() {
                             onClick={() => { setView(mode); setViewMenuOpen(false) }}
                             className={`block w-full px-3 py-1.5 text-xs rounded-md transition-colors ${
                               view === mode
-                                ? dark ? 'bg-[#4fc3f7]/20 text-[#4fc3f7]' : 'bg-[#0288d1]/10 text-[#0288d1]'
+                                ? 'bg-accent/20 text-accent'
                                 : dark ? 'text-white/80' : 'text-gray-700'
                             }`}
                           >
@@ -250,7 +250,7 @@ export function MobileLandscapeLayout() {
                     }`}
                   >
                     <span className={`text-xs ${dark ? 'text-white/80' : 'text-white'}`}>{t('darkMode')}</span>
-                    <div className={`w-8 h-4 rounded-full p-0.5 transition-colors ${dark ? 'bg-[#4fc3f7]' : 'bg-white/50'}`}>
+                    <div className={`w-8 h-4 rounded-full p-0.5 transition-colors ${dark ? 'bg-accent' : 'bg-white/50'}`}>
                       <motion.div
                         className="w-3 h-3 rounded-full bg-white shadow"
                         animate={{ x: dark ? 16 : 0 }}
@@ -308,7 +308,7 @@ export function MobileLandscapeLayout() {
                         {lang === 'zh' ? '中文' : 'English'}
                       </span>
                       {language === lang && (
-                        <div className={`w-2 h-2 rounded-full ${dark ? 'bg-[#4fc3f7]' : 'bg-[#0288d1]'}`} />
+                        <div className="w-2 h-2 rounded-full bg-accent" />
                       )}
                     </button>
                   ))}
@@ -325,7 +325,7 @@ export function MobileLandscapeLayout() {
                   {t('dailyGoal')}
                 </div>
                 <div className="flex-1 flex flex-col items-center justify-center">
-                  <div className={`text-3xl font-bold ${dark ? 'text-[#4fc3f7]' : 'text-white'}`}>{goal}</div>
+                  <div className="text-3xl font-bold text-accent">{goal}</div>
                   <div className="flex gap-2 mt-4">
                     <button
                       onClick={() => setGoal(Math.max(1, goal - 1))}

@@ -22,7 +22,7 @@ export function SettingsPage({ onBack, dark, onDarkChange, onLanguageClick, onGo
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className={`min-h-screen p-6 ${dark ? 'bg-[#0d1b2a]' : 'bg-white'}`}
+      className={`min-h-screen p-6 ${dark ? 'bg-bg-dark' : 'bg-white'}`}
     >
       <div className="flex items-center gap-4 mb-8">
         <BackButton onClick={onBack} dark={dark} />
@@ -37,7 +37,7 @@ export function SettingsPage({ onBack, dark, onDarkChange, onLanguageClick, onGo
           dark={dark}
           onClick={() => onDarkChange(!dark)}
           rightElement={
-            <div className={`w-12 h-6 rounded-full p-1 transition-colors ${dark ? 'bg-[#4fc3f7]' : 'bg-white/30'}`}>
+            <div className={`w-12 h-6 rounded-full p-1 transition-colors ${dark ? 'bg-accent' : 'bg-gray-300'}`}>
               <motion.div
                 animate={{ x: dark ? 24 : 0 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 30 }}

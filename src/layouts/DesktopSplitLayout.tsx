@@ -25,14 +25,14 @@ export function DesktopSplitLayout() {
 
   if (!loaded) {
     return (
-      <div className={`min-h-screen flex items-center justify-center ${dark ? 'bg-[#0d1b2a]' : 'bg-gradient-to-br from-white/60 to-white/30'}`}>
+      <div className={`min-h-screen flex items-center justify-center ${dark ? 'bg-bg-dark' : 'bg-gradient-to-br from-white/60 to-white/30'}`}>
         <div className={`text-xl ${dark ? 'text-white' : 'text-gray-800'}`}>{t('loading')}</div>
       </div>
     )
   }
 
   return (
-    <div className={`min-h-screen flex items-center justify-center p-8 ${dark ? 'bg-[#0d1b2a]' : 'bg-gradient-to-br from-white/60 to-white/30'}`} style={dark ? {} : { backdropFilter: 'blur(20px)' }}>
+    <div className={`min-h-screen flex items-center justify-center p-8 ${dark ? 'bg-bg-dark' : 'bg-gradient-to-br from-white/60 to-white/30'}`} style={dark ? {} : { backdropFilter: 'blur(20px)' }}>
       <div className="w-full max-w-4xl flex gap-6 items-center justify-center">
         {/* Left: Water Card - Fixed size */}
         <motion.div
@@ -69,7 +69,7 @@ export function DesktopSplitLayout() {
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className={`mt-6 text-lg ${dark ? 'text-[#4caf50]' : 'text-white'}`}
+                className={`mt-6 text-lg text-success`}
               >
                 🎉 {t('goalReached')}
               </motion.p>
@@ -125,9 +125,9 @@ export function DesktopSplitLayout() {
                     style={{ backdropFilter: 'blur(10px)' }}
                   >
                     {viewMenuOpen ? (
-                      <span className={`text-lg ${dark ? 'text-[#4fc3f7]' : 'text-[#0288d1]'}`}>×</span>
+                      <span className="text-lg text-accent">×</span>
                     ) : (
-                      <span className={`text-sm font-medium ${dark ? 'text-[#4fc3f7]' : 'text-[#0288d1]'}`}>
+                      <span className="text-sm font-medium text-accent">
                         {view === 'day' ? t('day') : view === 'week' ? t('week') : t('month')}
                       </span>
                     )}
@@ -143,7 +143,7 @@ export function DesktopSplitLayout() {
                     style={{ backdropFilter: 'blur(10px)' }}
                   >
                     {settingsMenuOpen ? (
-                      <span className={`text-lg ${dark ? 'text-[#4fc3f7]' : 'text-[#0288d1]'}`}>×</span>
+                      <span className="text-lg text-accent">×</span>
                     ) : (
                       <div className="flex flex-col gap-1.5">
                         <div className={`w-1.5 h-1.5 rounded-full ${dark ? 'bg-white' : 'bg-white'}`} />
@@ -180,7 +180,7 @@ export function DesktopSplitLayout() {
                             onClick={() => { setView(mode); setViewMenuOpen(false) }}
                             className={`block w-full px-4 py-2 text-sm rounded-lg transition-colors ${
                               view === mode
-                                ? dark ? 'bg-[#4fc3f7]/20 text-[#4fc3f7]' : 'bg-[#0288d1]/10 text-[#0288d1]'
+                                ? 'bg-accent/20 text-accent'
                                 : dark ? 'text-white/80' : 'text-gray-700'
                             }`}
                           >
@@ -248,7 +248,7 @@ export function DesktopSplitLayout() {
                     }`}
                   >
                     <span className={`text-sm ${dark ? 'text-white/80' : 'text-white'}`}>{t('darkMode')}</span>
-                    <div className={`w-10 h-5 rounded-full p-0.5 transition-colors ${dark ? 'bg-[#4fc3f7]' : 'bg-white/50'}`}>
+                    <div className={`w-10 h-5 rounded-full p-0.5 transition-colors ${dark ? 'bg-accent' : 'bg-white/50'}`}>
                       <motion.div
                         className="w-4 h-4 rounded-full bg-white shadow"
                         animate={{ x: dark ? 20 : 0 }}
@@ -305,7 +305,7 @@ export function DesktopSplitLayout() {
                         {lang === 'zh' ? '中文' : 'English'}
                       </span>
                       {language === lang && (
-                        <div className={`w-2 h-2 rounded-full ${dark ? 'bg-[#4fc3f7]' : 'bg-[#0288d1]'}`} />
+                        <div className="w-2 h-2 rounded-full bg-accent" />
                       )}
                     </button>
                   ))}
@@ -322,7 +322,7 @@ export function DesktopSplitLayout() {
                   {t('dailyGoal')}
                 </div>
                 <div className="flex-1 flex flex-col items-center justify-center">
-                  <div className={`text-5xl font-bold ${dark ? 'text-[#4fc3f7]' : 'text-white'}`}>{goal}</div>
+                  <div className="text-5xl font-bold text-accent">{goal}</div>
                   <div className="flex gap-3 mt-6">
                     {[1, 2, 3, 4, 5].map((num) => (
                       <button
@@ -363,9 +363,9 @@ export function DesktopSplitLayout() {
                 </div>
                 <div className="flex-1 flex flex-col items-center justify-center">
                   <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-4 ${
-                    dark ? 'bg-[#4fc3f7]/20' : 'bg-white/30'
+                    dark ? 'bg-accent/20' : 'bg-white/30'
                   }`}>
-                    <svg className={`w-8 h-8 ${dark ? 'text-[#4fc3f7]' : 'text-white'}`} fill="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 2c-5.33 4.67-8 8.67-8 12 0 3.31 2.69 6 6 6s6-2.69 6-6c0-3.33-2.67-7.33-8-12z" />
                     </svg>
                   </div>

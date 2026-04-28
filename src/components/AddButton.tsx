@@ -35,13 +35,11 @@ export function AddButton({ onClick, dark, size = 'md', disabled = false }: Prop
         WebkitBackdropFilter: 'blur(20px)',
         boxShadow: disabled
           ? undefined
-          : dark
-            ? '0 0 16px rgba(79, 195, 247, 0.5)'
-            : '0 0 16px rgba(0, 102, 255, 0.5)',
+          : '0 0 16px var(--accent-glow)',
       }}
     >
       <svg
-        className={`${icon} ${dark ? 'text-[#4fc3f7]' : 'text-[#0288d1]'}`}
+        className={`${icon} text-accent`}
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"

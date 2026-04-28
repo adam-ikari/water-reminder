@@ -67,7 +67,7 @@ export function WatchLayout() {
 
   if (!loaded) {
     return (
-      <div className={`min-h-screen flex items-center justify-center ${dark ? 'bg-[#0d1b2a]' : 'bg-gradient-to-br from-white/60 to-white/30'}`}>
+      <div className={`min-h-screen flex items-center justify-center ${dark ? 'bg-bg-dark' : 'bg-gradient-to-br from-white/60 to-white/30'}`}>
         <div className={`text-sm ${dark ? 'text-white' : 'text-gray-800'}`}>{t('loading')}</div>
       </div>
     )
@@ -76,7 +76,7 @@ export function WatchLayout() {
   return (
     <div
       className={`min-h-screen flex flex-col items-center justify-center ${
-        dark ? 'bg-[#0d1b2a]' : 'bg-gradient-to-br from-white/60 to-white/30'
+        dark ? 'bg-bg-dark' : 'bg-gradient-to-br from-white/60 to-white/30'
       }`}
       style={{
         borderRadius: isRound ? '50%' : '16px',
@@ -140,7 +140,7 @@ export function WatchLayout() {
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className={`mt-4 text-sm ${dark ? 'text-[#4caf50]' : 'text-white'}`}
+                className="mt-4 text-sm text-success"
               >
                 🎉 {t('goalReached')}
               </motion.p>
@@ -260,14 +260,14 @@ export function WatchLayout() {
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
               className={`fixed inset-0 z-40 flex flex-col items-center justify-center gap-4 ${
-                dark ? 'bg-[#0d1b2a]' : 'bg-gradient-to-br from-white/60 to-white/30'
+                dark ? 'bg-bg-dark' : 'bg-gradient-to-br from-white/60 to-white/30'
               }`}
             >
               <button
                 onClick={() => handleViewChange('history')}
                 className={`w-32 h-12 rounded-2xl flex items-center justify-center text-sm font-medium ${
                   dark
-                    ? 'bg-[#4fc3f7]/20 text-[#4fc3f7]'
+                    ? 'bg-accent/20 text-accent'
                     : 'bg-white/30 text-white'
                 }`}
               >

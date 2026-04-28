@@ -27,7 +27,7 @@ export function ViewSwitch({ view, onChange, dark }: Props) {
           onClick={() => onChange(item.key)}
           className={`relative px-4 py-2 rounded-full text-sm transition-colors ${
             view === item.key
-              ? dark ? 'text-white' : 'text-[#0288d1]'
+              ? dark ? 'text-white' : 'text-accent'
               : dark ? 'text-white/60' : 'text-white/80'
           }`}
         >
