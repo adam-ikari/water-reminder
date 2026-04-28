@@ -64,7 +64,7 @@ export function MonthCalendar({ data, dark, goal, onDayClick }: Props) {
           return (
             <button
               key={index}
-              onClick={() => onDayClick?.(item.date)}
+              onClick={() => item.date && onDayClick?.(item.date)}
               className={`aspect-square rounded-lg flex items-center justify-center text-sm relative ${
                 item.isToday
                   ? `ring-2 ${dark ? 'ring-[#4fc3f7]' : 'ring-[#0288d1]'}`

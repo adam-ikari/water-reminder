@@ -1,42 +1,10 @@
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
+import { resources } from './locales'
 
 i18n.use(initReactI18next).init({
-  resources: {
-    en: {
-      translation: {
-        glasses: 'glasses',
-        of: 'of',
-        today: 'Today',
-        history: 'History',
-        calendar: 'Calendar',
-        settings: 'Settings',
-        darkMode: 'Dark Mode',
-        noRecords: 'No records yet',
-        goalReached: 'Goal reached!',
-        thisWeek: 'This Week',
-        totalWeek: 'Total this week',
-        cups: 'cups',
-      },
-    },
-    zh: {
-      translation: {
-        glasses: '杯',
-        of: '共',
-        today: '今日',
-        history: '历史',
-        calendar: '日历',
-        settings: '设置',
-        darkMode: '深色模式',
-        noRecords: '暂无记录',
-        goalReached: '目标达成！',
-        thisWeek: '本周',
-        totalWeek: '本周共',
-        cups: '杯',
-      },
-    },
-  },
-  lng: localStorage.getItem('lang') || 'zh',
+  resources,
+  lng: 'zh',
   interpolation: { escapeValue: false },
 })
 

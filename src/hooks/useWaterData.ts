@@ -1,4 +1,5 @@
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useStorage } from './useStorage'
 import type { DrinkRecord, WaterState } from './types'
 import { DEFAULT_GOAL, STORAGE_KEY } from './constants'
@@ -13,6 +14,14 @@ const initialState: WaterState = {
 
 export function useWaterData() {
   const [state, setState, loaded] = useStorage<WaterState>(STORAGE_KEY, initialState)
+  const { i18n } = useTranslation()
+
+  // Sync i18n with stored language on load
+  useEffect(() => {
+    if (loaded && state.language) {
+      i18n.changeLanguage(state.language)
+    }
+  }, [loaded, state.language, i18n])
 
   const add = useCallback(() => {
     if (state.count >= state.goal) return
@@ -47,8 +56,9 @@ export function useWaterData() {
   }, [state, setState])
 
   const setLanguage = useCallback((language: 'zh' | 'en') => {
+    i18n.changeLanguage(language)
     setState({ ...state, language })
-  }, [state, setState])
+  }, [state, setState, i18n])
 
   const todayHistory = state.history
     .filter(r => new Date(r.timestamp).toDateString() === new Date().toDateString())
