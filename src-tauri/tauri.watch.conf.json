@@ -23,5 +23,9 @@
       "csp": null
     }
   },
-  "plugins": {}
+  "plugins": {
+    "notification": {
+      "permission": "granted"
+    }
+  }
 }
