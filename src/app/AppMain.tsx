@@ -77,7 +77,11 @@ function FullscreenWater({ level, dark }: { level: number; dark: boolean }) {
         ctx.beginPath()
         for (let x = 0; x <= w; x += 4) {
           const y = surfaceY + Math.sin(x * 0.005 + t * 0.02) * 8
-          x === 0 ? ctx.moveTo(x, y - 20) : ctx.lineTo(x, y + 40)
+          if (x === 0) {
+            ctx.moveTo(x, y - 20)
+          } else {
+            ctx.lineTo(x, y + 40)
+          }
         }
         ctx.lineTo(w, surfaceY - 20)
         ctx.fillStyle = hl
@@ -196,7 +200,11 @@ function CardWater({ level, dark }: { level: number; dark: boolean }) {
         ctx.beginPath()
         for (let x = 0; x <= w; x += 4) {
           const y = surfaceY + Math.sin(x * 0.02 + t * 0.03) * 6
-          x === 0 ? ctx.moveTo(x, y - 15) : ctx.lineTo(x, y + 30)
+          if (x === 0) {
+            ctx.moveTo(x, y - 15)
+          } else {
+            ctx.lineTo(x, y + 30)
+          }
         }
         ctx.lineTo(w, surfaceY - 15)
         ctx.fillStyle = hl
@@ -231,9 +239,23 @@ function CardWater({ level, dark }: { level: number; dark: boolean }) {
 
 export default function AppMain() {
   const { t, i18n } = useTranslation()
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(() => {
+    const d = localStorage.getItem('water')
+    if (d) {
+      const { count: c } = JSON.parse(d)
+      return c ?? 0
+    }
+    return 0
+  })
   const [goal] = useState(8)
-  const [history, setHistory] = useState<DrinkRecord[]>([])
+  const [history, setHistory] = useState<DrinkRecord[]>(() => {
+    const d = localStorage.getItem('water')
+    if (d) {
+      const { history: h } = JSON.parse(d)
+      return h?.map((r: DrinkRecord) => ({ ...r, timestamp: new Date(r.timestamp) })) ?? []
+    }
+    return []
+  })
   const [settings, setSettings] = useState(false)
   const [historyView, setHistoryView] = useState(false)
   const [dark, setDark] = useState(() => {
@@ -250,29 +272,20 @@ export default function AppMain() {
   }, [])
 
   useEffect(() => {
-    const d = localStorage.getItem('water')
-    if (d) {
-      const { count: c, history: h } = JSON.parse(d)
-      setCount(c ?? 0)
-      setHistory(h?.map((r: DrinkRecord) => ({ ...r, timestamp: new Date(r.timestamp) })) ?? [])
-    }
-  }, [])
-
-  useEffect(() => {
     localStorage.setItem('water', JSON.stringify({ count, goal, history }))
-  }, [count, history])
+  }, [count, goal, history])
 
   useEffect(() => {
     localStorage.setItem('dark', String(dark))
   }, [dark])
 
   const add = useCallback(() => {
-    setCount(c => Math.min(c + 1, goal))
+    setCount((c: number) => Math.min(c + 1, goal))
     setHistory(h => [...h, { id: Date.now().toString(), timestamp: new Date(), amount: 1 }])
   }, [goal])
 
   const remove = useCallback((id: string) => {
-    setCount(c => Math.max(0, c - 1))
+    setCount((c: number) => Math.max(0, c - 1))
     setHistory(h => h.filter(r => r.id !== id))
   }, [])
 

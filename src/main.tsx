@@ -10,7 +10,7 @@ if ('serviceWorker' in navigator) {
   })
 }
 
-// @ts-ignore - injected by Vite
+// __BUILD_TARGET__ is injected by Vite at build time
 declare const __BUILD_TARGET__: string
 
 async function bootstrap() {

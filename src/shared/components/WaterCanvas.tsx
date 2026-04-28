@@ -90,7 +90,11 @@ export function WaterCanvas({
           ctx.beginPath()
           for (let x = 0; x <= w; x += 4) {
             const y = surfaceY + Math.sin(x * 0.005 + t * 0.02) * 8 * waveAmplitude
-            x === 0 ? ctx.moveTo(x, y - 20) : ctx.lineTo(x, y + 40)
+            if (x === 0) {
+              ctx.moveTo(x, y - 20)
+            } else {
+              ctx.lineTo(x, y + 40)
+            }
           }
           ctx.lineTo(w, surfaceY - 20)
           ctx.fillStyle = hl
