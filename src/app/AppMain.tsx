@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
-import './i18n'
+import '../i18n'
 
 interface DrinkRecord {
   id: string
@@ -229,7 +229,7 @@ function CardWater({ level, dark }: { level: number; dark: boolean }) {
   return <canvas ref={canvasRef} className="w-full h-full rounded-[32px]" />
 }
 
-export default function App() {
+export default function AppMain() {
   const { t, i18n } = useTranslation()
   const [count, setCount] = useState(0)
   const [goal] = useState(8)
