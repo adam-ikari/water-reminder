@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { WaterCanvas, AddButton, RecordList, WeekChart, MonthCalendar, ViewSwitch, MenuButton } from '../components'
 import { SettingsPage, LanguagePage, GoalPage, AboutPage } from '../pages'
-import { useWaterData, useLayout } from '../hooks'
+import { useWaterData } from '../hooks'
 import { useTranslation } from 'react-i18next'
 
 type ViewType = 'day' | 'week' | 'month'
